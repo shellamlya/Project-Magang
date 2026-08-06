@@ -1,0 +1,315 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\HangoutPlace;
+use App\Models\HangoutFacility;
+
+class HangoutSeeder extends Seeder
+{
+    /**
+     * Run the database seeds for Tempat Nongkrong (Kunti).
+     */
+    public function run(): void
+    {
+        // 1. Seed Facilities
+        $facilitiesList = [
+            'WiFi',
+            'AC',
+            'Area Indoor',
+            'Area Outdoor',
+            'Toilet',
+            'Parkir',
+            'Stop Kontak',
+            'Mushola',
+            'Live Music',
+            'Gazebo',
+            'Spot Foto',
+            'Area Makan',
+        ];
+
+        $facilityMap = [];
+        foreach ($facilitiesList as $facName) {
+            $facilityMap[$facName] = HangoutFacility::firstOrCreate([
+                'facility_name' => $facName
+            ])->id;
+        }
+
+        // 2. Data 20 Tempat Nongkrong
+        $hangouts = [
+            [
+                'name' => 'Turbean Space',
+                'operational_hours' => 'Setiap hari 09.00–23.00 WIB',
+                'description' => 'Café bergaya industrial modern yang cocok untuk bekerja, belajar, maupun berkumpul bersama teman. Menyediakan berbagai menu kopi dan makanan ringan.',
+                'facilities' => ['WiFi', 'AC', 'Area Indoor', 'Area Outdoor', 'Toilet', 'Parkir', 'Stop Kontak'],
+                'manager_name' => 'Turbean Space',
+                'phone' => '+62 823-3210-6101',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Turbean+Space+Gresik',
+                'district' => 'Gresik',
+                'village' => 'Sidokumpul',
+                'address' => 'Jl. Dr. Wahidin Sudirohusodo, Gresik',
+            ],
+            [
+                'name' => 'Giri Hills Coffee House',
+                'operational_hours' => 'Setiap hari 12.00–00.00 WIB',
+                'description' => 'Café di kawasan perbukitan dengan pemandangan city light Gresik, populer sebagai tempat menikmati matahari terbenam dan nongkrong malam hari.',
+                'facilities' => ['WiFi', 'Area Outdoor', 'Mushola', 'Toilet', 'Parkir', 'Live Music'],
+                'manager_name' => 'Giri Hills Coffee House',
+                'phone' => '+62 878-5615-2299',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Giri+Hills+Coffee+House+Gresik',
+                'district' => 'Kebomas',
+                'village' => 'Giri',
+                'address' => 'Jl. Rayon Giri, Kebomas, Gresik',
+            ],
+            [
+                'name' => 'Koromi',
+                'operational_hours' => 'Senin–Kamis 10.00–22.00 WIB | Jumat–Minggu 10.00–23.00 WIB',
+                'description' => 'Café bergaya minimalis modern dengan menu kopi, dessert, dan makanan berat. Cocok untuk keluarga maupun anak muda.',
+                'facilities' => ['WiFi', 'AC', 'Toilet', 'Parkir', 'Area Indoor'],
+                'manager_name' => 'Koromi',
+                'phone' => '+62 812-5556-7373',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Koromi+Gresik',
+                'district' => 'Gresik',
+                'village' => 'BPK Wetan',
+                'address' => 'Jl. Panglima Sudirman, Gresik',
+            ],
+            [
+                'name' => 'Metropole Coffee',
+                'operational_hours' => 'Setiap hari 11.00–21.00 WIB',
+                'description' => 'Coffee shop bernuansa klasik-modern yang nyaman untuk meeting maupun mengerjakan tugas.',
+                'facilities' => ['WiFi', 'AC', 'Toilet', 'Parkir', 'Area Indoor'],
+                'manager_name' => 'Metropole Coffee',
+                'phone' => null,
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Metropole+Coffee+Gresik',
+                'district' => 'Gresik',
+                'village' => 'Sukorame',
+                'address' => 'Jl. Veteran, Gresik',
+            ],
+            [
+                'name' => 'Kayoman',
+                'operational_hours' => 'Senin–Jumat 09.00–00.00 WIB | Sabtu–Minggu 08.00–00.00 WIB',
+                'description' => 'Coffee shop dengan konsep taman terbuka yang asri dan nyaman untuk bersantai bersama keluarga maupun teman.',
+                'facilities' => ['WiFi', 'Area Outdoor', 'Toilet', 'Parkir', 'Stop Kontak'],
+                'manager_name' => 'Kayoman',
+                'phone' => '+62 822-2173-9316',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Kayoman+Gresik',
+                'district' => 'Kebomas',
+                'village' => 'Randuagung',
+                'address' => 'Jl. Mayjend Sungkono, Kebomas, Gresik',
+            ],
+            [
+                'name' => "d'Lagoon",
+                'operational_hours' => 'Setiap hari 09.00–22.00 WIB',
+                'description' => 'Café dengan konsep danau buatan yang menghadirkan suasana santai serta cocok untuk makan bersama keluarga.',
+                'facilities' => ['Area Outdoor', 'Gazebo', 'WiFi', 'Toilet', 'Parkir'],
+                'manager_name' => "d'Lagoon",
+                'phone' => '+62 812-1775-5611',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=dLagoon+Gresik',
+                'district' => 'Manyar',
+                'village' => 'Suci',
+                'address' => 'Kawasan Danau Suci, Manyar, Gresik',
+            ],
+            [
+                'name' => 'Pasteurise Cafe',
+                'operational_hours' => 'Setiap hari 10.00–22.00 WIB',
+                'description' => 'Café modern dengan desain minimalis yang menyediakan berbagai pilihan kopi, non-kopi, dan makanan ringan.',
+                'facilities' => ['WiFi', 'AC', 'Toilet', 'Parkir'],
+                'manager_name' => 'Pasteurise Cafe',
+                'phone' => '+62 822-4548-4463',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Pasteurise+Cafe+Gresik',
+                'district' => 'Gresik',
+                'village' => 'Kebungson',
+                'address' => 'Jl. Jaksa Agung Suprapto, Gresik',
+            ],
+            [
+                'name' => 'Circuit Cafe',
+                'operational_hours' => 'Setiap hari 08.00–00.00 WIB',
+                'description' => 'Café dengan area luas yang menjadi tempat favorit anak muda untuk nongkrong maupun mengadakan komunitas.',
+                'facilities' => ['WiFi', 'Area Indoor', 'Area Outdoor', 'Toilet', 'Parkir'],
+                'manager_name' => 'Circuit Cafe',
+                'phone' => null,
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Circuit+Cafe+Gresik',
+                'district' => 'Gresik',
+                'village' => 'Kroman',
+                'address' => 'Jl. Raya Sukomulyo, Gresik',
+            ],
+            [
+                'name' => 'Angon Jiwo Cafe & Resto',
+                'operational_hours' => 'Setiap hari 10.00–22.00 WIB',
+                'description' => 'Café dan restoran bernuansa tradisional-modern dengan menu Nusantara serta area yang nyaman untuk keluarga.',
+                'facilities' => ['WiFi', 'Mushola', 'Toilet', 'Parkir', 'Area Outdoor'],
+                'manager_name' => 'Angon Jiwo Cafe & Resto',
+                'phone' => '+62 812-2220-9909',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Angon+Jiwo+Cafe+Gresik',
+                'district' => 'Kebomas',
+                'village' => 'Kedangwungu',
+                'address' => 'Jl. Sunan Giri, Kebomas, Gresik',
+            ],
+            [
+                'name' => 'Ruang Semesta Cafe',
+                'operational_hours' => 'Senin–Jumat 10.00–22.00 WIB | Sabtu–Minggu 12.00–00.00 WIB',
+                'description' => 'Coffee shop dengan konsep modern dan suasana tenang, cocok untuk bekerja maupun berkumpul bersama teman.',
+                'facilities' => ['WiFi', 'AC', 'Toilet', 'Parkir', 'Stop Kontak'],
+                'manager_name' => 'Ruang Semesta Cafe',
+                'phone' => null,
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Ruang+Semesta+Cafe+Gresik',
+                'district' => 'Gresik',
+                'village' => 'Sidomoro',
+                'address' => 'Jl. Jawa, Gresik',
+            ],
+            [
+                'name' => 'HOLAA CAFE INDONESIA',
+                'operational_hours' => '13.00–22.00 WIB',
+                'description' => 'Café kekinian di kawasan Pantai Dalegan dengan konsep outdoor dan suasana pantai, cocok untuk menikmati senja.',
+                'facilities' => ['WiFi', 'Area Outdoor', 'Toilet', 'Parkir', 'Spot Foto'],
+                'manager_name' => 'HOLAA Cafe Indonesia',
+                'phone' => '0856-0440-8519',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=HOLAA+Cafe+Indonesia+Dalegan',
+                'district' => 'Panceng',
+                'village' => 'Dalegan',
+                'address' => 'Kawasan Pantai Dalegan, Panceng, Gresik',
+            ],
+            [
+                'name' => 'Omah Singgah Coffee',
+                'operational_hours' => 'Senin–Sabtu 10.00–17.30 WIB | Minggu 09.00–17.30 WIB',
+                'description' => 'Coffee shop bernuansa pedesaan yang nyaman untuk bersantai setelah berwisata ke kawasan Gosari.',
+                'facilities' => ['WiFi', 'Area Outdoor', 'Toilet', 'Parkir'],
+                'manager_name' => 'Omah Singgah Coffee',
+                'phone' => null,
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Omah+Singgah+Coffee+Gosari',
+                'district' => 'Ujungpangkah',
+                'village' => 'Gosari',
+                'address' => 'Desa Gosari, Ujungpangkah, Gresik',
+            ],
+            [
+                'name' => 'Singgah IN Cafe',
+                'operational_hours' => '16.00–22.00 WIB',
+                'description' => 'Café sederhana yang menjadi tempat berkumpul favorit masyarakat Ujungpangkah pada sore hingga malam hari.',
+                'facilities' => ['WiFi', 'Area Indoor', 'Parkir', 'Toilet'],
+                'manager_name' => 'Singgah IN Cafe',
+                'phone' => '0895-4284-53526',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Singgah+IN+Cafe+Ujungpangkah',
+                'district' => 'Ujungpangkah',
+                'village' => 'Pangkahwetan',
+                'address' => 'Jl. Raya Ujungpangkah, Gresik',
+            ],
+            [
+                'name' => 'Pandora Cafe',
+                'operational_hours' => '06.00–00.00 WIB',
+                'description' => 'Café modern dengan area luas yang menyediakan kopi, makanan ringan, dan menu utama. Cocok untuk nongkrong maupun bekerja.',
+                'facilities' => ['WiFi', 'Toilet', 'Parkir', 'Area Indoor', 'Area Outdoor'],
+                'manager_name' => 'Pandora Cafe',
+                'phone' => null,
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Pandora+Cafe+Ujungpangkah',
+                'district' => 'Ujungpangkah',
+                'village' => 'Sekapuk',
+                'address' => 'Jl. Raya Sekapuk, Ujungpangkah, Gresik',
+            ],
+            [
+                'name' => 'Cafe JM',
+                'operational_hours' => '06.00–20.00 WIB',
+                'description' => 'Café di jalur Pantura yang sering menjadi tempat singgah wisatawan menuju Pantai Dalegan dan kawasan wisata utara Gresik.',
+                'facilities' => ['Toilet', 'Parkir', 'Area Makan', 'Area Indoor'],
+                'manager_name' => 'Cafe JM',
+                'phone' => '0813-3514-9862',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Cafe+JM+Panceng',
+                'district' => 'Panceng',
+                'village' => 'Campurejo',
+                'address' => 'Jl. Raya Pantura Panceng, Gresik',
+            ],
+            [
+                'name' => 'SIBE CAFE',
+                'operational_hours' => '15.00–21.00 WIB',
+                'description' => 'Café dengan konsep sederhana yang menjadi tempat nongkrong anak muda di Kecamatan Panceng pada sore hari.',
+                'facilities' => ['Area Outdoor', 'Parkir', 'Toilet'],
+                'manager_name' => 'SIBE Cafe',
+                'phone' => '0812-3570-1601',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=SIBE+Cafe+Panceng',
+                'district' => 'Panceng',
+                'village' => 'Banyubang',
+                'address' => 'Jl. Raya Banyubang, Panceng, Gresik',
+            ],
+            [
+                'name' => 'Cafe Angkasa',
+                'operational_hours' => '09.00–23.00 WIB',
+                'description' => 'Café dengan tema ruang angkasa yang memiliki pemandangan langsung ke Pelabuhan Sangkapura. Menjadi salah satu café paling populer di Pulau Bawean.',
+                'facilities' => ['WiFi', 'Toilet', 'Parkir', 'Area Indoor', 'Area Outdoor'],
+                'manager_name' => 'Cafe Angkasa',
+                'phone' => '0812-3783-6048',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Cafe+Angkasa+Bawean',
+                'district' => 'Sangkapura',
+                'village' => 'Kotakusuma',
+                'address' => 'Kawasan Pelabuhan Sangkapura, Bawean, Gresik',
+            ],
+            [
+                'name' => 'Cafe Boyan Sangkapura',
+                'operational_hours' => '24 Jam',
+                'description' => 'Café yang buka selama 24 jam dan menjadi tempat berkumpul masyarakat serta wisatawan di Pulau Bawean.',
+                'facilities' => ['WiFi', 'Parkir', 'Toilet', 'Area Makan'],
+                'manager_name' => 'Cafe Boyan',
+                'phone' => '0813-3224-1332',
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Cafe+Boyan+Sangkapura',
+                'district' => 'Sangkapura',
+                'village' => 'Sungaiteluk',
+                'address' => 'Jl. Raya Sangkapura, Bawean, Gresik',
+            ],
+            [
+                'name' => 'Bamboe Cafe & Resto',
+                'operational_hours' => '09.00–22.00 WIB',
+                'description' => 'Café dan restoran bernuansa bambu dengan suasana alami, banyak dikunjungi keluarga maupun komunitas.',
+                'facilities' => ['WiFi', 'Gazebo', 'Mushola', 'Toilet', 'Parkir'],
+                'manager_name' => 'Bamboe Cafe & Resto',
+                'phone' => null,
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Bamboe+Cafe+Gosari+Gresik',
+                'district' => 'Ujungpangkah',
+                'village' => 'Gosari',
+                'address' => 'Kawasan Wisata Gosari, Ujungpangkah, Gresik',
+            ],
+            [
+                'name' => 'Break Out Cafe & Resto',
+                'operational_hours' => '10.00–22.00 WIB',
+                'description' => 'Café dan restoran berkonsep modern dengan area luas yang sering digunakan untuk acara komunitas dan keluarga di wilayah Pantura Gresik.',
+                'facilities' => ['WiFi', 'Area Indoor', 'Area Outdoor', 'Toilet', 'Parkir', 'Mushola'],
+                'manager_name' => 'Break Out Cafe & Resto',
+                'phone' => null,
+                'email' => null,
+                'google_maps' => 'https://maps.google.com/?q=Break+Out+Cafe+Panceng',
+                'district' => 'Panceng',
+                'village' => 'Siwalan',
+                'address' => 'Jl. Raya Siwalan, Panceng, Gresik',
+            ],
+        ];
+
+        foreach ($hangouts as $data) {
+            $facs = $data['facilities'];
+            unset($data['facilities']);
+
+            $place = HangoutPlace::create(array_merge($data, [
+                'status' => 'approved',
+            ]));
+
+            $facIds = array_map(fn($name) => $facilityMap[$name], $facs);
+            $place->facilities()->sync($facIds);
+        }
+    }
+}
