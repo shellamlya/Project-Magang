@@ -21,12 +21,4 @@ class Category extends Model
         'service_type',
         'icon',
     ];
-
-    /**
-     * Relasi HasMany ke Lodging.
-     */
-    public function lodgings(): HasMany
-    {
-        return $this->hasMany(Lodging::class);
-    }
 }

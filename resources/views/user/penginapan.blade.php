@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Penginapan (Shella) - GREX Gresik Explore')
+@section('title', 'Daftar Penginapan - GREX Gresik Explore')
 
 @section('styles')
 <style>
@@ -43,7 +43,7 @@
     <div class="header-category mb-4">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <span class="badge-grex-shella text-uppercase mb-2 d-inline-block">Layanan Penginapan (Shella)</span>
+                <span class="badge-grex-penginapan text-uppercase mb-2 d-inline-block">Layanan Penginapan</span>
                 <h1 class="fw-extrabold text-dark display-6 mb-2">Daftar Penginapan & Hotel Gresik</h1>
                 <p class="text-muted mb-0">Temukan 20 pilihan hotel berbintang, resort, homestay, guesthouse, dan villa nyaman di Kabupaten Gresik.</p>
             </div>
@@ -92,7 +92,7 @@
                 <div class="col-md-4">
                     <div class="card card-lodging h-100 p-4 d-flex flex-column">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <span class="badge-grex-shella"><i class="fa-solid fa-hotel me-1"></i> Penginapan</span>
+                            <span class="badge-grex-penginapan"><i class="fa-solid fa-hotel me-1"></i> Penginapan</span>
                             <small class="text-muted fw-semibold">
                                 <i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ $place->district ?? 'Gresik' }}
                             </small>

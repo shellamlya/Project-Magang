@@ -125,9 +125,9 @@
                                 </label>
                                 <select name="service" id="service" class="form-select form-select-lg rounded-3 fs-6">
                                     <option value="">Semua Kategori</option>
-                                    <option value="shella" {{ ($searchService ?? '') == 'shella' ? 'selected' : '' }}>Penginapan (Shella)</option>
-                                    <option value="nyimas" {{ ($searchService ?? '') == 'nyimas' ? 'selected' : '' }}>Wisata (Nyimas)</option>
-                                    <option value="kunti" {{ ($searchService ?? '') == 'kunti' ? 'selected' : '' }}>Nongkrong (Kunti)</option>
+                                    <option value="penginapan" {{ ($searchService ?? '') == 'penginapan' ? 'selected' : '' }}>Penginapan</option>
+                                    <option value="wisata" {{ ($searchService ?? '') == 'wisata' ? 'selected' : '' }}>Wisata</option>
+                                    <option value="nongkrong" {{ ($searchService ?? '') == 'nongkrong' ? 'selected' : '' }}>Nongkrong</option>
                                 </select>
                             </div>
 
@@ -199,13 +199,13 @@
                                 <div class="card-body p-4 d-flex flex-column">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
                                         @if($isWisata)
-                                            <span class="badge-grex-nyimas">Wisata</span>
+                                            <span class="badge-grex-wisata">Wisata</span>
                                             <small class="text-muted"><i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ is_string($place->district) ? $place->district : ($place->district->name ?? 'Gresik') }}</small>
                                         @elseif($isHangout)
-                                            <span class="badge-grex-kunti">Nongkrong</span>
+                                            <span class="badge-grex-nongkrong">Nongkrong</span>
                                             <small class="text-muted"><i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ is_string($place->district) ? $place->district : ($place->district->name ?? 'Gresik') }}</small>
                                         @else
-                                            <span class="badge-grex-shella">Penginapan</span>
+                                            <span class="badge-grex-penginapan">Penginapan</span>
                                             <small class="text-muted"><i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ is_string($place->district) ? $place->district : ($place->district->name ?? 'Gresik') }}</small>
                                         @endif
                                     </div>
@@ -246,9 +246,9 @@
                     Sistem ini mengintegrasikan tiga modul utama:
                 </p>
                 <ul class="list-unstyled text-secondary">
-                    <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> <strong>Penginapan (Shella)</strong>: Katalog hotel, villa, homestay, dan kost harian terpercaya.</li>
-                    <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> <strong>Wisata (Nyimas)</strong>: Panduan wahana wisata alam, sejarah, religi, dan bahari.</li>
-                    <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> <strong>Tempat Nongkrong (Kunti)</strong>: Informasi cafe hits, tempat santai, dan wisata kuliner.</li>
+                    <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> <strong>Penginapan</strong>: Katalog hotel, villa, homestay, dan kost harian terpercaya.</li>
+                    <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> <strong>Wisata</strong>: Panduan wahana wisata alam, sejarah, religi, dan bahari.</li>
+                    <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> <strong>Tempat Nongkrong</strong>: Informasi cafe hits, tempat santai, dan wisata kuliner.</li>
                 </ul>
             </div>
             <div class="col-md-6 text-center">
@@ -264,13 +264,13 @@
             <p class="text-secondary">Tiga pilar utama untuk memenuhi segala kebutuhan eksplorasi Anda</p>
         </div>
         <div class="row g-4">
-            <!-- Card 1: Penginapan (Shella) -->
+            <!-- Card 1: Penginapan -->
             <div class="col-md-4">
                 <div class="card feature-card h-100 p-4 text-center">
                     <div class="icon-box-feature" style="background: #FFD2F4; color: #450C3F;">
                         <i class="fa-solid fa-hotel"></i>
                     </div>
-                    <h4 class="fw-bold text-dark mb-2">Penginapan (Shella)</h4>
+                    <h4 class="fw-bold text-dark mb-2">Penginapan</h4>
                     <p class="text-muted small mb-4 flex-grow-1">
                         Layanan pencarian akomodasi terlengkap di Gresik. Mulai dari hotel berbintang, guest house, hingga homestay terjangkau.
                     </p>
@@ -280,13 +280,13 @@
                 </div>
             </div>
 
-            <!-- Card 2: Wisata (Nyimas) -->
+            <!-- Card 2: Wisata -->
             <div class="col-md-4">
                 <div class="card feature-card h-100 p-4 text-center">
                     <div class="icon-box-feature" style="background: #E1DAFB; color: #4D3EA3;">
                         <i class="fa-solid fa-mountain-sun"></i>
                     </div>
-                    <h4 class="fw-bold text-dark mb-2">Wisata (Nyimas)</h4>
+                    <h4 class="fw-bold text-dark mb-2">Wisata</h4>
                     <p class="text-muted small mb-4 flex-grow-1">
                         Eksplorasi destinasi wisata alam memukau, ziarah religi Walisongo, keindahan pantai bahari, dan tempat bersejarah.
                     </p>
@@ -296,13 +296,13 @@
                 </div>
             </div>
 
-            <!-- Card 3: Nongkrong (Kunti) -->
+            <!-- Card 3: Nongkrong -->
             <div class="col-md-4">
                 <div class="card feature-card h-100 p-4 text-center">
                     <div class="icon-box-feature" style="background: #758AD1; color: #ffffff;">
                         <i class="fa-solid fa-mug-hot"></i>
                     </div>
-                    <h4 class="fw-bold text-dark mb-2">Nongkrong (Kunti)</h4>
+                    <h4 class="fw-bold text-dark mb-2">Nongkrong</h4>
                     <p class="text-muted small mb-4 flex-grow-1">
                         Rekomendasi tempat bersantai, coffee shop aesthetic, warung kopi khas Gresik, dan lokasi kulineran favorit keluarga.
                     </p>
@@ -392,7 +392,7 @@
                         <div class="col-md-3">
                             <div class="card card-grex h-100">
                                 <div class="card-body p-4 d-flex flex-column">
-                                    <span class="badge-grex-shella w-auto me-auto mb-2"><i class="fa-solid fa-hotel me-1"></i> Penginapan</span>
+                                    <span class="badge-grex-penginapan w-auto me-auto mb-2"><i class="fa-solid fa-hotel me-1"></i> Penginapan</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $item->name }}</h6>
                                     <p class="small text-muted mb-2"><i class="fa-solid fa-location-dot text-danger me-1"></i> Kec. {{ $item->district ?? 'Gresik' }}</p>
                                     <p class="small text-muted mb-3 flex-grow-1">{{ Str::limit($item->description, 80) }}</p>
@@ -414,7 +414,7 @@
                         <div class="col-md-3">
                             <div class="card card-grex h-100 p-3">
                                 <div class="card-body p-0 d-flex flex-column h-100">
-                                    <span class="badge-grex-nyimas w-auto me-auto mb-2"><i class="fa-solid fa-mountain-sun me-1"></i> Wisata</span>
+                                    <span class="badge-grex-wisata w-auto me-auto mb-2"><i class="fa-solid fa-mountain-sun me-1"></i> Wisata</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $item->name }}</h6>
                                     <p class="small text-muted mb-2"><i class="fa-solid fa-location-dot text-danger me-1"></i> {{ $item->district ?? 'Gresik' }}</p>
                                     <p class="small text-secondary mb-3 flex-grow-1">{{ Str::limit($item->description, 70) }}</p>
@@ -436,7 +436,7 @@
                         <div class="col-md-3">
                             <div class="card card-grex h-100">
                                 <div class="card-body p-4 d-flex flex-column">
-                                    <span class="badge-grex-kunti w-auto me-auto mb-2"><i class="fa-solid fa-mug-hot me-1"></i> Nongkrong</span>
+                                    <span class="badge-grex-nongkrong w-auto me-auto mb-2"><i class="fa-solid fa-mug-hot me-1"></i> Nongkrong</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $item->name }}</h6>
                                     <p class="small text-muted mb-2"><i class="fa-solid fa-location-dot text-danger me-1"></i> Kec. {{ $item->district ?? 'Gresik' }}</p>
                                     <p class="small text-muted mb-3 flex-grow-1">{{ Str::limit($item->description, 80) }}</p>

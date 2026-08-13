@@ -86,7 +86,7 @@
         }
 
         /* Category Badges */
-        .badge-grex-shella {
+        .badge-grex-penginapan {
             background: #FFD2F4;
             color: #450C3F;
             font-weight: 700;
@@ -94,7 +94,7 @@
             border-radius: 20px;
             font-size: 0.75rem;
         }
-        .badge-grex-nyimas {
+        .badge-grex-wisata {
             background: #E1DAFB;
             color: #4D3EA3;
             font-weight: 700;
@@ -102,7 +102,7 @@
             border-radius: 20px;
             font-size: 0.75rem;
         }
-        .badge-grex-kunti {
+        .badge-grex-nongkrong {
             background: #758AD1;
             color: #ffffff;
             font-weight: 700;
@@ -230,9 +230,9 @@
                     <h6 class="text-white fw-bold mb-3">Navigasi Utama</h6>
                     <ul class="list-unstyled small">
                         <li class="mb-2"><a href="{{ route('home') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Beranda (Pencarian Utama)</a></li>
-                        <li class="mb-2"><a href="{{ route('penginapan') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Penginapan (Shella)</a></li>
-                        <li class="mb-2"><a href="{{ route('wisata') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Wisata (Nyimas)</a></li>
-                        <li class="mb-2"><a href="{{ route('nongkrong') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Nongkrong (Kunti)</a></li>
+                        <li class="mb-2"><a href="{{ route('penginapan') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Penginapan</a></li>
+                        <li class="mb-2"><a href="{{ route('wisata') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Wisata</a></li>
+                        <li class="mb-2"><a href="{{ route('nongkrong') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Nongkrong</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">

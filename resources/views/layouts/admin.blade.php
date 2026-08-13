@@ -168,10 +168,10 @@
 
                 <div class="menu-header">Kelola Data</div>
                 <a href="{{ route('admin.tourist-places.index') }}" class="nav-item-link {{ request()->routeIs('admin.tourist-places.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-mountain-sun"></i> Data Wisata (Nyimas)
+                    <i class="fa-solid fa-mountain-sun"></i> Data Wisata
                 </a>
                 <a href="{{ route('admin.hangout-places.index') }}" class="nav-item-link {{ request()->routeIs('admin.hangout-places.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-mug-hot"></i> Data Nongkrong (Kunti)
+                    <i class="fa-solid fa-mug-hot"></i> Data Nongkrong
                 </a>
                 <a href="{{ route('admin.lodgings.index') }}" class="nav-item-link {{ request()->routeIs('admin.lodgings.*') ? 'active' : '' }}">
                     <i class="fa-solid fa-hotel"></i> Data Penginapan
