@@ -10,21 +10,100 @@
     
     /* Hero Section */
     .hero-landing {
-        background: linear-gradient(135deg, #450C3F 0%, #4D3EA3 50%, #758AD1 100%);
-        color: #ffffff;
-        padding: 4.5rem 0 5rem;
-        border-bottom-left-radius: 40px;
-        border-bottom-right-radius: 40px;
-        box-shadow: 0 15px 30px rgba(69, 12, 63, 0.25);
-    }
-    .search-card {
-        background: #ffffff;
-        border-radius: 24px;
-        padding: 2rem;
-        box-shadow: 0 20px 40px rgba(69, 12, 63, 0.12);
-        border: 1px solid rgba(117, 138, 209, 0.2);
+    position: relative;
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #ffffffff;
+    border-radius: 0 0 35px 35px;
     }
 
+    .hero-landing::before {
+        content: "";
+        position: absolute;
+        inset: -20px;
+
+        background-image: url('/images/hero-grex.png');
+        background-size: cover;
+        background-position: center;
+
+        animation: heroZoom 15s ease-in-out infinite alternate;
+
+        z-index: 0;
+    }
+
+    .hero-landing::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.15);
+
+        z-index: 1;
+    }
+
+    .hero-landing .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    @keyframes heroZoom {
+        from {
+            transform: scale(1);
+        }
+
+        to {
+            transform: scale(1.08);
+        }
+    }
+    .search-card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 20px;
+
+    padding: 1.25rem 1.5rem;
+
+    max-width: 900px;
+    margin: 0 auto;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.3s ease;
+    }
+    .search-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    }
+    .hero-title {
+        color: white;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        font-weight: 800;
+        letter-spacing: -2px;
+        line-height: 1;
+    }
+
+    .hero-title span {
+        display: block;
+        font-size: 0.45em;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-top: 12px;
+        opacity: 0.9;
+    }
+    .hero-description {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
     /* Feature Cards */
     .feature-card {
         border-radius: 20px;
@@ -87,6 +166,118 @@
         background: #4D3EA3;
         color: #ffffff;
     }
+    .about-grex {
+        padding-top: 45px !important;
+        padding-bottom: 100px !important;
+    }
+    .about-heading {
+        margin-bottom: 30px;
+    }
+    .about-label {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 3px;
+        color: var(--brand-primary);
+        margin-bottom: 18px;
+    }
+
+    .about-title {
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        line-height: 1.08;
+        font-weight: 800;
+        letter-spacing: -2px;
+        color: var(--brand-dark);
+        margin: 0 0 25px;
+    }
+    .about-title span {
+        display: block;
+        color: var(--brand-primary);
+    }
+    .about-line {
+        width: 70px;
+        height: 4px;
+        border-radius: 10px;
+        background: var(--brand-primary);
+    }
+
+
+    .text-grex {
+        color: var(--brand-primary);
+    }
+
+   
+
+    .about-point {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 16px;
+    }
+
+    .about-point-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: rgba(77, 62, 163, 0.10);
+        color: var(--brand-primary);
+    }
+
+    .about-point strong {
+        display: block;
+        color: var(--brand-dark);
+    }
+
+    .about-point p {
+        margin: 2px 0 0;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+    }
+
+    .about-image-wrapper {
+        position: relative;
+        padding: 15px;
+    }
+
+    .about-image {
+        width: 100%;
+        height: 430px;
+        object-fit: cover;
+        border-radius: 28px;
+        box-shadow: 0 25px 50px rgba(69, 12, 63, 0.12);
+    }
+
+    .about-floating-card {
+        position: absolute;
+        left: 0;
+        bottom: 35px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .about-floating-card > i {
+        font-size: 1.5rem;
+        color: var(--brand-primary);
+    }
+
+    .about-floating-card strong,
+    .about-floating-card small {
+        display: block;
+    }
+
+    .about-floating-card small {
+        color: var(--text-muted);
+    }
 </style>
 @endsection
 
@@ -100,8 +291,11 @@
                 <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-3 text-uppercase">
                     <i class="fa-solid fa-compass me-1"></i> Platform Resmi Eksplorasi Gresik
                 </span>
-                <h1 class="display-4 fw-extrabold mb-3">GREX (Gresik Explore)</h1>
-                <p class="lead mb-4 text-white-50 px-lg-5">
+                <h1 class="hero-title mb-3">
+                    GREX
+                    <span>Gresik Explore</span>
+                </h1>
+                <p class=" mb-4 hero-description px-lg-5">
                     Temukan akomodasi penginapan terbaik, destinasi wisata menarik, dan tempat nongkrong terfavorit di Seluruh Kabupaten Gresik hanya dalam satu klik.
                 </p>
 
@@ -125,9 +319,9 @@
                                 </label>
                                 <select name="service" id="service" class="form-select form-select-lg rounded-3 fs-6">
                                     <option value="">Semua Kategori</option>
-                                    <option value="shella" {{ ($searchService ?? '') == 'shella' ? 'selected' : '' }}>Penginapan (Shella)</option>
-                                    <option value="nyimas" {{ ($searchService ?? '') == 'nyimas' ? 'selected' : '' }}>Wisata (Nyimas)</option>
-                                    <option value="kunti" {{ ($searchService ?? '') == 'kunti' ? 'selected' : '' }}>Nongkrong (Kunti)</option>
+                                    <option value="shella" {{ ($searchService ?? '') == 'shella' ? 'selected' : '' }}>Penginapan</option>
+                                    <option value="nyimas" {{ ($searchService ?? '') == 'nyimas' ? 'selected' : '' }}>Wisata</option>
+                                    <option value="kunti" {{ ($searchService ?? '') == 'kunti' ? 'selected' : '' }}>Nongkrong</option>
                                 </select>
                             </div>
 
@@ -235,27 +429,91 @@
         </div>
     @endif
 
-    <!-- 1. Deskripsi Sistem -->
-    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 mb-5" style="background: #ffffff;">
-        <div class="row align-items-center g-4">
-            <div class="col-md-6">
-                <span class="text-uppercase fw-bold text-muted small tracking-wide">Tentang GREX</span>
-                <h2 class="section-title display-6 mb-3">Integrasi Informasi Penginapan, Wisata & Tempat Nongkrong</h2>
-                <p class="text-secondary leading-relaxed">
-                    <strong>GREX (Gresik Explore)</strong> diciptakan sebagai solusi satu pintu bagi warga lokal maupun wisatawan yang ingin menjelajahi pesona Kabupaten Gresik. 
-                    Sistem ini mengintegrasikan tiga modul utama:
-                </p>
-                <ul class="list-unstyled text-secondary">
-                    <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> <strong>Penginapan (Shella)</strong>: Katalog hotel, villa, homestay, dan kost harian terpercaya.</li>
-                    <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> <strong>Wisata (Nyimas)</strong>: Panduan wahana wisata alam, sejarah, religi, dan bahari.</li>
-                    <li class="mb-2"><i class="fa-solid fa-check-circle text-success me-2"></i> <strong>Tempat Nongkrong (Kunti)</strong>: Informasi cafe hits, tempat santai, dan wisata kuliner.</li>
-                </ul>
-            </div>
-            <div class="col-md-6 text-center">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="GREX System Overview" class="img-fluid rounded-4 shadow-sm">
+    <!-- Tentang GREX -->
+    <section class="about-grex py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <!-- Text -->
+                <div class="col-lg-6">
+                    <div class="about-heading">
+                        <span class="about-label">TENTANG GREX</span>
+                        <h2 class="about-title">
+                            Satu Tempat untuk
+                            <span>Menjelajahi Gresik</span>
+                        </h2>
+                        <div class="about-line"></div>
+                    </div>
+
+                    <p class="text-secondary fs-5">
+                        <strong>GREX (Gresik Explore)</strong> merupakan platform
+                        informasi yang membantu masyarakat dan wisatawan menemukan
+                        berbagai destinasi menarik di Kabupaten Gresik.
+                    </p>
+
+                    <p class="text-secondary">
+                        Mulai dari tempat menginap, destinasi wisata, hingga tempat
+                        nongkrong dan kuliner, semuanya dikumpulkan dalam satu
+                        platform yang mudah digunakan.
+                    </p>
+
+                    <div class="about-points mt-4">
+
+                        <div class="about-point">
+                            <div class="about-point-icon">
+                                <i class="fa-solid fa-hotel"></i>
+                            </div>
+                            <div>
+                                <strong>Penginapan</strong>
+                                <p>Hotel, homestay, villa, dan akomodasi lainnya.</p>
+                            </div>
+                        </div>
+
+                        <div class="about-point">
+                            <div class="about-point-icon">
+                                <i class="fa-solid fa-mountain-sun"></i>
+                            </div>
+                            <div>
+                                <strong>Wisata</strong>
+                                <p>Destinasi alam, religi, sejarah, dan bahari.</p>
+                            </div>
+                        </div>
+
+                        <div class="about-point">
+                            <div class="about-point-icon">
+                                <i class="fa-solid fa-mug-hot"></i>
+                            </div>
+                            <div>
+                                <strong>Nongkrong</strong>
+                                <p>Cafe, coffee shop, kuliner, dan tempat bersantai.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="col-lg-6">
+                    <div class="about-image-wrapper">
+                        <img
+                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+                            alt="Eksplorasi Gresik"
+                            class="about-image"
+                        >
+
+                        <div class="about-floating-card">
+                            <i class="fa-solid fa-compass"></i>
+                            <div>
+                                <strong>Explore Gresik</strong>
+                                <small>Temukan tempat favoritmu</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- 2. Fitur-Fitur GREX -->
     <div class="mb-5">
@@ -270,7 +528,7 @@
                     <div class="icon-box-feature" style="background: #FFD2F4; color: #450C3F;">
                         <i class="fa-solid fa-hotel"></i>
                     </div>
-                    <h4 class="fw-bold text-dark mb-2">Penginapan (Shella)</h4>
+                    <h4 class="fw-bold text-dark mb-2">Penginapan</h4>
                     <p class="text-muted small mb-4 flex-grow-1">
                         Layanan pencarian akomodasi terlengkap di Gresik. Mulai dari hotel berbintang, guest house, hingga homestay terjangkau.
                     </p>
@@ -286,7 +544,7 @@
                     <div class="icon-box-feature" style="background: #E1DAFB; color: #4D3EA3;">
                         <i class="fa-solid fa-mountain-sun"></i>
                     </div>
-                    <h4 class="fw-bold text-dark mb-2">Wisata (Nyimas)</h4>
+                    <h4 class="fw-bold text-dark mb-2">Wisata</h4>
                     <p class="text-muted small mb-4 flex-grow-1">
                         Eksplorasi destinasi wisata alam memukau, ziarah religi Walisongo, keindahan pantai bahari, dan tempat bersejarah.
                     </p>
@@ -302,7 +560,7 @@
                     <div class="icon-box-feature" style="background: #758AD1; color: #ffffff;">
                         <i class="fa-solid fa-mug-hot"></i>
                     </div>
-                    <h4 class="fw-bold text-dark mb-2">Nongkrong (Kunti)</h4>
+                    <h4 class="fw-bold text-dark mb-2">Nongkrong</h4>
                     <p class="text-muted small mb-4 flex-grow-1">
                         Rekomendasi tempat bersantai, coffee shop aesthetic, warung kopi khas Gresik, dan lokasi kulineran favorit keluarga.
                     </p>

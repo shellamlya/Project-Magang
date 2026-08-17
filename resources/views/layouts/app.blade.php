@@ -48,11 +48,53 @@
             box-shadow: 0 4px 20px rgba(69, 12, 63, 0.05);
         }
         .navbar-brand-logo {
-            font-weight: 800;
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             color: #4D3EA3;
-            letter-spacing: -0.5px;
             text-decoration: none;
+            padding: 0;
+        }
+
+
+        /* Icon Compass */
+        .grex-logo-icon {
+            font-size: 2rem;
+            color: #4D3EA3;
+            flex-shrink: 0;
+        }
+
+
+        /* Container teks */
+        .grex-logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            line-height: 1;
+        }
+
+
+        /* GREX */
+        .grex-title {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #4D3EA3;
+        }
+
+
+        /* Gresik Explore */
+        .grex-subtitle {
+            display: block;
+            margin-top: 4px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            color: #758AD1;
+            white-space: nowrap;
         }
         .nav-link {
             font-weight: 600;
@@ -64,6 +106,20 @@
         .nav-link:hover, .nav-link.active {
             color: #4D3EA3;
             background: rgba(117, 138, 209, 0.15);
+        }
+
+        /* Posisi menu navbar */
+        .grex-nav-center {
+            display: flex;
+            gap: 8px;
+            margin-left: 70px !important;
+            margin-right: auto !important;
+        }
+
+        /* Area tombol kanan */
+        .navbar-grex .collapse > .d-flex {
+            margin-left: auto;
+            flex-shrink: 0;
         }
 
         /* Common Components */
@@ -142,6 +198,86 @@
         footer a:hover {
             color: #ffffff;
         }
+
+        /* =========================================
+   BACKGROUND LANDING PAGE
+   ========================================= */
+
+/* Background utama halaman menjadi putih */
+body {
+    background-color: #ffffff !important;
+}
+
+/* Area utama */
+main {
+    background-color: #ffffff;
+}
+
+
+/* =========================================
+   ABOUT GREX
+   ========================================= */
+
+.about-grex {
+    background-color: #ffffff;
+}
+
+
+/* =========================================
+   PANEL / CARD FITUR LAYANAN
+   ========================================= */
+
+.feature-card {
+    background: #f4f1ff !important;
+    border: 1px solid rgba(77, 62, 163, 0.10);
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(77, 62, 163, 0.08);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    background: #eeeaff !important;
+    box-shadow: 0 18px 40px rgba(77, 62, 163, 0.15);
+}
+
+
+/* =========================================
+   ICON DI DALAM FEATURE CARD
+   ========================================= */
+
+.icon-box-feature {
+    border-radius: 16px !important;
+}
+
+
+/* =========================================
+   SECTION TITLE
+   ========================================= */
+
+.section-title {
+    color: #450C3F;
+}
+
+
+/* =========================================
+   CARA KERJA GREX
+   ========================================= */
+
+.step-card {
+    background: #f8f7ff;
+    border: 1px solid rgba(77, 62, 163, 0.10);
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(77, 62, 163, 0.06);
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    background: #f2efff;
+    box-shadow: 0 14px 30px rgba(77, 62, 163, 0.12);
+}
+
     </style>
     @yield('styles')
 </head>
@@ -150,15 +286,20 @@
     <!-- Navbar Sticky -->
     <nav class="navbar navbar-expand-lg sticky-top navbar-grex">
         <div class="container">
-            <a class="navbar-brand navbar-brand-logo" href="{{ route('home') }}">
-                <i class="fa-solid fa-compass me-2"></i>GREX
+           <a class="navbar-brand navbar-brand-logo" href="{{ route('home') }}">
+                <i class="fa-solid fa-compass grex-logo-icon"></i>
+
+                <div class="grex-logo-text">
+                    <span class="grex-title">GREX</span>
+                    <span class="grex-subtitle">Gresik Explore</span>
+                </div>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarGrex">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarGrex">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <ul class="navbar-nav mb-2 mb-lg-0 grex-nav-center">
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
                             <i class="fa-solid fa-house me-1"></i> Beranda
@@ -230,9 +371,9 @@
                     <h6 class="text-white fw-bold mb-3">Navigasi Utama</h6>
                     <ul class="list-unstyled small">
                         <li class="mb-2"><a href="{{ route('home') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Beranda (Pencarian Utama)</a></li>
-                        <li class="mb-2"><a href="{{ route('penginapan') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Penginapan (Shella)</a></li>
-                        <li class="mb-2"><a href="{{ route('wisata') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Wisata (Nyimas)</a></li>
-                        <li class="mb-2"><a href="{{ route('nongkrong') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Nongkrong (Kunti)</a></li>
+                        <li class="mb-2"><a href="{{ route('penginapan') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Penginapan</a></li>
+                        <li class="mb-2"><a href="{{ route('wisata') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Wisata</a></li>
+                        <li class="mb-2"><a href="{{ route('nongkrong') }}"><i class="fa-solid fa-chevron-right me-1 small"></i> Nongkrong</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
