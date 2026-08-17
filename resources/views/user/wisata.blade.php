@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Wisata (Nyimas) - GREX Gresik Explore')
+@section('title', 'Daftar Wisata - GREX Gresik Explore')
 
 @section('styles')
 <style>
@@ -43,7 +43,7 @@
     <div class="header-category mb-4">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <span class="badge-grex-nyimas text-uppercase mb-2 d-inline-block">Layanan Wisata (Nyimas)</span>
+                <span class="badge-grex-wisata text-uppercase mb-2 d-inline-block">Layanan Wisata</span>
                 <h1 class="fw-extrabold text-dark display-6 mb-2">Daftar Destinasi Wisata Gresik</h1>
                 <p class="text-muted mb-0">Jelajahi 20 objek wisata pilihan di Kabupaten Gresik mulai dari wahana air, wisata alam, bukit kapur, hingga situs religi bersejarah.</p>
             </div>
@@ -92,7 +92,7 @@
                 <div class="col-md-4">
                     <div class="card card-wisata h-100 p-4 d-flex flex-column">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <span class="badge-grex-nyimas"><i class="fa-solid fa-compass me-1"></i> Wisata</span>
+                            <span class="badge-grex-wisata"><i class="fa-solid fa-compass me-1"></i> Wisata</span>
                             <small class="text-muted fw-semibold">
                                 <i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ $place->district ?? 'Gresik' }}
                             </small>

@@ -23,12 +23,12 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $searchKeyword  = $request->get('keyword');
-        $searchService  = $request->get('service'); // shella, nyimas, kunti, or empty
+        $searchService  = $request->get('service'); // penginapan, wisata, nongkrong, or empty
         $searchDistrict = $request->get('district');
 
         $searchResults = null;
         if ($request->filled('keyword') || $request->filled('service') || $request->filled('district')) {
-            if ($searchService === 'nyimas') {
+            if ($searchService === 'wisata') {
                 $query = TouristPlace::with('facilities')->approved();
 
                 if ($request->filled('keyword')) {
@@ -47,7 +47,7 @@ class HomeController extends Controller
                 }
 
                 $searchResults = $query->latest()->paginate(9)->withQueryString();
-            } elseif ($searchService === 'kunti') {
+            } elseif ($searchService === 'nongkrong') {
                 $query = HangoutPlace::with('facilities')->approved();
 
                 if ($request->filled('keyword')) {
@@ -67,7 +67,7 @@ class HomeController extends Controller
 
                 $searchResults = $query->latest()->paginate(9)->withQueryString();
             } else {
-                // Default / Shella Penginapan
+                // Default / Penginapan
                 $query = Lodging::with('facilities')->approved();
 
                 if ($request->filled('keyword')) {

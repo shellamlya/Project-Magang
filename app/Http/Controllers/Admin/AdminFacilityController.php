@@ -4,57 +4,100 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\LodgingFacility;
+use App\Models\TouristFacility;
+use App\Models\HangoutFacility;
 use App\Models\Facility;
 
 /**
  * Class AdminFacilityController
  * @package App\Http\Controllers\Admin
- * Pengendali Kelola Master Data Fasilitas.
+ * Pengendali Kelola Master Data Fasilitas (Penginapan, Wisata, Nongkrong).
  */
 class AdminFacilityController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $facilities = Facility::withCount('lodgings')->latest()->get();
-        return view('admin.facilities.index', compact('facilities'));
+        $activeTab = $request->get('type', 'penginapan');
+
+        $lodgingFacilities = LodgingFacility::orderBy('facility_name', 'asc')->get();
+        $touristFacilities = TouristFacility::orderBy('facility_name', 'asc')->get();
+        $hangoutFacilities = HangoutFacility::orderBy('facility_name', 'asc')->get();
+
+        return view('admin.facilities.index', compact(
+            'activeTab',
+            'lodgingFacilities',
+            'touristFacilities',
+            'hangoutFacilities'
+        ));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:facilities,name'],
-            'icon' => ['nullable', 'string'],
+            'facility_name' => ['required', 'string', 'max:255'],
+            'service_type'  => ['required', 'string', 'in:penginapan,wisata,nongkrong,all'],
+            'icon'          => ['nullable', 'string'],
         ]);
 
-        Facility::create([
-            'name' => $request->name,
-            'icon' => $request->icon ?? 'fa-check',
-        ]);
+        $name = trim($request->facility_name);
+        $type = $request->service_type;
+        $icon = $request->icon ?? 'fa-check';
 
-        return back()->with('success', 'Fasilitas baru berhasil ditambahkan.');
+        if ($type === 'penginapan' || $type === 'all') {
+            LodgingFacility::firstOrCreate(['facility_name' => $name]);
+        }
+        if ($type === 'wisata' || $type === 'all') {
+            TouristFacility::firstOrCreate(['facility_name' => $name]);
+        }
+        if ($type === 'nongkrong' || $type === 'all') {
+            HangoutFacility::firstOrCreate(['facility_name' => $name]);
+        }
+
+        // Master facility sync
+        Facility::firstOrCreate(['name' => $name], ['icon' => $icon]);
+
+        return back()->with('success', "Fasilitas '$name' berhasil ditambahkan.");
     }
 
     public function update(Request $request, $id)
     {
-        $facility = Facility::findOrFail($id);
+        $type = $request->get('facility_type', 'penginapan');
 
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:facilities,name,' . $id],
-            'icon' => ['nullable', 'string'],
+            'facility_name' => ['required', 'string', 'max:255'],
         ]);
 
-        $facility->update([
-            'name' => $request->name,
-            'icon' => $request->icon,
-        ]);
+        $newName = trim($request->facility_name);
+
+        if ($type === 'penginapan') {
+            $fac = LodgingFacility::findOrFail($id);
+            $fac->update(['facility_name' => $newName]);
+        } elseif ($type === 'wisata') {
+            $fac = TouristFacility::findOrFail($id);
+            $fac->update(['facility_name' => $newName]);
+        } elseif ($type === 'nongkrong') {
+            $fac = HangoutFacility::findOrFail($id);
+            $fac->update(['facility_name' => $newName]);
+        }
 
         return back()->with('success', 'Fasilitas berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $facility = Facility::findOrFail($id);
-        $facility->delete();
+        $type = $request->get('facility_type', 'penginapan');
+
+        if ($type === 'penginapan') {
+            $fac = LodgingFacility::findOrFail($id);
+            $fac->delete();
+        } elseif ($type === 'wisata') {
+            $fac = TouristFacility::findOrFail($id);
+            $fac->delete();
+        } elseif ($type === 'nongkrong') {
+            $fac = HangoutFacility::findOrFail($id);
+            $fac->delete();
+        }
 
         return back()->with('success', 'Fasilitas berhasil dihapus.');
     }

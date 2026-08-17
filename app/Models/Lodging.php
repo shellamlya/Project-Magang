@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Class Lodging
  * @package App\Models
- * Model Entitas Utama Penginapan (Modul Shella).
+ * Model Entitas Utama Penginapan .
  */
 class Lodging extends Model
 {

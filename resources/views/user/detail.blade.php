@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @php
-    $serviceType = $place->category->service_type ?? 'shella';
+    $serviceType = $place->category->service_type ?? 'penginapan';
     $bgColor = '#E1DAFB';
-    $badgeClass = $serviceType == 'shella' ? 'badge-grex-shella' : ($serviceType == 'nyimas' ? 'badge-grex-nyimas' : 'badge-grex-kunti');
+    $badgeClass = $serviceType == 'penginapan' ? 'badge-grex-penginapan' : ($serviceType == 'wisata' ? 'badge-grex-wisata' : 'badge-grex-nongkrong');
 @endphp
 
 @section('title', $place->name . ' - GREX Gresik Explore')
@@ -97,7 +97,7 @@
                             <span class="fw-bold text-dark small">{{ $place->address }} {{ $place->village ? ', Desa ' . $place->village->name : '' }}</span>
                         </div>
                         
-                        @if($serviceType == 'shella')
+                        @if($serviceType == 'penginapan')
                             <div class="col-sm-6">
                                 <small class="text-muted d-block fw-semibold mb-1"><i class="fa-solid fa-tag text-primary me-1"></i> Kisaran Harga</small>
                                 <span class="fw-bold text-primary fs-6">

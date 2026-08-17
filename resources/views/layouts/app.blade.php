@@ -142,7 +142,7 @@
         }
 
         /* Category Badges */
-        .badge-grex-shella {
+        .badge-grex-penginapan {
             background: #FFD2F4;
             color: #450C3F;
             font-weight: 700;
@@ -150,7 +150,7 @@
             border-radius: 20px;
             font-size: 0.75rem;
         }
-        .badge-grex-nyimas {
+        .badge-grex-wisata {
             background: #E1DAFB;
             color: #4D3EA3;
             font-weight: 700;
@@ -158,7 +158,7 @@
             border-radius: 20px;
             font-size: 0.75rem;
         }
-        .badge-grex-kunti {
+        .badge-grex-nongkrong {
             background: #758AD1;
             color: #ffffff;
             font-weight: 700;
