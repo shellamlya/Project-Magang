@@ -9,7 +9,7 @@ use App\Models\HangoutFacility;
 class HangoutSeeder extends Seeder
 {
     /**
-     * Run the database seeds for Tempat Nongkrong (Kunti).
+     * Run the database seeds for Tempat Nongkrong.
      */
     public function run(): void
     {

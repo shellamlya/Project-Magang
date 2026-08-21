@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Jalankan migrasi tabel lodgings (Penginapan - Shella).
+     * Jalankan migrasi tabel lodgings (Penginapan).
      */
     public function up(): void
     {

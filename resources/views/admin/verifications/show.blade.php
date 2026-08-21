@@ -10,7 +10,7 @@
         <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
             <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
                 <div>
-                    <span class="badge bg-light text-primary border me-2">Penginapan (Shella)</span>
+                    <span class="badge bg-light text-primary border me-2">Penginapan</span>
                     <span class="text-muted small">ID Penginapan: #{{ $lodging->id }}</span>
                 </div>
                 <div>

@@ -8,7 +8,7 @@ return new class extends Migration
 {
     /**
      * Jalankan migrasi tabel categories.
-     * Kategori dapat digunakan bersama untuk GREX (Shella: Penginapan, Nyimas: Wisata, Kunti: Tempat Nongkrong).
+     * Kategori dapat digunakan bersama untuk GREX (Penginapan, Wisata, Tempat Nongkrong).
      */
     public function up(): void
     {
@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name'); // Hotel, Guest House, Villa, Homestay, dll.
             $table->string('slug')->unique();
-            $table->string('service_type')->default('shella'); // shella (penginapan), nyimas (wisata), kunti (nongkrong)
+            $table->string('service_type')->default('penginapan'); // Penginapan, Wisata, Nongkrong
             $table->string('icon')->nullable(); // FontAwesome / Bootstrap Icon class name
             $table->timestamps();
         });

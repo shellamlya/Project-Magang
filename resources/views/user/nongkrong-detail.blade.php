@@ -13,7 +13,7 @@
         border: 1px solid rgba(117, 138, 209, 0.2);
         box-shadow: 0 10px 30px rgba(69, 12, 63, 0.05);
     }
-    .badge-kunti-lg {
+    .badge-nongkrong-lg {
         background-color: #758AD1;
         color: #ffffff;
         font-weight: 700;
@@ -56,7 +56,7 @@
         <div class="col-lg-8">
             <div class="detail-card p-4 p-md-5 mb-4">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <span class="badge-kunti-lg"><i class="fa-solid fa-mug-hot me-1"></i> Tempat Nongkrong</span>
+                    <span class="badge-nongkrong-lg"><i class="fa-solid fa-mug-hot me-1"></i> Tempat Nongkrong</span>
                     <span class="badge bg-success-subtle text-success fs-6 border border-success-subtle rounded-pill px-3 py-2">
                         <i class="fa-solid fa-circle-check me-1"></i> Terverifikasi
                     </span>

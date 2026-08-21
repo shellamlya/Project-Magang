@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Penginapan (Shella) - Admin GREX')
+@section('title', 'Data Penginapan - Admin GREX')
 @section('page-title', 'Kelola Data Tempat Penginapan')
 
 @section('content')
