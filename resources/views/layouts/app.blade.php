@@ -183,21 +183,23 @@
             box-shadow: 0 6px 15px rgba(77, 62, 163, 0.35);
         }
 
-        /* Footer */
-        footer {
-            margin-top: auto;
-            background: #450C3F;
-            color: #E1DAFB;
-            padding: 3.5rem 0 1.5rem;
-        }
-        footer a {
-            color: #FFD2F4;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        footer a:hover {
-            color: #ffffff;
-        }
+/* Footer */
+footer {
+    margin-top: auto;
+    background: #8d8989ff;
+    color: #3F3F3F;
+    padding: 3.5rem 0 1.5rem;
+}
+
+footer a {
+    color: #121212ff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #450C3F;
+}
 
         /* =========================================
    BACKGROUND LANDING PAGE
