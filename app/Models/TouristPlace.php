@@ -28,6 +28,10 @@ class TouristPlace extends Model
         'phone',
         'ticket_price',
         'status',
+        'is_verified_official',
+        'status_claim',
+        'views_count',
+        'maps_clicks_count',
     ];
 
     /**

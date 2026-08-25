@@ -19,13 +19,13 @@
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Nama Penginapan *</label>
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Contoh: KHAS Gresik Hotel" required>
-                    @error('name') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('name') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Pengelola / Manager Name *</label>
                     <input type="text" name="manager_name" class="form-control @error('manager_name') is-invalid @enderror" value="{{ old('manager_name') }}" placeholder="Nama pengelola atau brand" required>
-                    @error('manager_name') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('manager_name') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-md-4">
@@ -46,13 +46,13 @@
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Tarif Mulai (Rp) *</label>
                     <input type="number" name="price_start" class="form-control @error('price_start') is-invalid @enderror" value="{{ old('price_start') }}" placeholder="550000" required>
-                    @error('price_start') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('price_start') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Tarif Maksimal (Rp) *</label>
                     <input type="number" name="price_end" class="form-control @error('price_end') is-invalid @enderror" value="{{ old('price_end') }}" placeholder="900000" required>
-                    @error('price_end') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('price_end') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-md-6">
@@ -104,13 +104,13 @@
                 <div class="col-12">
                     <label class="form-label fw-bold small">Link Google Maps *</label>
                     <input type="text" name="google_maps" class="form-control @error('google_maps') is-invalid @enderror" value="{{ old('google_maps') }}" placeholder="https://maps.google.com/?q=..." required>
-                    @error('google_maps') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('google_maps') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-12">
                     <label class="form-label fw-bold small">Deskripsi Penginapan *</label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="4" placeholder="Jelaskan fasilitas, tipe kamar, dan keunggulan hotel..." required>{{ old('description') }}</textarea>
-                    @error('description') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('description') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-12">

@@ -121,7 +121,7 @@
                 <!-- Google Maps Button -->
                 <div class="pt-3 border-top">
                     <h5 class="fw-bold text-dark mb-2">Lokasi & Peta</h5>
-                    <a href="{{ $touristPlace->google_maps }}" target="_blank" class="btn btn-danger btn-lg rounded-pill px-4 fw-bold">
+                    <a href="{{ $touristPlace->google_maps }}" target="_blank" class="btn btn-danger btn-lg rounded-pill px-4 fw-bold" onclick="trackMapClick()">
                         <i class="fa-solid fa-map-location-dot me-2"></i> Buka Google Maps
                     </a>
                 </div>
@@ -160,4 +160,24 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch("/api/places/{{ $touristPlace->id }}/track-view", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ category: "wisata" })
+        }).catch(err => console.error(err));
+    });
+
+    function trackMapClick() {
+        fetch("/api/places/{{ $touristPlace->id }}/track-map-click", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ category: "wisata" })
+        }).catch(err => console.error(err));
+    }
+</script>
 @endsection

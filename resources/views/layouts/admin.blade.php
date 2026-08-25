@@ -191,11 +191,14 @@
                 <a href="{{ route('owner.dashboard') }}" class="nav-item-link {{ request()->routeIs('owner.dashboard') ? 'active' : '' }}">
                     <i class="fa-solid fa-chart-pie"></i> Dashboard Owner
                 </a>
-                <a href="{{ route('owner.lodgings.index') }}" class="nav-item-link {{ request()->routeIs('owner.lodgings.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-building-circle-check"></i> Penginapan Saya
+                <a href="{{ route('owner.lodgings.index') }}" class="nav-item-link {{ request()->routeIs('owner.lodgings.index') ? 'active' : '' }}">
+                    <i class="fa-solid fa-store"></i> Daftar Usaha Saya
                 </a>
                 <a href="{{ route('owner.lodgings.create') }}" class="nav-item-link {{ request()->routeIs('owner.lodgings.create') ? 'active' : '' }}">
-                    <i class="fa-solid fa-plus-circle"></i> Ajukan Penginapan
+                    <i class="fa-solid fa-plus-circle"></i> Ajukan Usaha Baru
+                </a>
+                <a href="{{ route('owner.claim.index') }}" class="nav-item-link {{ request()->routeIs('owner.claim.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-hand-holding-hand"></i> Klaim Tempat Usaha
                 </a>
 
                 <div class="menu-header">Pengaturan</div>

@@ -140,7 +140,7 @@
 
                 @if($lodging->google_maps)
                     <div class="d-grid mt-4">
-                        <a href="{{ $lodging->google_maps }}" target="_blank" class="btn btn-grex-primary rounded-pill py-2.5 fw-bold">
+                        <a href="{{ $lodging->google_maps }}" id="btnMapTrack" target="_blank" class="btn btn-grex-primary rounded-pill py-2.5 fw-bold" onclick="trackMapClick()">
                             <i class="fa-solid fa-map-pin me-1"></i> Buka di Google Maps
                         </a>
                     </div>
@@ -168,4 +168,24 @@
     </div>
 
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch("/api/places/{{ $lodging->id }}/track-view", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ category: "penginapan" })
+        }).catch(err => console.error(err));
+    });
+
+    function trackMapClick() {
+        fetch("/api/places/{{ $lodging->id }}/track-map-click", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ category: "penginapan" })
+        }).catch(err => console.error(err));
+    }
+</script>
 @endsection

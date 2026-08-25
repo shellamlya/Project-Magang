@@ -41,6 +41,10 @@ class Lodging extends Model
         'price_end',
         'thumbnail',
         'status',
+        'is_verified_official',
+        'status_claim',
+        'views_count',
+        'maps_clicks_count',
     ];
 
     protected $casts = [

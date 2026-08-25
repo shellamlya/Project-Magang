@@ -27,6 +27,10 @@ class HangoutPlace extends Model
         'email',
         'phone',
         'status',
+        'is_verified_official',
+        'status_claim',
+        'views_count',
+        'maps_clicks_count',
     ];
 
     /**

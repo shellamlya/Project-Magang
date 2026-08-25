@@ -61,12 +61,22 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register-owner', [RegisterOwnerController::class, 'showRegisterForm'])->name('register.owner');
 Route::post('/register-owner', [RegisterOwnerController::class, 'register']);
 
+use App\Http\Controllers\Owner\AIController;
+
 // ==========================================
 // 3. ROUTE OWNER (Pemilik Usaha)
 // ==========================================
 Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->group(function () {
     Route::get('/dashboard', [OwnerDashboardController::class, 'index'])->name('dashboard');
     Route::resource('lodgings', OwnerLodgingController::class);
+    
+    // Feature AI Description Generator
+    Route::post('/ai/generate-description', [AIController::class, 'generateDescription'])->name('ai.generate-description');
+    
+    // Feature Klaim Tempat Usaha
+    Route::get('/claim-places', [OwnerDashboardController::class, 'claimIndex'])->name('claim.index');
+    Route::post('/claim-places/{category}/{id}', [OwnerDashboardController::class, 'claimSubmit'])->name('claim.submit');
+
     Route::get('/profile', [OwnerProfileController::class, 'show'])->name('profile');
     Route::post('/profile', [OwnerProfileController::class, 'update'])->name('profile.update');
 });
