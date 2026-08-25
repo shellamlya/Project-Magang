@@ -40,4 +40,49 @@ class Owner extends Model
     {
         return $this->hasMany(Lodging::class);
     }
+
+    /**
+     * Relasi HasMany ke TouristPlace (Tempat Wisata milik owner ini).
+     */
+    public function touristPlaces(): HasMany
+    {
+        return $this->hasMany(TouristPlace::class);
+    }
+
+    /**
+     * Relasi HasMany ke HangoutPlace (Tempat Nongkrong milik owner ini).
+     */
+    public function hangoutPlaces(): HasMany
+    {
+        return $this->hasMany(HangoutPlace::class);
+    }
+
+    /**
+     * Mendapatkan gabungan seluruh tempat usaha milik owner (Penginapan, Wisata, Nongkrong).
+     */
+    public function allPlacesCollection()
+    {
+        $lodgings = $this->lodgings()->get()->map(function ($item) {
+            $item->place_category = 'penginapan';
+            $item->category_label = 'Penginapan';
+            $item->category_badge_class = 'bg-primary';
+            return $item;
+        });
+
+        $tourists = $this->touristPlaces()->get()->map(function ($item) {
+            $item->place_category = 'wisata';
+            $item->category_label = 'Tempat Wisata';
+            $item->category_badge_class = 'bg-info text-dark';
+            return $item;
+        });
+
+        $hangouts = $this->hangoutPlaces()->get()->map(function ($item) {
+            $item->place_category = 'nongkrong';
+            $item->category_label = 'Kafe / Nongkrong';
+            $item->category_badge_class = 'bg-warning text-dark';
+            return $item;
+        });
+
+        return $lodgings->concat($tourists)->concat($hangouts)->sortByDesc('created_at')->values();
+    }
 }

@@ -19,19 +19,19 @@
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Nama Tempat Nongkrong *</label>
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Contoh: Turbean Space" required>
-                    @error('name') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('name') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Pengelola / Manager Name *</label>
                     <input type="text" name="manager_name" class="form-control @error('manager_name') is-invalid @enderror" value="{{ old('manager_name') }}" placeholder="Nama pengelola atau brand" required>
-                    @error('manager_name') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('manager_name') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Jam Operasional *</label>
                     <input type="text" name="operational_hours" class="form-control @error('operational_hours') is-invalid @enderror" value="{{ old('operational_hours') }}" placeholder="Contoh: Setiap hari 09.00–23.00 WIB" required>
-                    @error('operational_hours') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('operational_hours') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-md-6">
@@ -71,13 +71,13 @@
                 <div class="col-12">
                     <label class="form-label fw-bold small">Link Google Maps *</label>
                     <input type="text" name="google_maps" class="form-control @error('google_maps') is-invalid @enderror" value="{{ old('google_maps') }}" placeholder="https://maps.google.com/?q=..." required>
-                    @error('google_maps') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('google_maps') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-12">
                     <label class="form-label fw-bold small">Deskripsi Tempat Nongkrong *</label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="4" placeholder="Jelaskan suasana, konsep cafe, fasilitas, dan keunikan tempat nongkrong..." required>{{ old('description') }}</textarea>
-                    @error('description') <span class="text-danger small">{{ $message }}</span> @errorEnd
+                    @error('description') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-12">

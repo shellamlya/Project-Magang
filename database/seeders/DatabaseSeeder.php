@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             LodgingSeeder::class,
             TouristPlaceSeeder::class,
             HangoutSeeder::class,
+            DisparekrafbudporaSeeder::class,
         ]);
     }
 }
