@@ -17,7 +17,7 @@ use App\Models\HangoutPlace;
 class PlaceController extends Controller
 {
     /**
-     * Menampilkan daftar Penginapan (Shella) menggunakan skema database lodgings.
+     * Menampilkan daftar Penginapan menggunakan skema database lodgings.
      */
     public function penginapan(Request $request)
     {
@@ -74,7 +74,7 @@ class PlaceController extends Controller
     }
 
     /**
-     * Menampilkan daftar Wisata (Nyimas) menggunakan skema database tourist_places.
+     * Menampilkan daftar Wisata menggunakan skema database tourist_places.
      */
     public function wisata(Request $request)
     {
@@ -131,7 +131,7 @@ class PlaceController extends Controller
     }
 
     /**
-     * Menampilkan daftar Tempat Nongkrong (Kunti) menggunakan skema database hangout_places.
+     * Menampilkan daftar Tempat Nongkrong menggunakan skema database hangout_places.
      */
     public function nongkrong(Request $request)
     {

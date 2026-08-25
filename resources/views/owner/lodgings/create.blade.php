@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Tambah Penginapan Baru - Owner GREX Shella')
+@section('title', 'Tambah Penginapan Baru - Owner GREX')
 @section('page-title', 'Tambah Penginapan')
 
 @section('content')

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Wisata (Nyimas) - Admin GREX')
+@section('title', 'Data Wisata - Admin GREX')
 @section('page-title', 'Kelola Data Tempat Wisata')
 
 @section('content')

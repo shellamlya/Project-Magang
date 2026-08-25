@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Nongkrong (Kunti) - Admin GREX')
+@section('title', 'Data Nongkrong - Admin GREX')
 @section('page-title', 'Kelola Data Tempat Nongkrong')
 
 @section('content')

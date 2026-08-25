@@ -43,7 +43,7 @@
     <div class="header-category mb-4">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <span class="badge-grex-kunti text-uppercase mb-2 d-inline-block">Layanan Nongkrong</span>
+                <span class="badge-grex-nongkrong text-uppercase mb-2 d-inline-block">Layanan Nongkrong</span>
                 <h1 class="fw-extrabold text-dark display-6 mb-2">Daftar Tempat Nongkrong Gresik</h1>
                 <p class="text-muted mb-0">Temukan 20 pilihan coffee shop, café aesthetic, tempat bersantai, resto keluarga, dan tempat nongkrong terfavorit di Kabupaten Gresik.</p>
             </div>
@@ -92,7 +92,7 @@
                 <div class="col-md-4">
                     <div class="card card-hangout h-100 p-4 d-flex flex-column">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <span class="badge-grex-kunti"><i class="fa-solid fa-mug-hot me-1"></i> Nongkrong</span>
+                            <span class="badge-grex-nongkrong"><i class="fa-solid fa-mug-hot me-1"></i> Nongkrong</span>
                             <small class="text-muted fw-semibold">
                                 <i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ $place->district ?? 'Gresik' }}
                             </small>

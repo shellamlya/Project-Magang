@@ -10,7 +10,7 @@ use App\Models\Owner;
 class LodgingSeeder extends Seeder
 {
     /**
-     * Seed 20 tempat penginapan (Shella) dan master fasilitas penginapan.
+     * Seed 20 tempat Penginapan dan master fasilitas penginapan.
      */
     public function run(): void
     {

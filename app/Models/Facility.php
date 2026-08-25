@@ -19,13 +19,4 @@ class Facility extends Model
         'name',
         'icon',
     ];
-
-    /**
-     * Relasi Many-to-Many ke Lodging.
-     */
-    public function lodgings(): BelongsToMany
-    {
-        return $this->belongsToMany(Lodging::class, 'lodging_facility')
-                    ->withTimestamps();
-    }
 }
