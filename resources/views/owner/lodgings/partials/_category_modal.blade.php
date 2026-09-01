@@ -1,11 +1,11 @@
-<!-- Modal Pilihan Kategori Usaha -->
+﻿<!-- Modal Pilihan Kategori Usaha -->
 <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
             <div class="modal-header border-0 bg-primary text-white p-4">
                 <div>
                     <h5 class="modal-title fw-bold" id="categoryModalLabel"><i class="fa-solid fa-layer-group me-2"></i>Pilih Kategori Tempat Usaha</h5>
-                    <p class="small mb-0 text-white-50">Pilih jenis tempat usaha yang ingin Anda daftarkan ke sistem GREX</p>
+                    <p class="small mb-0 text-white-50">Pilih jenis tempat usaha yang ingin Anda daftarkan ke sistem Lokavino</p>
                 </div>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

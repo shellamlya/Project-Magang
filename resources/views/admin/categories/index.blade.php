@@ -1,6 +1,6 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 
-@section('title', 'Master Kategori - Admin GREX')
+@section('title', 'Master Kategori - Admin Lokavino')
 @section('page-title', 'Kelola Master Kategori')
 
 @section('content')
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="service_type" class="form-label small fw-bold">Layanan GREX *</label>
+                    <label for="service_type" class="form-label small fw-bold">Layanan Lokavino *</label>
                     <select name="service_type" id="service_type" class="form-select form-select-sm" required>
                         <option value="penginapan" {{ $serviceType == 'penginapan' ? 'selected' : '' }}>Penginapan</option>
                         <option value="wisata" {{ $serviceType == 'wisata' ? 'selected' : '' }}>Wisata</option>
@@ -74,7 +74,7 @@
                         <thead class="bg-light">
                             <tr>
                                 <th class="ps-4 py-3">Nama Kategori</th>
-                                <th class="py-3">Layanan GREX</th>
+                                <th class="py-3">Layanan Lokavino</th>
                                 <th class="py-3">Status</th>
                                 <th class="text-end pe-4 py-3">Aksi</th>
                             </tr>
@@ -127,7 +127,7 @@
                                                                 <input type="text" name="name" class="form-control form-control-sm" value="{{ $c->name }}" required>
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label class="form-label small fw-bold">Layanan GREX *</label>
+                                                                <label class="form-label small fw-bold">Layanan Lokavino *</label>
                                                                 <select name="service_type" class="form-select form-select-sm" required>
                                                                     <option value="penginapan" {{ ($c->service_type == 'penginapan' || $c->service_type == 'shella') ? 'selected' : '' }}>Penginapan</option>
                                                                     <option value="wisata" {{ $c->service_type == 'wisata' ? 'selected' : '' }}>Wisata</option>

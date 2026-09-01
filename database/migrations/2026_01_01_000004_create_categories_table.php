@@ -8,7 +8,7 @@ return new class extends Migration
 {
     /**
      * Jalankan migrasi tabel categories.
-     * Kategori dapat digunakan bersama untuk GREX (Penginapan, Wisata, Tempat Nongkrong).
+     * Kategori dapat digunakan bersama untuk Lokavino (Penginapan, Wisata, Tempat Nongkrong).
      */
     public function up(): void
     {

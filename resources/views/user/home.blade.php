@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'GREX - Gresik Explore | Pusat Pencarian Penginapan, Wisata & Tempat Nongkrong')
+@section('title', 'Lokavino | Pusat Pencarian Penginapan, Wisata & Tempat Nongkrong')
 
 @section('styles')
 <style>
@@ -24,7 +24,7 @@
         position: absolute;
         inset: -20px;
 
-        background-image: url('/images/hero-grex.png');
+        background-image: url('/images/hero-lokavino.png');
         background-size: cover;
         background-position: center;
 
@@ -292,8 +292,8 @@
                     <i class="fa-solid fa-compass me-1"></i> Platform Resmi Eksplorasi Gresik
                 </span>
                 <h1 class="hero-title mb-3">
-                    GREX
-                    <span>Gresik Explore</span>
+                    Lokavino
+                    <span>Lokavino.com</span>
                 </h1>
                 <p class=" mb-4 hero-description px-lg-5">
                     Temukan akomodasi penginapan terbaik, destinasi wisata menarik, dan tempat nongkrong terfavorit di Seluruh Kabupaten Gresik hanya dalam satu klik.
@@ -429,7 +429,7 @@
         </div>
     @endif
 
-    <!-- Tentang GREX -->
+    <!-- Tentang Lokavino -->
     <section class="about-grex py-5">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -437,7 +437,7 @@
                 <!-- Text -->
                 <div class="col-lg-6">
                     <div class="about-heading">
-                        <span class="about-label">TENTANG GREX</span>
+                        <span class="about-label">TENTANG LOKAVINO</span>
                         <h2 class="about-title">
                             Satu Tempat untuk
                             <span>Menjelajahi Gresik</span>
@@ -446,7 +446,7 @@
                     </div>
 
                     <p class="text-secondary fs-5">
-                        <strong>GREX (Gresik Explore)</strong> merupakan platform
+                        <strong>Lokavino</strong> merupakan platform
                         informasi yang membantu masyarakat dan wisatawan menemukan
                         berbagai destinasi menarik di Kabupaten Gresik.
                     </p>
@@ -514,10 +514,10 @@
         </div>
     </section>
 
-    <!-- 2. Fitur-Fitur GREX -->
+    <!-- 2. Fitur-Fitur Lokavino -->
     <div class="mb-5">
         <div class="text-center mb-4">
-            <h2 class="section-title display-6">Fitur Layanan GREX</h2>
+            <h2 class="section-title display-6">Fitur Layanan Lokavino</h2>
             <p class="text-secondary">Tiga pilar utama untuk memenuhi segala kebutuhan eksplorasi Anda</p>
         </div>
         <div class="row g-4">
@@ -574,7 +574,7 @@
     <!-- 3. Cara Kerja -->
     <div class="mb-5">
         <div class="text-center mb-4">
-            <h2 class="section-title display-6">Cara Kerja GREX</h2>
+            <h2 class="section-title display-6">Cara Kerja Lokavino</h2>
             <p class="text-secondary">Alur sistem yang cepat, transparan, dan terverifikasi</p>
         </div>
         <div class="row g-3">
@@ -607,7 +607,7 @@
                     <div class="step-badge">4</div>
                     <i class="fa-solid fa-globe fa-2x text-primary mb-2"></i>
                     <h6 class="fw-bold mb-1">Data Tayang</h6>
-                    <p class="small text-muted mb-0">Tempat yang disetujui otomatis aktif di GREX.</p>
+                    <p class="small text-muted mb-0">Tempat yang disetujui otomatis aktif di Lokavino.</p>
                 </div>
             </div>
             <div class="col">

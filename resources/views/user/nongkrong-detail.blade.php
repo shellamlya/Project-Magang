@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $hangoutPlace->name . ' - Nongkrong GREX')
+@section('title', $hangoutPlace->name . ' - Nongkrong Lokavino')
 
 @section('styles')
 <style>

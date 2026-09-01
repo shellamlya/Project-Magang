@@ -6,7 +6,7 @@
     $badgeClass = $serviceType == 'penginapan' ? 'badge-grex-penginapan' : ($serviceType == 'wisata' ? 'badge-grex-wisata' : 'badge-grex-nongkrong');
 @endphp
 
-@section('title', $place->name . ' - GREX Gresik Explore')
+@section('title', $place->name . ' - Lokavino')
 
 @section('styles')
 <style>
@@ -139,7 +139,7 @@
                         </h6>
                         <div class="row g-2 small text-secondary">
                             <div class="col-md-6">
-                                <strong>Pemilik / Pengelola:</strong> {{ $place->owner->user->name ?? ($place->owner->company_name ?? 'Mitra Owner GREX') }}
+                                <strong>Pemilik / Pengelola:</strong> {{ $place->owner->user->name ?? ($place->owner->company_name ?? 'Mitra Owner Lokavino') }}
                             </div>
                             @if($place->phone || $place->whatsapp)
                                 <div class="col-md-6">

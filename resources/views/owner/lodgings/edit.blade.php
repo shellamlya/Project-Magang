@@ -1,6 +1,6 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 
-@section('title', 'Edit Tempat Usaha - Owner GREX')
+@section('title', 'Edit Tempat Usaha - Owner Lokavino')
 @section('page-title', 'Edit Data Tempat Usaha')
 
 @section('content')

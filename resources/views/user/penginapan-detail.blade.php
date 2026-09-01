@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $lodging->name . ' - Penginapan GREX')
+@section('title', $lodging->name . ' - Penginapan Lokavino')
 
 @section('styles')
 <style>

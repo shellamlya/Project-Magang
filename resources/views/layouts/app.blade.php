@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'GREX - Gresik Explore')</title>
+    <title>@yield('title', 'Lokavino')</title>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
     <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <!-- Custom CSS System GREX -->
+    <!-- Custom CSS System Lokavino -->
     <style>
         :root {
             /* Palette Defaults */
@@ -292,8 +292,8 @@ main {
                 <i class="fa-solid fa-compass grex-logo-icon"></i>
 
                 <div class="grex-logo-text">
-                    <span class="grex-title">GREX</span>
-                    <span class="grex-subtitle">Gresik Explore</span>
+                    <span class="grex-title">Lokavino</span>
+                    <span class="grex-subtitle">Lokavino.com</span>
                 </div>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarGrex">
@@ -364,9 +364,9 @@ main {
         <div class="container">
             <div class="row g-4 mb-4">
                 <div class="col-md-5">
-                    <h5 class="text-white fw-bold mb-3"><i class="fa-solid fa-compass me-2"></i>GREX (Gresik Explore)</h5>
+                    <h5 class="text-white fw-bold mb-3"><i class="fa-solid fa-compass me-2"></i>Lokavino</h5>
                     <p class="small text-white-50">
-                        Platform pencarian informasi terpadu di Kabupaten Gresik. Mengintegrasikan tiga layanan utama: Penginapan, Wisata, dan Tempat Nongkrong untuk memudahkan perjalanan dan aktivitas Anda.
+                        Lokavino Platform informasi dan pencarian penginapan, wisata, dan tempat nongkrong di Kabupaten Gresik. Email: lokavino.indonesia@gmail.com
                     </p>
                 </div>
                 <div class="col-md-3 ms-auto">
@@ -381,13 +381,13 @@ main {
                 <div class="col-md-3">
                     <h6 class="text-white fw-bold mb-3">Kontak & Informasi</h6>
                     <p class="small text-white-50 mb-1"><i class="fa-solid fa-location-dot me-2 text-warning"></i> Kab. Gresik, Jawa Timur</p>
-                    <p class="small text-white-50 mb-1"><i class="fa-solid fa-envelope me-2 text-warning"></i> info@grex-explore.id</p>
+                    <p class="small text-white-50 mb-1"><i class="fa-solid fa-envelope me-2 text-warning"></i> lokavino.indonesia@gmail.com</p>
                     <p class="small text-white-50"><i class="fa-solid fa-phone me-2 text-warning"></i> (031) 3981234</p>
                 </div>
             </div>
             <hr class="border-secondary opacity-25">
             <div class="text-center small text-white-50">
-                &copy; {{ date('Y') }} GREX - Gresik Explore. All rights reserved.
+                &copy; {{ date('Y') }} Lokavino. All rights reserved.
             </div>
         </div>
     </footer>

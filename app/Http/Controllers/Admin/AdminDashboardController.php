@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 /**
  * Class AdminDashboardController
  * @package App\Http\Controllers\Admin
- * Pengendali Dashboard Statistik dan Grafik untuk Administrator GREX.
+ * Pengendali Dashboard Statistik dan Grafik untuk Administrator Lokavino.
  */
 class AdminDashboardController extends Controller
 {
