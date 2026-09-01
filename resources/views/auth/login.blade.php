@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login - GREX Gresik Explore')
+@section('title', 'Login - Lokavino')
 
 @section('content')
 <div class="container py-5">
@@ -8,8 +8,8 @@
         <div class="col-md-5">
             <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
                 <div class="text-white p-4 text-center" style="background: #450C3F;">
-                    <h4 class="fw-bold mb-1"><i class="fa-solid fa-compass me-2"></i>GREX </h4>
-                    <p class="small text-white-50 mb-0">Masuk ke Akun Admin atau Owner Penginapan</p>
+                    <h4 class="fw-bold mb-1"><i class="fa-solid fa-compass me-2"></i>Lokavino</h4>
+                    <p class="small text-white-50 mb-0">Masuk ke Akun Admin atau Owner Lokavino</p>
                 </div>
 
                 <div class="card-body p-4">

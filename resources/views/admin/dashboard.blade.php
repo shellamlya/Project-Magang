@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard Admin - GREX')
-@section('page-title', 'Dashboard Administrator GREX')
+@section('title', 'Dashboard Admin - Lokavino')
+@section('page-title', 'Dashboard Administrator Lokavino')
 
 @section('content')
 <!-- Stat Cards -->

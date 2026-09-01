@@ -27,7 +27,7 @@ use App\Http\Controllers\Admin\AdminHangoutPlaceController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes - GREX (Gresik Explore)
+| Web Routes - Lokavino
 |--------------------------------------------------------------------------
 */
 

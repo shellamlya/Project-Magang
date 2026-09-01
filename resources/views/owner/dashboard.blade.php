@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard Owner - GREX')
+@section('title', 'Dashboard Owner - Lokavino')
 @section('page-title', 'Dashboard Owner & Statistik Analitik')
 
 @section('content')

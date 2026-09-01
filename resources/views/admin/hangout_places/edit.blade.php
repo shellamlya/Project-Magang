@@ -1,6 +1,6 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 
-@section('title', 'Edit Tempat Nongkrong - Admin GREX')
+@section('title', 'Edit Tempat Nongkrong - Admin Lokavino')
 @section('page-title', 'Edit Data Tempat Nongkrong')
 
 @section('content')

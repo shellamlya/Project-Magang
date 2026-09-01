@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Profil Owner - GREX')
+@section('title', 'Profil Owner - Lokavino')
 @section('page-title', 'Profil Usaha Owner')
 
 @section('content')

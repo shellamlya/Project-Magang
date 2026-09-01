@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Wisata - GREX Gresik Explore')
+@section('title', 'Daftar Wisata - Lokavino')
 
 @section('styles')
 <style>
@@ -45,7 +45,7 @@
             <div class="col-md-8">
                 <span class="badge-grex-wisata text-uppercase mb-2 d-inline-block">Layanan Wisata</span>
                 <h1 class="fw-extrabold text-dark display-6 mb-2">Daftar Destinasi Wisata Gresik</h1>
-                <p class="text-muted mb-0">Jelajahi 20 objek wisata pilihan di Kabupaten Gresik mulai dari wahana air, wisata alam, bukit kapur, hingga situs religi bersejarah.</p>
+                <p class="text-muted mb-0">Jelajahi berbagai pilihan objek wisata di Kabupaten Gresik mulai dari wahana air, wisata alam, bukit kapur, hingga situs religi bersejarah.</p>
             </div>
             <div class="col-md-4 text-md-end mt-3 mt-md-0">
                 <a href="{{ route('home') }}" class="btn btn-outline-dark rounded-pill px-4 fw-semibold btn-sm">

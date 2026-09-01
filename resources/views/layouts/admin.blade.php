@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Dashboard GREX')</title>
+    <title>@yield('title', 'Dashboard Lokavino')</title>
     
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -152,7 +152,7 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand d-flex align-items-center justify-content-between">
-            <div><i class="fa-solid fa-compass text-primary me-2"></i>GREX Panel</div>
+            <div><i class="fa-solid fa-compass text-primary me-2"></i>Lokavino Panel</div>
             <button class="btn btn-sm text-white d-lg-none" onclick="toggleSidebar()"><i class="fa-solid fa-times"></i></button>
         </div>
 

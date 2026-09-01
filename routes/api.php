@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\PlaceApiController;
 
 /*
 |--------------------------------------------------------------------------
-| REST API Routes - GREX
+| REST API Routes - Lokavino
 |--------------------------------------------------------------------------
 */
 

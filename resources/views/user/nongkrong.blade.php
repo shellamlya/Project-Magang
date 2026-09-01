@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Tempat Nongkrong - GREX Gresik Explore')
+@section('title', 'Daftar Tempat Nongkrong - Lokavino')
 
 @section('styles')
 <style>
@@ -45,7 +45,7 @@
             <div class="col-md-8">
                 <span class="badge-grex-nongkrong text-uppercase mb-2 d-inline-block">Layanan Nongkrong</span>
                 <h1 class="fw-extrabold text-dark display-6 mb-2">Daftar Tempat Nongkrong Gresik</h1>
-                <p class="text-muted mb-0">Temukan 20 pilihan coffee shop, café aesthetic, tempat bersantai, resto keluarga, dan tempat nongkrong terfavorit di Kabupaten Gresik.</p>
+                <p class="text-muted mb-0">Temukan berbagai pilihan coffee shop, café aesthetic, tempat bersantai, resto keluarga, dan tempat nongkrong terfavorit di Kabupaten Gresik.</p>
             </div>
             <div class="col-md-4 text-md-end mt-3 mt-md-0">
                 <a href="{{ route('home') }}" class="btn btn-outline-dark rounded-pill px-4 fw-semibold btn-sm">

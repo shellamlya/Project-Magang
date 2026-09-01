@@ -12,13 +12,13 @@ use App\Models\HangoutPlace;
 /**
  * Class HomeController
  * @package App\Http\Controllers\User
- * Pengendali utama Landing Page GREX (Gresik Explore).
+ * Pengendali utama Landing Page Lokavino.
  */
 class HomeController extends Controller
 {
     /**
      * Menampilkan Landing Page dengan Kotak Pencarian Utama, Deskripsi Sistem,
-     * Fitur GREX, Alur Cara Kerja, dan Rekomendasi Populer (Penginapan, Wisata, Nongkrong).
+     * Fitur Lokavino, Alur Cara Kerja, dan Rekomendasi Populer (Penginapan, Wisata, Nongkrong).
      */
     public function index(Request $request)
     {

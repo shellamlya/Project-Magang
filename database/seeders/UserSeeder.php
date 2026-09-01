@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             ['email' => 'admin@grex.id'],
             [
                 'role_id' => $adminRole->id,
-                'name' => 'Super Administrator GREX',
+                'name' => 'Super Administrator Lokavino',
                 'password' => Hash::make('password'),
                 'phone' => '081234567890',
             ]

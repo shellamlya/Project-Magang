@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Registrasi Owner Sederhana - GREX Gresik Explore')
+@section('title', 'Registrasi Owner - Lokavino')
 
 @section('content')
 <div class="container py-5">
@@ -9,7 +9,7 @@
             <div class="card border-0 shadow-lg rounded-4 overflow-hidden" style="background: #ffffff;">
                 <div class="p-4 text-center text-white" style="background: #450C3F;">
                     <h4 class="fw-bold mb-1"><i class="fa-solid fa-user-plus me-2"></i>Daftar Akun Owner</h4>
-                    <p class="small text-white-50 mb-0">Daftar sekarang untuk mengelola penginapan, tempat wisata, atau nongkrong Anda di GREX</p>
+                    <p class="small text-white-50 mb-0">Daftar sekarang untuk mengelola penginapan, tempat wisata, atau nongkrong Anda di Lokavino</p>
                 </div>
 
                 <div class="card-body p-4 p-md-5">

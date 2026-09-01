@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $touristPlace->name . ' - Wisata GREX')
+@section('title', $touristPlace->name . ' - Wisata Lokavino')
 
 @section('styles')
 <style>
