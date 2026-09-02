@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Edit Tempat Usaha - Owner Lokavino')
 @section('page-title', 'Edit Data Tempat Usaha')
@@ -12,7 +12,7 @@
 
 <div class="card border-0 shadow-sm rounded-4">
     <div class="card-body p-4 p-md-5">
-        <form action="{{ route('owner.lodgings.update', $place->id) }}" method="POST">
+        <form action="{{ route('owner.lodgings.update', $place->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -21,7 +21,7 @@
             <div class="row g-3 mb-4">
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Kategori Usaha</label>
-                    <input type="text" class="form-control text-capitalize fw-bold" value="{{ $category }}" disabled>
+                    <input type="text" class="form-control text-capitalize fw-bold bg-light" value="{{ $category }}" readonly>
                 </div>
 
                 <div class="col-md-6">
@@ -71,8 +71,8 @@
                 @endif
 
                 <div class="col-md-6">
-                    <label class="form-label fw-bold small">Kecamatan</label>
-                    <input type="text" name="district" id="placeDistrict" class="form-control" value="{{ old('district', $place->district) }}">
+                    <label class="form-label fw-bold small">Kecamatan *</label>
+                    <input type="text" name="district" id="placeDistrict" class="form-control" value="{{ old('district', $place->district) }}" required>
                 </div>
 
                 <div class="col-md-6">
@@ -85,9 +85,14 @@
                     <textarea name="address" class="form-control" rows="2">{{ old('address', $place->address) }}</textarea>
                 </div>
 
+                <!-- No WA Bisnis & Email -->
                 <div class="col-md-6">
-                    <label class="form-label fw-bold small">Nomor Telepon (Kontak)</label>
-                    <input type="text" name="phone" class="form-control" value="{{ old('phone', $place->phone) }}">
+                    <label class="form-label fw-bold small text-success">
+                        <i class="fa-brands fa-whatsapp me-1"></i> No. WhatsApp Bisnis / Reservasi (Tampil Publik & Booking) *
+                    </label>
+                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone', $place->phone) }}" placeholder="081234567890" required>
+                    <small class="text-muted d-block mt-1">Nomor kontak publik yang digunakan pengunjung untuk reservasi / pesan via WhatsApp.</small>
+                    @error('phone') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-md-6">
@@ -101,6 +106,59 @@
                     @error('google_maps') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
+                <!-- Media / Foto Upload Section & Previews -->
+                <div class="col-12">
+                    <div class="p-3 border rounded-3 bg-light">
+                        <h6 class="fw-bold text-dark mb-1"><i class="fa-solid fa-camera text-primary me-2"></i>Foto Tempat Usaha & Galeri (Maksimal 3 Foto)</h6>
+                        <p class="small text-muted mb-3">Unggah foto baru jika ingin mengganti foto yang sudah ada (format JPG, PNG, WEBP, maks 2MB).</p>
+
+                        <div class="row g-3">
+                            <!-- Thumbnail -->
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold small">Foto Thumbnail Utama</label>
+                                @if($place->thumbnail)
+                                    <div class="mb-2">
+                                        <img src="{{ $place->thumbnail_url }}" alt="Thumbnail Saat Ini" class="rounded-3 border shadow-sm" style="width: 100%; height: 130px; object-fit: cover;">
+                                        <small class="text-success d-block mt-1"><i class="fa-solid fa-check-circle me-1"></i>Foto saat ini terpasang</small>
+                                    </div>
+                                @endif
+                                <input type="file" name="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" accept="image/*">
+                                <small class="text-muted d-block mt-1">Kosongkan jika tidak ingin mengubah.</small>
+                                @error('thumbnail') <span class="text-danger small">{{ $message }}</span> @enderror
+                            </div>
+
+                            <!-- Photo 1 -->
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold small">Foto Pendukung #1 (Opsional)</label>
+                                @if($place->photo_1)
+                                    <div class="mb-2">
+                                        <img src="{{ $place->photo_1_url }}" alt="Foto 1 Saat Ini" class="rounded-3 border shadow-sm" style="width: 100%; height: 130px; object-fit: cover;">
+                                        <small class="text-success d-block mt-1"><i class="fa-solid fa-check-circle me-1"></i>Foto 1 terpasang</small>
+                                    </div>
+                                @endif
+                                <input type="file" name="photo_1" class="form-control @error('photo_1') is-invalid @enderror" accept="image/*">
+                                <small class="text-muted d-block mt-1">Menu / Fasilitas Kamar / Wahana.</small>
+                                @error('photo_1') <span class="text-danger small">{{ $message }}</span> @enderror
+                            </div>
+
+                            <!-- Photo 2 -->
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold small">Foto Pendukung #2 (Opsional)</label>
+                                @if($place->photo_2)
+                                    <div class="mb-2">
+                                        <img src="{{ $place->photo_2_url }}" alt="Foto 2 Saat Ini" class="rounded-3 border shadow-sm" style="width: 100%; height: 130px; object-fit: cover;">
+                                        <small class="text-success d-block mt-1"><i class="fa-solid fa-check-circle me-1"></i>Foto 2 terpasang</small>
+                                    </div>
+                                @endif
+                                <input type="file" name="photo_2" class="form-control @error('photo_2') is-invalid @enderror" accept="image/*">
+                                <small class="text-muted d-block mt-1">Suasana / Fasilitas Tambahan.</small>
+                                @error('photo_2') <span class="text-danger small">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Description Generator Integration -->
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
                         <label class="form-label fw-bold small mb-0">Deskripsi Tempat Usaha *</label>
@@ -112,6 +170,7 @@
                     @error('description') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
+                <!-- Fasilitas -->
                 <div class="col-12">
                     <label class="form-label fw-bold small d-block mb-2">Pilih Fasilitas Utama</label>
                     <div class="row g-2 p-3 bg-light rounded-3">
@@ -132,9 +191,11 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-end gap-2">
+            <div class="d-flex justify-content-end gap-2 pt-3 border-top">
                 <a href="{{ route('owner.lodgings.index') }}" class="btn btn-light rounded-pill px-4">Batal</a>
-                <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold">Simpan Perubahan</button>
+                <button type="submit" class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm">
+                    <i class="fa-solid fa-save me-1"></i> Simpan Perubahan
+                </button>
             </div>
         </form>
     </div>

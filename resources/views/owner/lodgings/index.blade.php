@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Daftar Usaha Saya - Owner Lokavino')
 @section('page-title', 'Daftar Usaha Saya')
@@ -15,9 +15,6 @@
             <p class="small text-muted mb-0">Kelola penginapan, tempat nongkrong, dan destinasi wisata Anda di Kabupaten Gresik</p>
         </div>
         <div class="d-flex gap-2 flex-wrap">
-            <a href="{{ route('owner.claim.index') }}" class="btn btn-outline-primary rounded-pill px-4 fw-bold">
-                <i class="fa-solid fa-hand-holding-hand me-1"></i> Klaim Tempat Usaha
-            </a>
             <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#categoryModal">
                 <i class="fa-solid fa-plus me-1"></i> Ajukan Usaha Baru
             </button>

@@ -386,20 +386,18 @@
                             $isLodging = $place instanceof \App\Models\Lodging;
                         @endphp
                         <div class="col-md-4">
-                            <div class="card card-grex h-100">
-                                @if($isLodging && !empty($place->cover_image))
-                                    <img src="{{ $place->cover_image }}" class="card-grex-img" alt="{{ $place->name }}">
-                                @endif
+                            <div class="card card-grex h-100 overflow-hidden">
+                                <img src="{{ $place->thumbnail_url }}" class="card-grex-img" alt="{{ $place->name }}" loading="lazy">
                                 <div class="card-body p-4 d-flex flex-column">
                                     <div class="d-flex align-items-center justify-content-between mb-2">
                                         @if($isWisata)
-                                            <span class="badge-grex-wisata">Wisata</span>
+                                            <span class="badge-grex-wisata"><i class="fa-solid fa-mountain-sun me-1"></i> Wisata</span>
                                             <small class="text-muted"><i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ is_string($place->district) ? $place->district : ($place->district->name ?? 'Gresik') }}</small>
                                         @elseif($isHangout)
-                                            <span class="badge-grex-nongkrong">Nongkrong</span>
+                                            <span class="badge-grex-nongkrong"><i class="fa-solid fa-mug-hot me-1"></i> Nongkrong</span>
                                             <small class="text-muted"><i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ is_string($place->district) ? $place->district : ($place->district->name ?? 'Gresik') }}</small>
                                         @else
-                                            <span class="badge-grex-penginapan">Penginapan</span>
+                                            <span class="badge-grex-penginapan"><i class="fa-solid fa-hotel me-1"></i> Penginapan</span>
                                             <small class="text-muted"><i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ is_string($place->district) ? $place->district : ($place->district->name ?? 'Gresik') }}</small>
                                         @endif
                                     </div>
@@ -647,12 +645,13 @@
                 <div class="row g-4">
                     @foreach($popularPenginapan as $item)
                         <div class="col-md-3">
-                            <div class="card card-grex h-100">
+                            <div class="card card-grex h-100 overflow-hidden">
+                                <img src="{{ $item->thumbnail_url }}" class="card-grex-img" alt="{{ $item->name }}" loading="lazy">
                                 <div class="card-body p-4 d-flex flex-column">
                                     <span class="badge-grex-penginapan w-auto me-auto mb-2"><i class="fa-solid fa-hotel me-1"></i> Penginapan</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $item->name }}</h6>
                                     <p class="small text-muted mb-2"><i class="fa-solid fa-location-dot text-danger me-1"></i> Kec. {{ $item->district ?? 'Gresik' }}</p>
-                                    <p class="small text-muted mb-3 flex-grow-1">{{ Str::limit($item->description, 80) }}</p>
+                                    <p class="small text-muted mb-3 flex-grow-1">{{ Str::limit($item->description, 75) }}</p>
                                     <div class="mt-auto pt-2 border-top d-flex align-items-center justify-content-between">
                                         <span class="small fw-bold text-primary fs-8">Rp {{ number_format($item->price_start, 0, ',', '.') }}</span>
                                         <a href="{{ route('lodging.detail', $item->id) }}" class="btn btn-outline-dark btn-sm rounded-pill px-3 fs-7">Detail</a>
@@ -669,12 +668,13 @@
                 <div class="row g-4">
                     @foreach($popularWisata as $item)
                         <div class="col-md-3">
-                            <div class="card card-grex h-100 p-3">
-                                <div class="card-body p-0 d-flex flex-column h-100">
+                            <div class="card card-grex h-100 overflow-hidden">
+                                <img src="{{ $item->thumbnail_url }}" class="card-grex-img" alt="{{ $item->name }}" loading="lazy">
+                                <div class="card-body p-4 d-flex flex-column">
                                     <span class="badge-grex-wisata w-auto me-auto mb-2"><i class="fa-solid fa-mountain-sun me-1"></i> Wisata</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $item->name }}</h6>
-                                    <p class="small text-muted mb-2"><i class="fa-solid fa-location-dot text-danger me-1"></i> {{ $item->district ?? 'Gresik' }}</p>
-                                    <p class="small text-secondary mb-3 flex-grow-1">{{ Str::limit($item->description, 70) }}</p>
+                                    <p class="small text-muted mb-2"><i class="fa-solid fa-location-dot text-danger me-1"></i> Kec. {{ $item->district ?? 'Gresik' }}</p>
+                                    <p class="small text-secondary mb-3 flex-grow-1">{{ Str::limit($item->description, 75) }}</p>
                                     <div class="mt-auto pt-2 border-top d-flex align-items-center justify-content-between">
                                         <span class="small fw-bold text-success">{{ $item->ticket_price ?? 'Gratis' }}</span>
                                         <a href="{{ route('wisata.detail', $item->id) }}" class="btn btn-outline-dark btn-sm rounded-pill px-3 fs-7">Detail</a>
@@ -691,12 +691,13 @@
                 <div class="row g-4">
                     @foreach($popularNongkrong as $item)
                         <div class="col-md-3">
-                            <div class="card card-grex h-100">
+                            <div class="card card-grex h-100 overflow-hidden">
+                                <img src="{{ $item->thumbnail_url }}" class="card-grex-img" alt="{{ $item->name }}" loading="lazy">
                                 <div class="card-body p-4 d-flex flex-column">
                                     <span class="badge-grex-nongkrong w-auto me-auto mb-2"><i class="fa-solid fa-mug-hot me-1"></i> Nongkrong</span>
                                     <h6 class="fw-bold text-dark mb-1">{{ $item->name }}</h6>
                                     <p class="small text-muted mb-2"><i class="fa-solid fa-location-dot text-danger me-1"></i> Kec. {{ $item->district ?? 'Gresik' }}</p>
-                                    <p class="small text-muted mb-3 flex-grow-1">{{ Str::limit($item->description, 80) }}</p>
+                                    <p class="small text-muted mb-3 flex-grow-1">{{ Str::limit($item->description, 75) }}</p>
                                     <div class="mt-auto pt-2 border-top d-flex align-items-center justify-content-between">
                                         <span class="small fw-bold text-dark fs-8">{{ $item->operational_hours }}</span>
                                         <a href="{{ route('nongkrong.detail', $item->id) }}" class="btn btn-outline-dark btn-sm rounded-pill px-3 fs-7">Detail</a>

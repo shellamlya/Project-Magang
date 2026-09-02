@@ -90,13 +90,15 @@
         <div class="row g-4">
             @foreach($places as $place)
                 <div class="col-md-4">
-                    <div class="card card-lodging h-100 p-4 d-flex flex-column">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <span class="badge-grex-penginapan"><i class="fa-solid fa-hotel me-1"></i> Penginapan</span>
-                            <small class="text-muted fw-semibold">
-                                <i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ $place->district ?? 'Gresik' }}
-                            </small>
-                        </div>
+                    <div class="card card-lodging h-100 overflow-hidden d-flex flex-column">
+                        <img src="{{ $place->thumbnail_url }}" class="card-grex-img" alt="{{ $place->name }}" loading="lazy">
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <span class="badge-grex-penginapan"><i class="fa-solid fa-hotel me-1"></i> Penginapan</span>
+                                <small class="text-muted fw-semibold">
+                                    <i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ $place->district ?? 'Gresik' }}
+                                </small>
+                            </div>
                         
                         <h4 class="fw-bold text-dark mb-2">{{ $place->name }}</h4>
                         <p class="small text-muted mb-3 flex-grow-1">{{ Str::limit($place->description, 110) }}</p>
@@ -138,6 +140,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
 

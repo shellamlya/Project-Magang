@@ -12,6 +12,7 @@
         border-radius: 24px;
         border: 1px solid rgba(117, 138, 209, 0.2);
         box-shadow: 0 10px 30px rgba(69, 12, 63, 0.05);
+        overflow: hidden;
     }
     .badge-wisata-lg {
         background-color: #4D3EA3;
@@ -38,6 +39,59 @@
         align-items: center;
         gap: 0.5rem;
     }
+    /* Modern Photo Gallery Styles */
+    .gallery-container {
+        border-radius: 20px;
+        overflow: hidden;
+        background: #1b263b;
+        position: relative;
+    }
+    .gallery-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        background: #0d1b2a;
+    }
+    .gallery-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+    .gallery-img-wrapper:hover img {
+        transform: scale(1.05);
+    }
+    .gallery-main-h {
+        height: 380px;
+    }
+    .gallery-sub-h {
+        height: 185px;
+    }
+    .gallery-badge {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(4px);
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 20px;
+        pointer-events: none;
+    }
+    .btn-whatsapp-booking {
+        background: #25D366;
+        color: #ffffff;
+        border: none;
+        transition: all 0.2s ease;
+    }
+    .btn-whatsapp-booking:hover {
+        background: #1ebc59;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    }
 </style>
 @endsection
 
@@ -51,14 +105,64 @@
         </a>
     </div>
 
+    <!-- Gallery / Photo Section -->
+    @php
+        $photo1 = $touristPlace->photo_1_url;
+        $photo2 = $touristPlace->photo_2_url;
+        $hasSubPhotos = !empty($photo1) || !empty($photo2);
+
+        // Format WA Number
+        $rawPhone = $touristPlace->phone ?? ($touristPlace->owner->business_phone ?? ($touristPlace->owner->user->phone ?? ''));
+        $cleanPhone = preg_replace('/[^0-9]/', '', $rawPhone);
+        if (str_starts_with($cleanPhone, '0')) {
+            $cleanPhone = '62' . substr($cleanPhone, 1);
+        }
+        $waUrl = $cleanPhone ? "https://wa.me/{$cleanPhone}?text=" . urlencode("Halo Pengelola {$touristPlace->name}, saya ingin menanyakan informasi tiket / kunjungan wisata melalui Lokavino.") : null;
+    @endphp
+
+    <div class="gallery-container mb-4 shadow-sm">
+        @if($hasSubPhotos)
+            <div class="row g-2">
+                <!-- Foto Utama (Thumbnail) -->
+                <div class="col-lg-8 col-md-7">
+                    <div class="gallery-img-wrapper gallery-main-h" onclick="openPhotoModal('{{ $touristPlace->thumbnail_url }}', '{{ $touristPlace->name }} - Foto Utama')">
+                        <img src="{{ $touristPlace->thumbnail_url }}" alt="{{ $touristPlace->name }}" loading="lazy">
+                        <span class="gallery-badge"><i class="fa-solid fa-camera me-1"></i> Foto Utama</span>
+                    </div>
+                </div>
+                <!-- Foto Pendukung #1 & #2 -->
+                <div class="col-lg-4 col-md-5 d-flex flex-column gap-2">
+                    @if($photo1)
+                        <div class="gallery-img-wrapper {{ $photo2 ? 'gallery-sub-h' : 'gallery-main-h' }}" onclick="openPhotoModal('{{ $photo1 }}', '{{ $touristPlace->name }} - Spot / Wahana 1')">
+                            <img src="{{ $photo1 }}" alt="{{ $touristPlace->name }} - Foto 1" loading="lazy">
+                            <span class="gallery-badge"><i class="fa-solid fa-image me-1"></i> Spot / Wahana Wisata</span>
+                        </div>
+                    @endif
+                    @if($photo2)
+                        <div class="gallery-img-wrapper {{ $photo1 ? 'gallery-sub-h' : 'gallery-main-h' }}" onclick="openPhotoModal('{{ $photo2 }}', '{{ $touristPlace->name }} - Suasana / Fasilitas 2')">
+                            <img src="{{ $photo2 }}" alt="{{ $touristPlace->name }} - Foto 2" loading="lazy">
+                            <span class="gallery-badge"><i class="fa-solid fa-image me-1"></i> Suasana Wisata</span>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        @else
+            <!-- Single Full-Width Thumbnail -->
+            <div class="gallery-img-wrapper gallery-main-h" onclick="openPhotoModal('{{ $touristPlace->thumbnail_url }}', '{{ $touristPlace->name }}')">
+                <img src="{{ $touristPlace->thumbnail_url }}" alt="{{ $touristPlace->name }}" loading="lazy">
+                <span class="gallery-badge"><i class="fa-solid fa-camera me-1"></i> Foto Utama</span>
+            </div>
+        @endif
+    </div>
+
     <div class="row g-4">
         <!-- Kolom Utama -->
         <div class="col-lg-8">
             <div class="detail-card p-4 p-md-5 mb-4">
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                    <span class="badge-wisata-lg"><i class="fa-solid fa-mountain-sun me-1"></i> Fitur Wisata</span>
+                <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                    <span class="badge-wisata-lg"><i class="fa-solid fa-mountain-sun me-1"></i> Destinasi Wisata</span>
                     <span class="badge bg-success-subtle text-success fs-6 border border-success-subtle rounded-pill px-3 py-2">
-                        <i class="fa-solid fa-circle-check me-1"></i> Terverifikasi
+                        <i class="fa-solid fa-circle-check me-1"></i> Terverifikasi Disparekrafbudpora
                     </span>
                 </div>
 
@@ -90,8 +194,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="info-box">
-                            <div class="small text-muted mb-1"><i class="fa-solid fa-phone me-1 text-danger"></i> Kontak Pengelola</div>
-                            <div class="fw-bold text-dark fs-6">{{ $touristPlace->phone ?? 'Tidak tersedia' }}</div>
+                            <div class="small text-muted mb-1"><i class="fa-solid fa-phone me-1 text-danger"></i> No. WA / Kontak</div>
+                            <div class="fw-bold text-dark fs-6">{{ $rawPhone ?: 'Tersedia di lokasi' }}</div>
                         </div>
                     </div>
                 </div>
@@ -106,24 +210,30 @@
                 <div class="mb-4">
                     <h4 class="fw-bold text-dark mb-3">Fasilitas yang Tersedia</h4>
                     @if($touristPlace->facilities->isEmpty())
-                        <p class="text-muted italic">Fasilitas belum dikatalogkan secara khusus.</p>
+                        <p class="text-muted italic">Fasilitas umum tersedia di area wisata.</p>
                     @else
                         <div class="d-flex flex-wrap gap-2">
                             @foreach($touristPlace->facilities as $fac)
                                 <div class="facility-pill">
-                                    <i class="fa-solid fa-circle-check text-danger"></i> {{ $fac->facility_name }}
+                                    <i class="fa-solid fa-circle-check text-success"></i> {{ $fac->facility_name }}
                                 </div>
                             @endforeach
                         </div>
                     @endif
                 </div>
 
-                <!-- Google Maps Button -->
-                <div class="pt-3 border-top">
-                    <h5 class="fw-bold text-dark mb-2">Lokasi & Peta</h5>
-                    <a href="{{ $touristPlace->google_maps }}" target="_blank" class="btn btn-danger btn-lg rounded-pill px-4 fw-bold" onclick="trackMapClick()">
-                        <i class="fa-solid fa-map-location-dot me-2"></i> Buka Google Maps
-                    </a>
+                <!-- Aksi Kontak & Navigasi -->
+                <div class="pt-4 border-top d-flex gap-2 flex-wrap">
+                    @if($waUrl)
+                        <a href="{{ $waUrl }}" target="_blank" class="btn btn-whatsapp-booking btn-lg rounded-pill px-4 fw-bold shadow-sm">
+                            <i class="fa-brands fa-whatsapp me-2 fs-5"></i> Hubungi Pengelola via WA
+                        </a>
+                    @endif
+                    @if($touristPlace->google_maps)
+                        <a href="{{ $touristPlace->google_maps }}" target="_blank" class="btn btn-grex-primary btn-lg rounded-pill px-4 fw-bold" onclick="trackMapClick()">
+                            <i class="fa-solid fa-map-location-dot me-2"></i> Buka Google Maps
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -135,11 +245,16 @@
                 <h5 class="fw-bold text-dark mb-3">Wisata Lainnya di Gresik</h5>
                 <div class="d-flex flex-column gap-3">
                     @foreach($otherWisata as $other)
-                        <div class="p-3 bg-light rounded-3">
-                            <h6 class="fw-bold mb-1"><a href="{{ route('wisata.detail', $other->id) }}" class="text-decoration-none text-dark">{{ $other->name }}</a></h6>
-                            <small class="text-muted d-block mb-1"><i class="fa-solid fa-location-dot text-danger me-1"></i> {{ $other->district }}</small>
-                            <small class="text-success fw-bold">{{ $other->ticket_price ?? 'Gratis' }}</small>
-                        </div>
+                        <a href="{{ route('wisata.detail', $other->id) }}" class="text-decoration-none">
+                            <div class="p-3 bg-light rounded-3 d-flex gap-3 align-items-center">
+                                <img src="{{ $other->thumbnail_url }}" alt="{{ $other->name }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px;">
+                                <div>
+                                    <div class="fw-bold text-dark small mb-1">{{ $other->name }}</div>
+                                    <small class="text-muted d-block mb-1"><i class="fa-solid fa-location-dot text-danger me-1"></i> {{ $other->district }}</small>
+                                    <small class="text-success fw-bold">{{ $other->ticket_price ?? 'Gratis' }}</small>
+                                </div>
+                            </div>
+                        </a>
                     @endforeach
                 </div>
             </div>
@@ -149,13 +264,33 @@
                 <h5 class="fw-bold text-dark mb-3">Rekomendasi Penginapan</h5>
                 <div class="d-flex flex-column gap-3">
                     @foreach($nearbyLodgings as $lodging)
-                        <div class="p-3 bg-light rounded-3">
-                            <h6 class="fw-bold mb-1"><a href="{{ route('lodging.detail', $lodging->id) }}" class="text-decoration-none text-dark">{{ $lodging->name }}</a></h6>
-                            <small class="text-muted d-block mb-1"><i class="fa-solid fa-hotel me-1"></i> Kec. {{ $lodging->district ?? 'Gresik' }}</small>
-                            <small class="text-primary fw-bold">Mulai Rp {{ number_format($lodging->price_start, 0, ',', '.') }}</small>
-                        </div>
+                        <a href="{{ route('lodging.detail', $lodging->id) }}" class="text-decoration-none">
+                            <div class="p-3 bg-light rounded-3 d-flex gap-3 align-items-center">
+                                <img src="{{ $lodging->thumbnail_url }}" alt="{{ $lodging->name }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px;">
+                                <div>
+                                    <div class="fw-bold text-dark small mb-1">{{ $lodging->name }}</div>
+                                    <small class="text-muted d-block mb-1"><i class="fa-solid fa-hotel me-1"></i> Kec. {{ $lodging->district ?? 'Gresik' }}</small>
+                                    <small class="text-primary fw-bold">Mulai Rp {{ number_format($lodging->price_start, 0, ',', '.') }}</small>
+                                </div>
+                            </div>
+                        </a>
                     @endforeach
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Zoom Foto -->
+<div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-header border-0 pb-0 justify-content-end">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-0">
+                <img id="modalPhotoImg" src="" alt="Preview Foto" class="img-fluid rounded-4 shadow-lg" style="max-height: 80vh; object-fit: contain;">
+                <p id="modalPhotoCaption" class="text-white mt-2 small"></p>
             </div>
         </div>
     </div>
@@ -164,13 +299,12 @@
 
 @section('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch("/api/places/{{ $touristPlace->id }}/track-view", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ category: "wisata" })
-        }).catch(err => console.error(err));
-    });
+    function openPhotoModal(url, caption) {
+        document.getElementById('modalPhotoImg').src = url;
+        document.getElementById('modalPhotoCaption').innerText = caption;
+        const modal = new bootstrap.Modal(document.getElementById('photoModal'));
+        modal.show();
+    }
 
     function trackMapClick() {
         fetch("/api/places/{{ $touristPlace->id }}/track-map-click", {

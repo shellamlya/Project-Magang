@@ -90,49 +90,52 @@
         <div class="row g-4">
             @foreach($places as $place)
                 <div class="col-md-4">
-                    <div class="card card-hangout h-100 p-4 d-flex flex-column">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <span class="badge-grex-nongkrong"><i class="fa-solid fa-mug-hot me-1"></i> Nongkrong</span>
-                            <small class="text-muted fw-semibold">
-                                <i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ $place->district ?? 'Gresik' }}
-                            </small>
-                        </div>
-                        
-                        <h4 class="fw-bold text-dark mb-2">{{ $place->name }}</h4>
-                        <p class="small text-muted mb-3 flex-grow-1">{{ Str::limit($place->description, 110) }}</p>
+                    <div class="card card-hangout h-100 overflow-hidden d-flex flex-column">
+                        <img src="{{ $place->thumbnail_url }}" class="card-grex-img" alt="{{ $place->name }}" loading="lazy">
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <span class="badge-grex-nongkrong"><i class="fa-solid fa-mug-hot me-1"></i> Nongkrong</span>
+                                <small class="text-muted fw-semibold">
+                                    <i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ $place->district ?? 'Gresik' }}
+                                </small>
+                            </div>
+                            
+                            <h4 class="fw-bold text-dark mb-2">{{ $place->name }}</h4>
+                            <p class="small text-muted mb-3 flex-grow-1">{{ Str::limit($place->description, 110) }}</p>
 
-                        <!-- Jam Operasional & Pengelola -->
-                        <div class="mb-3 p-3 bg-light rounded-3 small">
-                            <div class="d-flex align-items-center mb-1 text-secondary">
-                                <i class="fa-regular fa-clock me-2 text-primary"></i>
-                                <span class="fw-medium">{{ $place->operational_hours }}</span>
+                            <!-- Jam Operasional & Pengelola -->
+                            <div class="mb-3 p-3 bg-light rounded-3 small">
+                                <div class="d-flex align-items-center mb-1 text-secondary">
+                                    <i class="fa-regular fa-clock me-2 text-primary"></i>
+                                    <span class="fw-medium">{{ $place->operational_hours }}</span>
+                                </div>
+                                <div class="d-flex align-items-center text-secondary">
+                                    <i class="fa-solid fa-user-gear me-2 text-primary"></i>
+                                    <span>Pengelola: <strong>{{ $place->manager_name }}</strong></span>
+                                </div>
                             </div>
-                            <div class="d-flex align-items-center text-secondary">
-                                <i class="fa-solid fa-user-gear me-2 text-primary"></i>
-                                <span>Pengelola: <strong>{{ $place->manager_name }}</strong></span>
-                            </div>
-                        </div>
 
-                        <!-- Fasilitas Badges -->
-                        @if($place->facilities->isNotEmpty())
-                            <div class="d-flex flex-wrap gap-1 mb-3">
-                                @foreach($place->facilities->take(3) as $fac)
-                                    <span class="badge-facility-hangout">{{ $fac->facility_name }}</span>
-                                @endforeach
-                                @if($place->facilities->count() > 3)
-                                    <span class="badge-facility-hangout">+{{ $place->facilities->count() - 3 }} lainnya</span>
-                                @endif
-                            </div>
-                        @endif
+                            <!-- Fasilitas Badges -->
+                            @if($place->facilities->isNotEmpty())
+                                <div class="d-flex flex-wrap gap-1 mb-3">
+                                    @foreach($place->facilities->take(3) as $fac)
+                                        <span class="badge-facility-hangout">{{ $fac->facility_name }}</span>
+                                    @endforeach
+                                    @if($place->facilities->count() > 3)
+                                        <span class="badge-facility-hangout">+{{ $place->facilities->count() - 3 }} lainnya</span>
+                                    @endif
+                                </div>
+                            @endif
 
-                        <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-auto">
-                            <div>
-                                <small class="text-muted d-block fs-7">Telepon</small>
-                                <span class="fw-bold text-dark small">{{ $place->phone ?? 'Tidak Ada' }}</span>
+                            <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-auto">
+                                <div>
+                                    <small class="text-muted d-block fs-7">Telepon</small>
+                                    <span class="fw-bold text-dark small">{{ $place->phone ?? 'Tidak Ada' }}</span>
+                                </div>
+                                <a href="{{ route('nongkrong.detail', $place->id) }}" class="btn btn-grex-primary btn-sm px-3 rounded-pill">
+                                    Lihat Detail <i class="fa-solid fa-arrow-right ms-1"></i>
+                                </a>
                             </div>
-                            <a href="{{ route('nongkrong.detail', $place->id) }}" class="btn btn-grex-primary btn-sm px-3 rounded-pill">
-                                Lihat Detail <i class="fa-solid fa-arrow-right ms-1"></i>
-                            </a>
                         </div>
                     </div>
                 </div>

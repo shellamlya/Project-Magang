@@ -34,6 +34,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Yosowilangun',
                 'address'            => 'Jl. Rantau I No.1, Yosowilangun, Manyar, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 50.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1582650625119-3a31f8418b7d?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Kolam Renang', 'Water Slide', 'Gazebo', 'Toilet', 'Mushola', 'Kantin', 'Pusat Informasi', 'Ruang Ganti'],
             ],
             [
@@ -48,6 +49,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Pelemwatu',
                 'address'            => 'Bongso Wetan, Pelemwatu, Menganti, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 15.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Parkir Luas', 'Toilet', 'Mushola', 'Pusat Informasi', 'Area Kuliner', 'Gazebo', 'Taman Bermain'],
             ],
             [
@@ -62,6 +64,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Pelemwatu',
                 'address'            => 'Desa Pelemwatu, Menganti, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 10.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Danau', 'Perahu', 'Area Pemancingan', 'Mushola', 'Toilet', 'Area Makan', 'Parkir', 'Gazebo'],
             ],
             [
@@ -76,6 +79,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Sidomukti',
                 'address'            => 'Bukit Giri Kedaton, Sidomukti, Kebomas, Kabupaten Gresik',
                 'ticket_price'       => 'Gratis',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Toilet', 'Mushola', 'Papan Informasi', 'Jalur Pejalan Kaki'],
             ],
             [
@@ -90,6 +94,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Suci',
                 'address'            => 'Kawasan Suci, Manyar, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 20.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Kolam Renang Anak', 'Kolam Renang Dewasa', 'Toilet', 'Mushola', 'Kantin', 'Area Parkir', 'Pusat Informasi'],
             ],
             [
@@ -104,6 +109,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Giri',
                 'address'            => 'Jl. Sunan Giri, Giri, Kebomas, Kabupaten Gresik',
                 'ticket_price'       => 'Gratis',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Mushola', 'Toilet', 'Tempat Wudhu', 'Kios Oleh-Oleh', 'Area Istirahat', 'Pusat Informasi'],
             ],
             [
@@ -118,6 +124,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Bedilan',
                 'address'            => 'Jl. Malik Ibrahim No.19, Bedilan, Kecamatan Gresik, Kabupaten Gresik',
                 'ticket_price'       => 'Gratis',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Toilet', 'Mushola', 'Tempat Wudhu', 'Kios Suvenir', 'Area Peziarah'],
             ],
             [
@@ -132,6 +139,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Kebungson',
                 'address'            => 'Jl. KH. Wakhid Hasyim No.6, Kebungson, Kecamatan Gresik, Kabupaten Gresik',
                 'ticket_price'       => 'Gratis',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Tempat Wudhu', 'Toilet', 'Area Parkir', 'Ruang Salat', 'Perpustakaan', 'Aula'],
             ],
             [
@@ -146,6 +154,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Kemangi',
                 'address'            => 'Pesisir Kemangi, Panceng, Kabupaten Gresik',
                 'ticket_price'       => 'Gratis',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Mushola', 'Toilet', 'Tempat Istirahat', 'Kios Makanan'],
             ],
             [
@@ -160,6 +169,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Sungonlegowo',
                 'address'            => 'Kawasan Bukit Jamur, Bungah, Kabupaten Gresik',
                 'ticket_price'       => 'Gratis',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Toilet', 'Tempat Wudhu', 'Taman', 'Gazebo', 'Area Istirahat'],
             ],
             [
@@ -174,6 +184,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Gosari',
                 'address'            => 'Desa Gosari, Ujungpangkah, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 10.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Toilet', 'Mushola', 'Gazebo', 'Kantin', 'Spot Foto', 'Area Bermain'],
             ],
             [
@@ -188,6 +199,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Dalegan',
                 'address'            => 'Desa Dalegan, Panceng, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 10.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Toilet', 'Mushola', 'Gazebo', 'Penyewaan Ban', 'Warung Makan'],
             ],
             [
@@ -202,6 +214,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Hendrosari',
                 'address'            => 'Desa Hendrosari, Menganti, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 8.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Toilet', 'Mushola', 'Food Court', 'Gazebo', 'Playground', 'Spot Foto'],
             ],
             [
@@ -216,6 +229,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Bungah',
                 'address'            => 'Desa Bungah, Bungah, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 5.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Toilet', 'Gazebo', 'Spot Foto'],
             ],
             [
@@ -230,6 +244,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Ngipik',
                 'address'            => 'Jl. Raya Ngipik, Kecamatan Gresik, Kabupaten Gresik',
                 'ticket_price'       => 'Gratis',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Jogging Track', 'Area Parkir', 'Gazebo', 'Taman', 'Toilet', 'Tempat Duduk'],
             ],
             [
@@ -244,6 +259,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Kalimireng',
                 'address'            => 'Desa Kalimireng, Manyar, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 5.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1518457607834-6e8d80c183c5?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Boardwalk', 'Gazebo', 'Area Parkir', 'Toilet', 'Spot Foto'],
             ],
             [
@@ -258,6 +274,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Singosari',
                 'address'            => 'Kawasan Kali Lamong, Kebomas, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 5.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Jalur Tracking', 'Gazebo', 'Area Parkir', 'Toilet', 'Area Edukasi'],
             ],
             [
@@ -272,6 +289,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Mengare',
                 'address'            => 'Pulau Mengare, Bungah, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 10.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Toilet', 'Gazebo', 'Spot Foto', 'Warung'],
             ],
             [
@@ -286,6 +304,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Surowiti',
                 'address'            => 'Desa Surowiti, Panceng, Kabupaten Gresik',
                 'ticket_price'       => 'Rp 5.000',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Gazebo', 'Spot Foto', 'Warung'],
             ],
             [
@@ -300,6 +319,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'            => 'Suci',
                 'address'            => 'Desa Suci, Manyar, Kabupaten Gresik',
                 'ticket_price'       => 'Gratis',
+                'thumbnail'          => 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
                 'facilities'         => ['Area Parkir', 'Spot Foto', 'Area Istirahat'],
             ],
         ];
@@ -334,6 +354,7 @@ class TouristPlaceSeeder extends Seeder
                 'village'           => $item['village'],
                 'address'           => $item['address'],
                 'ticket_price'      => $item['ticket_price'],
+                'thumbnail'         => $item['thumbnail'] ?? null,
                 'status'            => 'approved',
             ]);
 

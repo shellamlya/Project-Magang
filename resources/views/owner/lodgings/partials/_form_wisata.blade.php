@@ -23,8 +23,9 @@
     </div>
 
     <div class="col-md-6">
-        <label class="form-label fw-bold small">Kecamatan</label>
-        <input type="text" name="district" id="placeDistrict" class="form-control" value="{{ old('district') }}" placeholder="Contoh: Panceng / Bungah / Kebomas">
+        <label class="form-label fw-bold small">Kecamatan *</label>
+        <input type="text" name="district" id="placeDistrict" class="form-control @error('district') is-invalid @enderror" value="{{ old('district') }}" placeholder="Contoh: Panceng / Bungah / Kebomas" required>
+        @error('district') <span class="text-danger small">{{ $message }}</span> @enderror
     </div>
 
     <div class="col-md-6">
@@ -37,15 +38,49 @@
         <textarea name="address" class="form-control" rows="2" placeholder="Desa Delegan, Kecamatan Panceng, Kabupaten Gresik">{{ old('address') }}</textarea>
     </div>
 
+    <!-- No WA Bisnis Wisata -->
     <div class="col-md-6">
-        <label class="form-label fw-bold small">Nomor Telepon Informasional / PIC</label>
-        <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" placeholder="081234567890">
+        <label class="form-label fw-bold small text-success">
+            <i class="fa-brands fa-whatsapp me-1"></i> No. WhatsApp Pengelola / Reservasi Tiket *
+        </label>
+        <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="081234567890" required>
+        <small class="text-muted d-block mt-1">Nomor ini akan tampil di Halaman Detail dan digunakan pengunjung untuk bertanya / reservasi tiket.</small>
+        @error('phone') <span class="text-danger small">{{ $message }}</span> @enderror
     </div>
 
     <div class="col-md-6">
         <label class="form-label fw-bold small">Link Google Maps *</label>
         <input type="text" name="google_maps" class="form-control @error('google_maps') is-invalid @enderror" value="{{ old('google_maps') }}" placeholder="https://maps.google.com/?q=..." required>
         @error('google_maps') <span class="text-danger small">{{ $message }}</span> @enderror
+    </div>
+
+    <!-- Media / Foto Upload Section -->
+    <div class="col-12">
+        <div class="p-3 border rounded-3 bg-light">
+            <h6 class="fw-bold text-dark mb-1"><i class="fa-solid fa-camera text-primary me-2"></i>Foto Daya Tarik & Wahana Wisata (Maksimal 3 Foto)</h6>
+            <p class="small text-muted mb-3">Unggah foto pemandangan, spot foto, atau wahana utama tempat wisata (JPG, PNG, WEBP, maks 2MB).</p>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold small">Foto Thumbnail Utama *</label>
+                    <input type="file" name="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" accept="image/*" required>
+                    <small class="text-muted d-block mt-1">Tampil di landing page & card wisata.</small>
+                    @error('thumbnail') <span class="text-danger small">{{ $message }}</span> @enderror
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold small">Foto Pendukung #1 (Opsional)</label>
+                    <input type="file" name="photo_1" class="form-control @error('photo_1') is-invalid @enderror" accept="image/*">
+                    <small class="text-muted d-block mt-1">Contoh: Spot foto ikonik / wahana.</small>
+                    @error('photo_1') <span class="text-danger small">{{ $message }}</span> @enderror
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold small">Foto Pendukung #2 (Opsional)</label>
+                    <input type="file" name="photo_2" class="form-control @error('photo_2') is-invalid @enderror" accept="image/*">
+                    <small class="text-muted d-block mt-1">Contoh: Fasilitas umum / resto / gazebo.</small>
+                    @error('photo_2') <span class="text-danger small">{{ $message }}</span> @enderror
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- AI Description Generator Integration -->
