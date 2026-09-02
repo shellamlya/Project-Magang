@@ -72,10 +72,6 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->grou
     
     // Feature AI Description Generator
     Route::post('/ai/generate-description', [AIController::class, 'generateDescription'])->name('ai.generate-description');
-    
-    // Feature Klaim Tempat Usaha
-    Route::get('/claim-places', [OwnerDashboardController::class, 'claimIndex'])->name('claim.index');
-    Route::post('/claim-places/{category}/{id}', [OwnerDashboardController::class, 'claimSubmit'])->name('claim.submit');
 
     Route::get('/profile', [OwnerProfileController::class, 'show'])->name('profile');
     Route::post('/profile', [OwnerProfileController::class, 'update'])->name('profile.update');
@@ -87,11 +83,19 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->grou
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     
-    // Verifikasi Pengajuan Tempat
+    // ── Verifikasi Listing Tempat Usaha (Tingkat 2) ──
+    // Mendukung semua tipe: ?type=penginapan|wisata|nongkrong
     Route::get('/verifications', [AdminVerificationController::class, 'index'])->name('verifications.index');
     Route::get('/verifications/{id}', [AdminVerificationController::class, 'show'])->name('verifications.show');
     Route::post('/verifications/{id}/approve', [AdminVerificationController::class, 'approve'])->name('verifications.approve');
     Route::post('/verifications/{id}/reject', [AdminVerificationController::class, 'reject'])->name('verifications.reject');
+
+    // ── Verifikasi Akun Owner (Tingkat 1) ──
+    Route::get('/owner-verifications', [AdminVerificationController::class, 'ownerIndex'])->name('owner-verifications.index');
+    Route::get('/owner-verifications/{id}', [AdminVerificationController::class, 'ownerShow'])->name('owner-verifications.show');
+    Route::get('/owner-verifications/{id}/ktp', [AdminVerificationController::class, 'viewKtp'])->name('owner-verifications.ktp');
+    Route::post('/owner-verifications/{id}/approve', [AdminVerificationController::class, 'ownerApprove'])->name('owner-verifications.approve');
+    Route::post('/owner-verifications/{id}/reject', [AdminVerificationController::class, 'ownerReject'])->name('owner-verifications.reject');
 
     // Master & Data Management
     Route::resource('tourist-places', AdminTouristPlaceController::class);

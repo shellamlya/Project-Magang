@@ -162,8 +162,12 @@
                 <a href="{{ route('admin.dashboard') }}" class="nav-item-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <i class="fa-solid fa-chart-line"></i> Dashboard Statistik
                 </a>
+                <div class="menu-header">Verifikasi & Pengawasan</div>
+                <a href="{{ route('admin.owner-verifications.index') }}" class="nav-item-link {{ request()->routeIs('admin.owner-verifications.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-id-card"></i> Verifikasi Akun Owner
+                </a>
                 <a href="{{ route('admin.verifications.index') }}" class="nav-item-link {{ request()->routeIs('admin.verifications.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-clipboard-check"></i> Verifikasi Penginapan
+                    <i class="fa-solid fa-clipboard-check"></i> Verifikasi Tempat Usaha
                 </a>
 
                 <div class="menu-header">Kelola Data</div>
@@ -196,9 +200,6 @@
                 </a>
                 <a href="{{ route('owner.lodgings.create') }}" class="nav-item-link {{ request()->routeIs('owner.lodgings.create') ? 'active' : '' }}">
                     <i class="fa-solid fa-plus-circle"></i> Ajukan Usaha Baru
-                </a>
-                <a href="{{ route('owner.claim.index') }}" class="nav-item-link {{ request()->routeIs('owner.claim.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-hand-holding-hand"></i> Klaim Tempat Usaha
                 </a>
 
                 <div class="menu-header">Pengaturan</div>

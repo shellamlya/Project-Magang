@@ -53,7 +53,8 @@ class PlaceController extends Controller
      */
     public function showLodging($id)
     {
-        $lodging = Lodging::with('facilities')->findOrFail($id);
+        $lodging = Lodging::with(['facilities', 'owner.user'])->findOrFail($id);
+        $lodging->increment('views_count');
 
         // Rekomendasi penginapan lainnya
         $otherLodgings = Lodging::with('facilities')
@@ -110,7 +111,8 @@ class PlaceController extends Controller
      */
     public function showWisata($id)
     {
-        $touristPlace = TouristPlace::with('facilities')->findOrFail($id);
+        $touristPlace = TouristPlace::with(['facilities', 'owner.user'])->findOrFail($id);
+        $touristPlace->increment('views_count');
 
         // Rekomendasi tempat wisata lainnya
         $otherWisata = TouristPlace::with('facilities')
@@ -167,7 +169,8 @@ class PlaceController extends Controller
      */
     public function showHangout($id)
     {
-        $hangoutPlace = HangoutPlace::with('facilities')->findOrFail($id);
+        $hangoutPlace = HangoutPlace::with(['facilities', 'owner.user'])->findOrFail($id);
+        $hangoutPlace->increment('views_count');
 
         // Rekomendasi tempat nongkrong lainnya
         $otherNongkrong = HangoutPlace::with('facilities')

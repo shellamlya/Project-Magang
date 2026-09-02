@@ -6,11 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * Class Owner
  * @package App\Models
- * Model untuk data Profil Pemilik Penginapan (Owner).
+ * Model untuk data Profil Pemilik Tempat Usaha (Owner).
+ *
+ * Kolom Baru (v2 — Double Verification):
+ *   ktp_photo               — Foto KTP (privat, hanya Admin)
+ *   business_phone          — No. WA Bisnis (tampil publik di listing)
+ *   account_status          — Status verifikasi akun (Verifikasi Tingkat 1)
+ *   account_verified_at     — Waktu akun diverifikasi
+ *   account_verified_by     — Admin yang verifikasi akun
+ *   account_rejection_reason— Alasan penolakan akun
  */
 class Owner extends Model
 {
@@ -23,14 +32,41 @@ class Owner extends Model
         'address',
         'phone',
         'status',
+        // v2: Verifikasi Akun (Tingkat 1)
+        'ktp_photo',
+        'business_phone',
+        'account_status',
+        'account_verified_at',
+        'account_verified_by',
+        'account_rejection_reason',
     ];
 
+    protected $casts = [
+        'account_verified_at' => 'datetime',
+    ];
+
+    // ── Konstanta Status Akun ──────────────────────────────────────────────────
+
+    const ACCOUNT_PENDING  = 'pending_account';
+    const ACCOUNT_VERIFIED = 'account_verified';
+    const ACCOUNT_REJECTED = 'rejected';
+
+    // ── Relasi Inti ───────────────────────────────────────────────────────────
+
     /**
-     * Relasi BelongsTo ke User.
+     * Relasi BelongsTo ke User (akun login owner).
      */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Relasi BelongsTo ke Admin yang melakukan Verifikasi Akun (Tingkat 1).
+     */
+    public function accountVerifiedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'account_verified_by');
     }
 
     /**
@@ -58,27 +94,62 @@ class Owner extends Model
     }
 
     /**
+     * Polymorphic relation ke VerificationLog untuk log verifikasi akun owner ini.
+     */
+    public function verificationLogs(): MorphMany
+    {
+        return $this->morphMany(VerificationLog::class, 'verifiable');
+    }
+
+    // ── Helper Methods ─────────────────────────────────────────────────────────
+
+    /**
+     * Cek apakah akun owner sudah terverifikasi (bisa daftar listing).
+     */
+    public function isAccountVerified(): bool
+    {
+        return $this->account_status === self::ACCOUNT_VERIFIED;
+    }
+
+    /**
+     * Cek apakah akun owner masih menunggu verifikasi.
+     */
+    public function isAccountPending(): bool
+    {
+        return $this->account_status === self::ACCOUNT_PENDING;
+    }
+
+    /**
+     * Cek apakah akun owner ditolak.
+     */
+    public function isAccountRejected(): bool
+    {
+        return $this->account_status === self::ACCOUNT_REJECTED;
+    }
+
+    /**
      * Mendapatkan gabungan seluruh tempat usaha milik owner (Penginapan, Wisata, Nongkrong).
+     * Digunakan di Owner Dashboard.
      */
     public function allPlacesCollection()
     {
         $lodgings = $this->lodgings()->get()->map(function ($item) {
-            $item->place_category = 'penginapan';
-            $item->category_label = 'Penginapan';
+            $item->place_category      = 'penginapan';
+            $item->category_label      = 'Penginapan';
             $item->category_badge_class = 'bg-primary';
             return $item;
         });
 
         $tourists = $this->touristPlaces()->get()->map(function ($item) {
-            $item->place_category = 'wisata';
-            $item->category_label = 'Tempat Wisata';
+            $item->place_category      = 'wisata';
+            $item->category_label      = 'Tempat Wisata';
             $item->category_badge_class = 'bg-info text-dark';
             return $item;
         });
 
         $hangouts = $this->hangoutPlaces()->get()->map(function ($item) {
-            $item->place_category = 'nongkrong';
-            $item->category_label = 'Kafe / Nongkrong';
+            $item->place_category      = 'nongkrong';
+            $item->category_label      = 'Kafe / Nongkrong';
             $item->category_badge_class = 'bg-warning text-dark';
             return $item;
         });

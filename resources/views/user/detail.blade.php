@@ -76,7 +76,7 @@
         <div class="col-lg-8">
             <div class="detail-card">
                 <!-- Cover Photo -->
-                <img src="{{ $place->cover_image }}" class="detail-img" alt="{{ $place->name }}">
+                <img src="{{ $place->thumbnail_url ?? ($place->cover_image ?? 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80') }}" class="detail-img" alt="{{ $place->name }}">
                 
                 <div class="p-4 p-md-5">
                     <!-- Category & Badges -->

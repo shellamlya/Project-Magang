@@ -18,8 +18,9 @@
     </div>
 
     <div class="col-md-6">
-        <label class="form-label fw-bold small">Kecamatan</label>
-        <input type="text" name="district" id="placeDistrict" class="form-control" value="{{ old('district') }}" placeholder="Contoh: Gresik / Kebomas / Manyar">
+        <label class="form-label fw-bold small">Kecamatan *</label>
+        <input type="text" name="district" id="placeDistrict" class="form-control @error('district') is-invalid @enderror" value="{{ old('district') }}" placeholder="Contoh: Gresik / Kebomas / Manyar" required>
+        @error('district') <span class="text-danger small">{{ $message }}</span> @enderror
     </div>
 
     <div class="col-md-6">
@@ -27,9 +28,14 @@
         <input type="text" name="village" class="form-control" value="{{ old('village') }}" placeholder="Contoh: Kebungson">
     </div>
 
+    <!-- No WA Bisnis Kafe -->
     <div class="col-md-6">
-        <label class="form-label fw-bold small">Nomor Telepon / WhatsApp Kafe</label>
-        <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" placeholder="081234567890">
+        <label class="form-label fw-bold small text-success">
+            <i class="fa-brands fa-whatsapp me-1"></i> No. WhatsApp Bisnis / Reservasi Meja *
+        </label>
+        <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="081234567890" required>
+        <small class="text-muted d-block mt-1">Nomor ini akan tampil di Halaman Detail dan digunakan pengunjung untuk reservasi / pesan via WA.</small>
+        @error('phone') <span class="text-danger small">{{ $message }}</span> @enderror
     </div>
 
     <div class="col-12">
@@ -46,6 +52,35 @@
         <label class="form-label fw-bold small">Link Google Maps *</label>
         <input type="text" name="google_maps" class="form-control @error('google_maps') is-invalid @enderror" value="{{ old('google_maps') }}" placeholder="https://maps.google.com/?q=..." required>
         @error('google_maps') <span class="text-danger small">{{ $message }}</span> @enderror
+    </div>
+
+    <!-- Media / Foto Upload Section -->
+    <div class="col-12">
+        <div class="p-3 border rounded-3 bg-light">
+            <h6 class="fw-bold text-dark mb-1"><i class="fa-solid fa-camera text-primary me-2"></i>Foto Kafe, Menu & Suasana (Maksimal 3 Foto)</h6>
+            <p class="small text-muted mb-3">Unggah foto suasana tempat nongkrong dan foto menu andalan (JPG, PNG, WEBP, maks 2MB).</p>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold small">Foto Thumbnail Utama *</label>
+                    <input type="file" name="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" accept="image/*" required>
+                    <small class="text-muted d-block mt-1">Tampil di beranda & card kafe.</small>
+                    @error('thumbnail') <span class="text-danger small">{{ $message }}</span> @enderror
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold small">Foto Pendukung #1 (Opsional)</label>
+                    <input type="file" name="photo_1" class="form-control @error('photo_1') is-invalid @enderror" accept="image/*">
+                    <small class="text-muted d-block mt-1">Contoh: Foto Menu / Makanan / Minuman.</small>
+                    @error('photo_1') <span class="text-danger small">{{ $message }}</span> @enderror
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold small">Foto Pendukung #2 (Opsional)</label>
+                    <input type="file" name="photo_2" class="form-control @error('photo_2') is-invalid @enderror" accept="image/*">
+                    <small class="text-muted d-block mt-1">Contoh: Suasana indoor / outdoor / live music.</small>
+                    @error('photo_2') <span class="text-danger small">{{ $message }}</span> @enderror
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- AI Description Generator Integration -->

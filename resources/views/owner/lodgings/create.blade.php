@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Ajukan Tempat Usaha Baru - Owner Lokavino')
 @section('page-title', 'Ajukan Tempat Usaha Baru')
@@ -93,7 +93,7 @@
         <p class="small text-muted">Lengkapi data tempat usaha Anda secara detail untuk diverifikasi oleh Admin</p>
     </div>
     <div class="card-body p-4 p-md-5">
-        <form action="{{ route('owner.lodgings.store') }}" method="POST" id="placeSubmitForm">
+        <form action="{{ route('owner.lodgings.store') }}" method="POST" id="placeSubmitForm" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="category" value="{{ $category }}">
 

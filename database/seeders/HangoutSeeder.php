@@ -50,6 +50,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Gresik',
                 'village' => 'Sidokumpul',
                 'address' => 'Jl. Dr. Wahidin Sudirohusodo, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Giri Hills Coffee House',
@@ -63,6 +64,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Kebomas',
                 'village' => 'Giri',
                 'address' => 'Jl. Rayon Giri, Kebomas, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Koromi',
@@ -76,6 +78,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Gresik',
                 'village' => 'BPK Wetan',
                 'address' => 'Jl. Panglima Sudirman, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Metropole Coffee',
@@ -89,6 +92,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Gresik',
                 'village' => 'Sukorame',
                 'address' => 'Jl. Veteran, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Kayoman',
@@ -102,6 +106,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Kebomas',
                 'village' => 'Randuagung',
                 'address' => 'Jl. Mayjend Sungkono, Kebomas, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => "d'Lagoon",
@@ -115,6 +120,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Manyar',
                 'village' => 'Suci',
                 'address' => 'Kawasan Danau Suci, Manyar, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Pasteurise Cafe',
@@ -128,6 +134,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Gresik',
                 'village' => 'Kebungson',
                 'address' => 'Jl. Jaksa Agung Suprapto, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Circuit Cafe',
@@ -141,6 +148,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Gresik',
                 'village' => 'Kroman',
                 'address' => 'Jl. Raya Sukomulyo, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Angon Jiwo Cafe & Resto',
@@ -154,6 +162,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Kebomas',
                 'village' => 'Kedangwungu',
                 'address' => 'Jl. Sunan Giri, Kebomas, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Ruang Semesta Cafe',
@@ -167,6 +176,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Gresik',
                 'village' => 'Sidomoro',
                 'address' => 'Jl. Jawa, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'HOLAA CAFE INDONESIA',
@@ -180,6 +190,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Panceng',
                 'village' => 'Dalegan',
                 'address' => 'Kawasan Pantai Dalegan, Panceng, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Omah Singgah Coffee',
@@ -193,6 +204,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Ujungpangkah',
                 'village' => 'Gosari',
                 'address' => 'Desa Gosari, Ujungpangkah, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Singgah IN Cafe',
@@ -206,6 +218,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Ujungpangkah',
                 'village' => 'Pangkahwetan',
                 'address' => 'Jl. Raya Ujungpangkah, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Pandora Cafe',
@@ -219,6 +232,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Ujungpangkah',
                 'village' => 'Sekapuk',
                 'address' => 'Jl. Raya Sekapuk, Ujungpangkah, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Cafe JM',
@@ -232,6 +246,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Panceng',
                 'village' => 'Campurejo',
                 'address' => 'Jl. Raya Pantura Panceng, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'SIBE CAFE',
@@ -245,6 +260,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Panceng',
                 'village' => 'Banyubang',
                 'address' => 'Jl. Raya Banyubang, Panceng, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Cafe Angkasa',
@@ -258,6 +274,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Sangkapura',
                 'village' => 'Kotakusuma',
                 'address' => 'Kawasan Pelabuhan Sangkapura, Bawean, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Cafe Boyan Sangkapura',
@@ -271,6 +288,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Sangkapura',
                 'village' => 'Sungaiteluk',
                 'address' => 'Jl. Raya Sangkapura, Bawean, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Bamboe Cafe & Resto',
@@ -284,6 +302,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Ujungpangkah',
                 'village' => 'Gosari',
                 'address' => 'Kawasan Wisata Gosari, Ujungpangkah, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80',
             ],
             [
                 'name' => 'Break Out Cafe & Resto',
@@ -297,6 +316,7 @@ class HangoutSeeder extends Seeder
                 'district' => 'Panceng',
                 'village' => 'Siwalan',
                 'address' => 'Jl. Raya Siwalan, Panceng, Gresik',
+                'thumbnail' => 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80',
             ],
         ];
 

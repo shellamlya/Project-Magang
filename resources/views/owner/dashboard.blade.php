@@ -4,6 +4,43 @@
 @section('page-title', 'Dashboard Owner & Statistik Analitik')
 
 @section('content')
+<!-- Status Banner Verifikasi Akun Owner (Tingkat 1) -->
+@if($owner->isAccountPending())
+    <div class="alert alert-warning border-0 rounded-4 shadow-sm p-3 mb-4 d-flex align-items-center gap-3">
+        <div class="rounded-circle bg-warning bg-opacity-25 text-warning p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <i class="fa-solid fa-clock-rotate-left fs-5"></i>
+        </div>
+        <div>
+            <h6 class="fw-bold text-dark mb-0">Akun Anda Menunggu Verifikasi Admin</h6>
+            <small class="text-muted">Foto KTP dan data akun Anda sedang ditinjau oleh Admin Disparekrafbudpora Kab. Gresik via WhatsApp. Anda tetap dapat menyiapkan data listing usaha, dan verifikasi listing akan diproses setelah akun terverifikasi.</small>
+        </div>
+    </div>
+@elseif($owner->isAccountRejected())
+    <div class="alert alert-danger border-0 rounded-4 shadow-sm p-3 mb-4 d-flex align-items-center gap-3">
+        <div class="rounded-circle bg-danger bg-opacity-25 text-danger p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <i class="fa-solid fa-circle-exclamation fs-5"></i>
+        </div>
+        <div>
+            <h6 class="fw-bold text-dark mb-0">Verifikasi Akun Owner Ditolak</h6>
+            <small class="text-muted d-block">Alasan penolakan: <strong>{{ $owner->account_rejection_reason ?? 'Data KTP tidak valid / tidak terbaca.' }}</strong></small>
+            <small><a href="{{ route('owner.profile') }}" class="text-danger fw-bold text-decoration-underline">Perbarui Profil & Unggah KTP Baru</a></small>
+        </div>
+    </div>
+@else
+    <div class="alert alert-success border-0 rounded-4 shadow-sm p-3 mb-4 d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-success bg-opacity-25 text-success p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                <i class="fa-solid fa-certificate fs-5"></i>
+            </div>
+            <div>
+                <h6 class="fw-bold text-dark mb-0">Akun Mitra Owner Terverifikasi Resmi</h6>
+                <small class="text-muted">Akun Anda telah disetujui oleh Disparekrafbudpora Kab. Gresik. Tempat usaha yang Anda ajukan akan diproses langsung oleh Admin.</small>
+            </div>
+        </div>
+        <span class="badge bg-success rounded-pill px-3 py-2"><i class="fa-solid fa-circle-check me-1"></i> Verified</span>
+    </div>
+@endif
+
 <!-- Stat Cards Ringkasan -->
 <div class="row g-3 mb-4">
     <div class="col-md-3 col-sm-6">
@@ -81,9 +118,6 @@
             <p class="small text-muted mb-0">Pantau status verifikasi dan analitik performa tempat usaha Anda di Gresik</p>
         </div>
         <div class="d-flex gap-2 flex-wrap">
-            <a href="{{ route('owner.claim.index') }}" class="btn btn-outline-primary rounded-pill px-4 fw-bold">
-                <i class="fa-solid fa-hand-holding-hand me-1"></i> Klaim Tempat Usaha
-            </a>
             <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#categoryModal">
                 <i class="fa-solid fa-plus me-1"></i> Ajukan Usaha Baru
             </button>
