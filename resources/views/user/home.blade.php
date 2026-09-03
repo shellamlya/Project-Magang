@@ -296,7 +296,7 @@
                     <span>Lokavino.com</span>
                 </h1>
                 <p class=" mb-4 hero-description px-lg-5">
-                    Temukan akomodasi penginapan terbaik, destinasi wisata menarik, dan tempat nongkrong terfavorit di Seluruh Kabupaten Gresik hanya dalam satu klik.
+                    Temukan akomodasi penginapan terbaik, destinasi wisata menarik, dan tempat nongkrong terfavorit hanya dalam satu klik.
                 </p>
 
                 <!-- Box Pencarian Utama (Global Search) -->
@@ -438,15 +438,14 @@
                         <span class="about-label">TENTANG LOKAVINO</span>
                         <h2 class="about-title">
                             Satu Tempat untuk
-                            <span>Menjelajahi Gresik</span>
+                            <span>Menjelajahi</span>
                         </h2>
                         <div class="about-line"></div>
                     </div>
 
                     <p class="text-secondary fs-5">
-                        <strong>Lokavino</strong> merupakan platform
-                        informasi yang membantu masyarakat dan wisatawan menemukan
-                        berbagai destinasi menarik di Kabupaten Gresik.
+                        <strong>Lokavino</strong>
+                     merupakan platform informasi yang membantu masyarakat dan wisatawan menemukan berbagai destinasi menarik, tempat menginap, serta tempat nongkrong dalam satu platform.
                     </p>
 
                     <p class="text-secondary">
