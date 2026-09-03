@@ -8,6 +8,7 @@ use App\Models\Lodging;
 use App\Models\District;
 use App\Models\TouristPlace;
 use App\Models\HangoutPlace;
+use App\Models\WebsiteVisitor;
 
 /**
  * Class HomeController
@@ -111,6 +112,15 @@ class HomeController extends Controller
 
         $districts = District::orderBy('name', 'asc')->get();
 
+        // Total Usaha Terdaftar (Penginapan + Wisata + Nongkrong yang disetujui / aktif publik)
+        $totalLodgings = Lodging::approved()->count();
+        $totalTouristPlaces = TouristPlace::approved()->count();
+        $totalHangoutPlaces = HangoutPlace::approved()->count();
+        $totalPlaces = $totalLodgings + $totalTouristPlaces + $totalHangoutPlaces;
+
+        // Total Pengunjung Unik Website
+        $totalVisitors = WebsiteVisitor::count();
+
         return view('user.home', compact(
             'searchResults',
             'popularPenginapan',
@@ -119,7 +129,9 @@ class HomeController extends Controller
             'districts',
             'searchKeyword',
             'searchService',
-            'searchDistrict'
+            'searchDistrict',
+            'totalPlaces',
+            'totalVisitors'
         ));
     }
 }

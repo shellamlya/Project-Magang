@@ -15,7 +15,7 @@
     if (str_starts_with($cleanPhone, '0')) {
         $cleanPhone = '62' . substr($cleanPhone, 1);
     }
-    $waValidationUrl = $cleanPhone ? "https://wa.me/{$cleanPhone}?text=" . urlencode("Halo Bapak/Ibu {$owner->user->name}, kami dari Tim Admin Disparekrafbudpora Kab. Gresik (Lokavino) ingin mengonfirmasi pendaftaran akun Owner Anda.") : null;
+    $waValidationUrl = $cleanPhone ? "https://wa.me/{$cleanPhone}?text=" . urlencode("Halo Bapak/Ibu {$owner->user->name}, kami dari Tim Admin Lokavino ingin mengonfirmasi pendaftaran akun Owner Anda.") : null;
 @endphp
 
 <div class="row g-4">
@@ -143,7 +143,7 @@
     <div class="col-lg-4">
         <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
             <h5 class="fw-bold text-dark mb-3"><i class="fa-brands fa-whatsapp text-success me-2"></i>Aksi Validasi WhatsApp</h5>
-            <p class="small text-muted mb-3">Hubungi penanggung jawab via WhatsApp resmi Disparekrafbudpora untuk memvalidasi keaslian usaha sebelum menyetujui.</p>
+            <p class="small text-muted mb-3">Hubungi penanggung jawab via WhatsApp resmi untuk memvalidasi keaslian usaha sebelum menyetujui.</p>
 
             @if($waValidationUrl)
                 <a href="{{ $waValidationUrl }}" target="_blank" class="btn btn-success rounded-pill py-2.5 fw-bold w-100 shadow-sm mb-3">
@@ -157,7 +157,7 @@
                 <small class="fw-bold text-dark d-block mb-1">Tips Validasi Identitas:</small>
                 <ul class="small text-muted ps-3 mb-0">
                     <li>Pastikan foto KTP jelas, tidak buram, dan NIK terbaca.</li>
-                    <li>Konfirmasi nama usaha dan kesesuaian lokasi tempat usaha di Kabupaten Gresik.</li>
+                    <li>Konfirmasi nama usaha dan kesesuaian lokasi tempat usaha yang didaftarkan.</li>
                 </ul>
             </div>
         </div>

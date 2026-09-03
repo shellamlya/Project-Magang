@@ -20,7 +20,7 @@
     if (str_starts_with($cleanPhone, '0')) {
         $cleanPhone = '62' . substr($cleanPhone, 1);
     }
-    $waUrl = $cleanPhone ? "https://wa.me/{$cleanPhone}?text=" . urlencode("Halo pengelola {$place->name}, kami dari Tim Admin Disparekrafbudpora Kab. Gresik (Lokavino) ingin mengonfirmasi listing data tempat usaha Anda.") : null;
+    $waUrl = $cleanPhone ? "https://wa.me/{$cleanPhone}?text=" . urlencode("Halo pengelola {$place->name}, kami dari Tim Admin Lokavino ingin mengonfirmasi listing data tempat usaha Anda.") : null;
 @endphp
 
 <div class="row g-4">
@@ -90,7 +90,8 @@
             <h4 class="fw-bold text-dark mb-2">{{ $place->name }}</h4>
             <p class="text-muted small mb-4">
                 <i class="fa-solid fa-location-dot text-danger me-1"></i> {{ $place->address ?: '-' }}
-                , Kec. {{ $place->district ?? 'Gresik' }} {{ $place->village ? ', Desa ' . $place->village : '' }}, Kabupaten Gresik
+                @if($place->district), Kec. {{ $place->district }}@endif
+                @if($place->village), Desa {{ $place->village }}@endif
             </p>
 
             <h6 class="fw-bold text-dark mb-2">Deskripsi Tempat:</h6>

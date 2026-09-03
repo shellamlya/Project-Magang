@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Tambah Penginapan - Admin Lokavino')
 @section('page-title', 'Tambah Data Tempat Penginapan Baru')
@@ -18,7 +18,7 @@
             <div class="row g-3 mb-4">
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Nama Penginapan *</label>
-                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Contoh: KHAS Gresik Hotel" required>
+                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Contoh: Grand City Hotel" required>
                     @error('name') <span class="text-danger small">{{ $message }}</span> @enderror
                 </div>
 
@@ -78,7 +78,7 @@
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Kecamatan</label>
-                    <input type="text" name="district" class="form-control" value="{{ old('district') }}" placeholder="Contoh: Gresik">
+                    <input type="text" name="district" class="form-control" value="{{ old('district') }}" placeholder="Contoh: Kebomas / Wilayah">
                 </div>
 
                 <div class="col-md-6">
@@ -88,7 +88,7 @@
 
                 <div class="col-12">
                     <label class="form-label fw-bold small">Alamat Lengkap</label>
-                    <textarea name="address" class="form-control" rows="2" placeholder="Jl. Panglima Sudirman No.1, Sidokumpul, Kec. Gresik, Kabupaten Gresik">{{ old('address') }}</textarea>
+                    <textarea name="address" class="form-control" rows="2" placeholder="Contoh: Jl. Panglima Sudirman No. 1, Sidokumpul">{{ old('address') }}</textarea>
                 </div>
 
                 <div class="col-md-6">
@@ -98,7 +98,7 @@
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Email (Opsional)</label>
-                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="info@khasgresik.com">
+                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="info@hotel.com">
                 </div>
 
                 <div class="col-12">

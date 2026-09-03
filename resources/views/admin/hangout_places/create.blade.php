@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Tambah Tempat Nongkrong - Admin Lokavino')
 @section('page-title', 'Tambah Data Tempat Nongkrong Baru')
@@ -55,7 +55,7 @@
 
                 <div class="col-12">
                     <label class="form-label fw-bold small">Alamat Lengkap</label>
-                    <textarea name="address" class="form-control" rows="2" placeholder="Jl. Dr. Wahidin Sudirohusodo No. 120, Kebomas, Gresik">{{ old('address') }}</textarea>
+                    <textarea name="address" class="form-control" rows="2" placeholder="Contoh: Jl. Dr. Wahidin Sudirohusodo No. 120, Kebomas">{{ old('address') }}</textarea>
                 </div>
 
                 <div class="col-md-6">

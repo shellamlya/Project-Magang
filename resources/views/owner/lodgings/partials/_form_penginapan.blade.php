@@ -1,7 +1,7 @@
 <div class="row g-3 mb-4">
     <div class="col-md-6">
         <label class="form-label fw-bold small">Nama Penginapan *</label>
-        <input type="text" name="name" id="placeName" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Contoh: KHAS Gresik Hotel / Homestay Giri" required>
+        <input type="text" name="name" id="placeName" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Contoh: Grand Hotel / Homestay Nyaman" required>
         @error('name') <span class="text-danger small">{{ $message }}</span> @enderror
     </div>
 
@@ -40,7 +40,7 @@
 
     <div class="col-md-6">
         <label class="form-label fw-bold small">Kecamatan *</label>
-        <input type="text" name="district" id="placeDistrict" class="form-control @error('district') is-invalid @enderror" value="{{ old('district') }}" placeholder="Contoh: Gresik / Kebomas / Manyar" required>
+        <input type="text" name="district" id="placeDistrict" class="form-control @error('district') is-invalid @enderror" value="{{ old('district') }}" placeholder="Contoh: Kebomas / Manyar / Kecamatan" required>
         @error('district') <span class="text-danger small">{{ $message }}</span> @enderror
     </div>
 
@@ -51,7 +51,7 @@
 
     <div class="col-12">
         <label class="form-label fw-bold small">Alamat Lengkap</label>
-        <textarea name="address" class="form-control" rows="2" placeholder="Jl. Panglima Sudirman No. 1, Sidokumpul, Gresik">{{ old('address') }}</textarea>
+        <textarea name="address" class="form-control" rows="2" placeholder="Contoh: Jl. Panglima Sudirman No. 1, Sidokumpul">{{ old('address') }}</textarea>
     </div>
 
     <!-- No WA Bisnis & Email -->

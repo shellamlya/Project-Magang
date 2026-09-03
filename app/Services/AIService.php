@@ -16,19 +16,19 @@ class AIService
      * @param array $facilities
      * @return string
      */
-    public static function generateDescription(string $name, string $category = 'penginapan', ?string $district = 'Gresik', array $facilities = []): string
+    public static function generateDescription(string $name, string $category = 'penginapan', ?string $district = null, array $facilities = []): string
     {
         $apiKey = env('GEMINI_API_KEY');
 
         $facilitiesText = !empty($facilities) ? implode(', ', $facilities) : 'fasilitas terbaik';
-        $locationText = $district ? "Kecamatan {$district}, Kabupaten Gresik" : 'Kabupaten Gresik';
+        $locationText = $district ? "Kecamatan {$district}" : 'lokasi strategis';
 
-        $prompt = "Buatkan deskripsi promosi yang sangat menarik, ramah, dan profesional untuk tempat usaha berikut di Gresik:\n"
+        $prompt = "Buatkan deskripsi promosi yang sangat menarik, ramah, dan profesional untuk tempat usaha berikut:\n"
             . "- Nama Tempat: {$name}\n"
             . "- Kategori: {$category}\n"
             . "- Lokasi: {$locationText}\n"
             . "- Fasilitas Utama: {$facilitiesText}\n"
-            . "Buat deskripsi dalam 2-3 paragraf singkat dalam Bahasa Indonesia yang mengajak wisatawan untuk berkunjung atau menginap. Jangan sertakan judul markdown.";
+            . "Buat deskripsi dalam 2-3 paragraf singkat dalam Bahasa Indonesia yang mengajak wisatawan atau pengunjung untuk berkunjung atau menginap. Jangan sertakan judul markdown.";
 
         if ($apiKey) {
             try {
@@ -73,7 +73,7 @@ class AIService
 
         $catLabel = $categoryLabels[$category] ?? 'tempat usaha pilihan';
 
-        return "Selamat datang di {$name}, {$catLabel} yang berlokasi di {$location}. Kami hadir untuk memberikan pengalaman terbaik dan tak terlupakan bagi setiap pengunjung yang datang ke Kabupaten Gresik.\n\n"
+        return "Selamat datang di {$name}, {$catLabel} yang berlokasi di {$location}. Kami hadir untuk memberikan pengalaman terbaik dan tak terlupakan bagi setiap pengunjung.\n\n"
             . "Dilengkapi dengan berbagai keunggulan dan fasilitas seperti {$facilities}, {$name} menjadi pilihan tepat bagi Anda yang ingin menikmati kenyamanan, pelayanan ramah, serta suasana yang menyenangkan.\n\n"
             . "Jangan lewatkan kesempatan untuk merencanakan kunjungan Anda bersama keluarga maupun kolega. Kami siap menyambut kedatangan Anda di {$name}!";
     }

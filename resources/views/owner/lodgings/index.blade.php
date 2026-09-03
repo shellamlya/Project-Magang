@@ -12,7 +12,7 @@
     <div class="card-body p-4 d-flex justify-content-between align-items-center flex-wrap gap-3 bg-white rounded-4">
         <div>
             <h5 class="fw-bold text-dark mb-1"><i class="fa-solid fa-store text-primary me-2"></i>Daftar Tempat Usaha Anda</h5>
-            <p class="small text-muted mb-0">Kelola penginapan, tempat nongkrong, dan destinasi wisata Anda di Kabupaten Gresik</p>
+            <p class="small text-muted mb-0">Kelola penginapan, tempat nongkrong, dan destinasi wisata Anda</p>
         </div>
         <div class="d-flex gap-2 flex-wrap">
             <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#categoryModal">
@@ -90,8 +90,8 @@
                                 @endif
 
                                 @if($place->is_verified_official)
-                                    <span class="badge bg-info bg-opacity-10 text-info rounded-pill px-2 py-1 ms-1 small" title="Data Resmi Dinas Disparekrafbudpora">
-                                        <i class="fa-solid fa-shield-check"></i> Resmi Dinas
+                                    <span class="badge bg-info bg-opacity-10 text-info rounded-pill px-2 py-1 ms-1 small" title="Data Terverifikasi Resmi Lokavino">
+                                        <i class="fa-solid fa-shield-check"></i> Resmi
                                     </span>
                                 @endif
                             </td>

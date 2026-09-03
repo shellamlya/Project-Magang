@@ -49,7 +49,7 @@
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
             <div>
                 <h5 class="fw-bold text-dark mb-1"><i class="fa-solid fa-id-card text-primary me-2"></i>Daftar Verifikasi Identitas Owner</h5>
-                <p class="small text-muted mb-0">Validasi KTP dan nomor WhatsApp personal pemohon sebelum dapat mengelola tempat usaha di Gresik</p>
+                <p class="small text-muted mb-0">Validasi KTP dan nomor WhatsApp personal pemohon sebelum dapat mengelola tempat usaha</p>
             </div>
 
             <!-- Filter Status Tab -->
@@ -84,7 +84,7 @@
                             if (str_starts_with($cleanPhone, '0')) {
                                 $cleanPhone = '62' . substr($cleanPhone, 1);
                             }
-                            $waValidationUrl = $cleanPhone ? "https://wa.me/{$cleanPhone}?text=" . urlencode("Halo Bapak/Ibu {$item->user->name}, kami dari Tim Admin Disparekrafbudpora Kab. Gresik (Lokavino) ingin melakukan verifikasi akun pendaftaran Owner Anda.") : null;
+                            $waValidationUrl = $cleanPhone ? "https://wa.me/{$cleanPhone}?text=" . urlencode("Halo Bapak/Ibu {$item->user->name}, kami dari Tim Admin Lokavino ingin melakukan verifikasi akun pendaftaran Owner Anda.") : null;
                         @endphp
                         <tr>
                             <td class="ps-4">

@@ -19,7 +19,7 @@
 
     <div class="col-md-6">
         <label class="form-label fw-bold small">Kecamatan *</label>
-        <input type="text" name="district" id="placeDistrict" class="form-control @error('district') is-invalid @enderror" value="{{ old('district') }}" placeholder="Contoh: Gresik / Kebomas / Manyar" required>
+        <input type="text" name="district" id="placeDistrict" class="form-control @error('district') is-invalid @enderror" value="{{ old('district') }}" placeholder="Contoh: Kebomas / Manyar / Kecamatan" required>
         @error('district') <span class="text-danger small">{{ $message }}</span> @enderror
     </div>
 
@@ -40,7 +40,7 @@
 
     <div class="col-12">
         <label class="form-label fw-bold small">Alamat Lengkap</label>
-        <textarea name="address" class="form-control" rows="2" placeholder="Jl. Basuki Rahmat No. 12, Kebungson, Gresik">{{ old('address') }}</textarea>
+        <textarea name="address" class="form-control" rows="2" placeholder="Contoh: Jl. Basuki Rahmat No. 12">{{ old('address') }}</textarea>
     </div>
 
     <div class="col-md-6">

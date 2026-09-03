@@ -90,7 +90,7 @@
 
                 <div class="mb-4">
                     <label class="form-label small fw-bold">Alamat Usaha / Domisili</label>
-                    <textarea name="address" rows="3" class="form-control" placeholder="Alamat lengkap usaha di Kabupaten Gresik">{{ old('address', $owner->address) }}</textarea>
+                    <textarea name="address" rows="3" class="form-control" placeholder="Alamat lengkap tempat usaha / domisili">{{ old('address', $owner->address) }}</textarea>
                 </div>
 
                 <div class="d-flex justify-content-end">

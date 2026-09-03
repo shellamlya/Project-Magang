@@ -88,11 +88,12 @@
 
     .hero-title span {
         display: block;
-        font-size: 0.45em;
-        font-weight: 500;
-        letter-spacing: 1px;
+        font-size: 0.38em;
+        font-weight: 600;
+        letter-spacing: 1.8px;
         margin-top: 12px;
-        opacity: 0.9;
+        opacity: 0.95;
+        text-transform: uppercase;
     }
     .hero-description {
     color: rgba(255, 255, 255, 0.92);
@@ -278,6 +279,139 @@
     .about-floating-card small {
         color: var(--text-muted);
     }
+
+    /* =========================================
+       SECTION STATISTIK: LEBIH LUAS, LEBIH TERHUBUNG
+       ========================================= */
+    .section-stats {
+        position: relative;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(225, 218, 251, 0.45) 45%, rgba(197, 179, 211, 0.35) 75%, rgba(141, 137, 137, 0.18) 100%);
+        padding: 5rem 0 4.5rem;
+        border-top: 1px solid rgba(197, 179, 211, 0.5);
+        margin-top: 3rem;
+        overflow: hidden;
+    }
+
+    .section-stats::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(197, 179, 211, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+        pointer-events: none;
+    }
+
+    .section-stats::after {
+        content: "";
+        position: absolute;
+        bottom: -60px;
+        left: -60px;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(141, 137, 137, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
+        pointer-events: none;
+    }
+
+    .stats-badge {
+        display: inline-block;
+        background: rgba(197, 179, 211, 0.45);
+        color: #450C3F;
+        border: 1px solid rgba(197, 179, 211, 0.8);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        padding: 0.4rem 1.2rem;
+        border-radius: 30px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    .stats-title {
+        color: #450C3F;
+        font-size: clamp(2rem, 4vw, 2.85rem);
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        line-height: 1.15;
+    }
+
+    .stats-subtitle {
+        color: #5a4b63;
+        font-size: 1rem;
+        max-width: 650px;
+        margin: 0.5rem auto 0;
+        line-height: 1.6;
+    }
+
+    .stat-card {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(197, 179, 211, 0.6);
+        border-radius: 24px;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        box-shadow: 0 14px 35px rgba(69, 12, 63, 0.05);
+        transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-8px);
+        background: #ffffff;
+        border-color: #C5B3D3;
+        box-shadow: 0 22px 45px rgba(77, 62, 163, 0.15);
+    }
+
+    .stat-icon-wrapper {
+        width: 64px;
+        height: 64px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #C5B3D3 0%, #E1DAFB 100%);
+        color: #450C3F;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 6px 15px rgba(197, 179, 211, 0.4);
+        transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover .stat-icon-wrapper {
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .stat-number {
+        font-size: clamp(2.8rem, 5.5vw, 4rem);
+        font-weight: 800;
+        color: #450C3F;
+        line-height: 1;
+        letter-spacing: -2px;
+        margin-bottom: 0.5rem;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .stat-label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #2b2b2b;
+        margin-bottom: 0.35rem;
+    }
+
+    .stat-caption {
+        font-size: 0.875rem;
+        color: #796e82;
+        margin-bottom: 0;
+    }
 </style>
 @endsection
 
@@ -288,12 +422,9 @@
     <div class="container">
         <div class="row align-items-center justify-content-center text-center">
             <div class="col-lg-10">
-                <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-3 text-uppercase">
-                    <i class="fa-solid fa-compass me-1"></i> Platform Resmi Eksplorasi Gresik
-                </span>
                 <h1 class="hero-title mb-3">
                     Lokavino
-                    <span>Lokavino.com</span>
+                    <span>Explore, Hangout, Stay</span>
                 </h1>
                 <p class=" mb-4 hero-description px-lg-5">
                     Temukan akomodasi penginapan terbaik, destinasi wisata menarik, dan tempat nongkrong terfavorit hanya dalam satu klik.
@@ -494,14 +625,14 @@
                     <div class="about-image-wrapper">
                         <img
                             src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
-                            alt="Eksplorasi Gresik"
+                            alt="Eksplorasi Destinasi"
                             class="about-image"
                         >
 
                         <div class="about-floating-card">
                             <i class="fa-solid fa-compass"></i>
                             <div>
-                                <strong>Explore Gresik</strong>
+                                <strong>Explore & Discover</strong>
                                 <small>Temukan tempat favoritmu</small>
                             </div>
                         </div>
@@ -526,7 +657,7 @@
                     </div>
                     <h4 class="fw-bold text-dark mb-2">Penginapan</h4>
                     <p class="text-muted small mb-4 flex-grow-1">
-                        Layanan pencarian akomodasi terlengkap di Gresik. Mulai dari hotel berbintang, guest house, hingga homestay terjangkau.
+                        Layanan pencarian akomodasi terlengkap. Mulai dari hotel berbintang, guest house, hingga homestay terjangkau.
                     </p>
                     <a href="{{ route('penginapan') }}" class="btn btn-grex-primary w-100">
                         <i class="fa-solid fa-compass me-1"></i> Jelajahi Penginapan
@@ -542,7 +673,7 @@
                     </div>
                     <h4 class="fw-bold text-dark mb-2">Wisata</h4>
                     <p class="text-muted small mb-4 flex-grow-1">
-                        Eksplorasi destinasi wisata alam memukau, ziarah religi Walisongo, keindahan pantai bahari, dan tempat bersejarah.
+                        Eksplorasi destinasi wisata alam memukau, ziarah religi bersejarah, keindahan bahari, dan berbagai atraksi seru.
                     </p>
                     <a href="{{ route('wisata') }}" class="btn btn-grex-primary w-100">
                         <i class="fa-solid fa-compass me-1"></i> Jelajahi Wisata
@@ -558,7 +689,7 @@
                     </div>
                     <h4 class="fw-bold text-dark mb-2">Nongkrong</h4>
                     <p class="text-muted small mb-4 flex-grow-1">
-                        Rekomendasi tempat bersantai, coffee shop aesthetic, warung kopi khas Gresik, dan lokasi kulineran favorit keluarga.
+                        Rekomendasi tempat bersantai, coffee shop aesthetic, kedai kopi autentik, dan lokasi kulineran favorit keluarga.
                     </p>
                     <a href="{{ route('nongkrong') }}" class="btn btn-grex-primary w-100">
                         <i class="fa-solid fa-compass me-1"></i> Jelajahi Nongkrong
@@ -711,5 +842,46 @@
     </div>
 
 </div>
+
+<!-- Section Statistik: Lebih Luas, Lebih Terhubung -->
+<section class="section-stats">
+    <div class="container position-relative" style="z-index: 2;">
+        <div class="text-center mb-5">
+            <span class="stats-badge">
+                <i class="fa-solid fa-chart-pie me-1"></i> Jangkauan & Aktivitas Lokavino
+            </span>
+            <h2 class="stats-title">Lebih Luas, Lebih Terhubung</h2>
+            <p class="stats-subtitle">
+                Menghubungkan ragam penginapan, destinasi wisata, dan tempat nongkrong terfavorit dengan ribuan pengunjung dalam satu ekosistem terpadu.
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Statistik 1: Usaha Terdaftar -->
+            <div class="col-12 col-sm-6 col-lg-5 col-xl-4">
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <div class="stat-number">{{ number_format($totalPlaces, 0, ',', '.') }}+</div>
+                    <div class="stat-label">Usaha Terdaftar</div>
+                    <p class="stat-caption">Penginapan, Wisata & Nongkrong</p>
+                </div>
+            </div>
+
+            <!-- Statistik 2: Pengunjung Website -->
+            <div class="col-12 col-sm-6 col-lg-5 col-xl-4">
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="stat-number">{{ number_format($totalVisitors, 0, ',', '.') }}+</div>
+                    <div class="stat-label">Pengunjung Website</div>
+                    <p class="stat-caption">Eksplorasi Publik Aktif Terdata</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @endsection

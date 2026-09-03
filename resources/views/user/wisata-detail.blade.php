@@ -161,15 +161,15 @@
             <div class="detail-card p-4 p-md-5 mb-4">
                 <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
                     <span class="badge-wisata-lg"><i class="fa-solid fa-mountain-sun me-1"></i> Destinasi Wisata</span>
-                    <span class="badge bg-success-subtle text-success fs-6 border border-success-subtle rounded-pill px-3 py-2">
-                        <i class="fa-solid fa-circle-check me-1"></i> Terverifikasi Disparekrafbudpora
+                    <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle px-3 py-2 rounded-pill small fw-bold">
+                        <i class="fa-solid fa-circle-check me-1"></i> Terverifikasi Resmi
                     </span>
                 </div>
 
                 <h1 class="fw-extrabold text-dark display-5 mb-3">{{ $touristPlace->name }}</h1>
 
                 <p class="text-muted fs-6 mb-4">
-                    <i class="fa-solid fa-location-dot me-1 text-danger"></i> {{ $touristPlace->address ?? ($touristPlace->village . ', Kecamatan ' . $touristPlace->district . ', Kabupaten Gresik') }}
+                    <i class="fa-solid fa-location-dot text-danger me-1"></i> {{ $touristPlace->address ?? ($touristPlace->village . ', Kecamatan ' . $touristPlace->district) }}
                 </p>
 
                 <!-- Information Grid Box -->
@@ -242,7 +242,7 @@
         <div class="col-lg-4">
             <!-- Wisata Lainnya -->
             <div class="card border-0 shadow-sm rounded-4 p-4 mb-4" style="background: #ffffff;">
-                <h5 class="fw-bold text-dark mb-3">Wisata Lainnya di Gresik</h5>
+                <h5 class="fw-bold text-dark mb-3">Destinasi Wisata Lainnya</h5>
                 <div class="d-flex flex-column gap-3">
                     @foreach($otherWisata as $other)
                         <a href="{{ route('wisata.detail', $other->id) }}" class="text-decoration-none">

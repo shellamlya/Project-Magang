@@ -12,7 +12,7 @@
         </div>
         <div>
             <h6 class="fw-bold text-dark mb-0">Akun Anda Menunggu Verifikasi Admin</h6>
-            <small class="text-muted">Foto KTP dan data akun Anda sedang ditinjau oleh Admin Disparekrafbudpora Kab. Gresik via WhatsApp. Anda tetap dapat menyiapkan data listing usaha, dan verifikasi listing akan diproses setelah akun terverifikasi.</small>
+            <small class="text-muted">Foto KTP dan data akun Anda sedang ditinjau oleh Tim Admin via WhatsApp. Anda tetap dapat menyiapkan data listing usaha, dan verifikasi listing akan diproses setelah akun terverifikasi.</small>
         </div>
     </div>
 @elseif($owner->isAccountRejected())
@@ -34,7 +34,7 @@
             </div>
             <div>
                 <h6 class="fw-bold text-dark mb-0">Akun Mitra Owner Terverifikasi Resmi</h6>
-                <small class="text-muted">Akun Anda telah disetujui oleh Disparekrafbudpora Kab. Gresik. Tempat usaha yang Anda ajukan akan diproses langsung oleh Admin.</small>
+                <small class="text-muted">Akun Anda telah disetujui oleh Tim Admin. Tempat usaha yang Anda ajukan akan diproses langsung oleh Admin.</small>
             </div>
         </div>
         <span class="badge bg-success rounded-pill px-3 py-2"><i class="fa-solid fa-circle-check me-1"></i> Verified</span>
@@ -43,42 +43,6 @@
 
 <!-- Stat Cards Ringkasan -->
 <div class="row g-3 mb-4">
-    <div class="col-md-3 col-sm-6">
-        <div class="stat-card d-flex align-items-center justify-content-between">
-            <div>
-                <small class="text-muted d-block fw-semibold mb-1">Total Tempat Usaha</small>
-                <h3 class="fw-extrabold text-dark mb-0">{{ $totalPlaces }}</h3>
-            </div>
-            <div class="icon-box bg-primary bg-opacity-10 text-primary">
-                <i class="fa-solid fa-store"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6">
-        <div class="stat-card d-flex align-items-center justify-content-between">
-            <div>
-                <small class="text-muted d-block fw-semibold mb-1">Disetujui (Approved)</small>
-                <h3 class="fw-extrabold text-success mb-0">{{ $totalApproved }}</h3>
-            </div>
-            <div class="icon-box bg-success bg-opacity-10 text-success">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6">
-        <div class="stat-card d-flex align-items-center justify-content-between">
-            <div>
-                <small class="text-muted d-block fw-semibold mb-1">Total View Pengunjung</small>
-                <h3 class="fw-extrabold text-info mb-0">{{ number_format($totalViews) }}</h3>
-                <small class="text-muted">Bulan ini</small>
-            </div>
-            <div class="icon-box bg-info bg-opacity-10 text-info">
-                <i class="fa-solid fa-eye"></i>
-            </div>
-        </div>
-    </div>
 
     <div class="col-md-3 col-sm-6">
         <div class="stat-card d-flex align-items-center justify-content-between">
@@ -115,7 +79,7 @@
     <div class="card-body p-4 d-flex justify-content-between align-items-center flex-wrap gap-3 bg-white rounded-4">
         <div>
             <h5 class="fw-bold text-dark mb-1"><i class="fa-solid fa-list-check text-primary me-2"></i>Kelola Seluruh Tempat Usaha Anda</h5>
-            <p class="small text-muted mb-0">Pantau status verifikasi dan analitik performa tempat usaha Anda di Gresik</p>
+            <p class="small text-muted mb-0">Pantau status verifikasi dan analitik performa tempat usaha Anda</p>
         </div>
         <div class="d-flex gap-2 flex-wrap">
             <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#categoryModal">
