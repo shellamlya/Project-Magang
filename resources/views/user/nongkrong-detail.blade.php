@@ -161,8 +161,8 @@
             <div class="detail-card p-4 p-md-5 mb-4">
                 <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
                     <span class="badge-nongkrong-lg"><i class="fa-solid fa-mug-hot me-1"></i> Tempat Nongkrong & Kafe</span>
-                    <span class="badge bg-success-subtle text-success fs-6 border border-success-subtle rounded-pill px-3 py-2">
-                        <i class="fa-solid fa-circle-check me-1"></i> Terverifikasi Disparekrafbudpora
+                    <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle px-3 py-2 rounded-pill small fw-bold">
+                        <i class="fa-solid fa-circle-check me-1"></i> Terverifikasi Resmi
                     </span>
                 </div>
 
@@ -277,7 +277,7 @@
             <!-- Rekomendasi Penginapan Terdekat -->
             @if(isset($nearbyLodgings) && $nearbyLodgings->isNotEmpty())
                 <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
-                    <h6 class="fw-bold text-dark mb-3">Penginapan Terdekat di Gresik</h6>
+                    <h6 class="fw-bold text-dark mb-3">Rekomendasi Penginapan Terdekat</h6>
                     <div class="d-flex flex-column gap-3">
                         @foreach($nearbyLodgings as $lodging)
                             <a href="{{ route('lodging.detail', $lodging->id) }}" class="text-decoration-none">

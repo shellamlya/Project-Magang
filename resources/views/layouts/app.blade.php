@@ -47,54 +47,22 @@
             border-bottom: 1px solid rgba(77, 62, 163, 0.12);
             box-shadow: 0 4px 20px rgba(69, 12, 63, 0.05);
         }
-        .navbar-brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #4D3EA3;
-            text-decoration: none;
-            padding: 0;
-        }
-
-
-        /* Icon Compass */
-        .grex-logo-icon {
-            font-size: 2rem;
-            color: #4D3EA3;
-            flex-shrink: 0;
-        }
-
-
-        /* Container teks */
-        .grex-logo-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            line-height: 1;
-        }
-
-
-        /* GREX */
-        .grex-title {
+        .navbar-logo-img {
+            height: 46px;
+            width: auto;
+            max-width: 210px;
+            object-fit: contain;
             display: block;
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            color: #4D3EA3;
+            transition: transform 0.25s ease;
         }
-
-
-        /* Gresik Explore */
-        .grex-subtitle {
-            display: block;
-            margin-top: 4px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.55rem;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            color: #758AD1;
-            white-space: nowrap;
+        .navbar-logo-img:hover {
+            transform: scale(1.02);
+        }
+        @media (max-width: 768px) {
+            .navbar-logo-img {
+                height: 38px;
+                max-width: 170px;
+            }
         }
         .nav-link {
             font-weight: 600;
@@ -288,13 +256,8 @@ main {
     <!-- Navbar Sticky -->
     <nav class="navbar navbar-expand-lg sticky-top navbar-grex">
         <div class="container">
-           <a class="navbar-brand navbar-brand-logo" href="{{ route('home') }}">
-                <i class="fa-solid fa-compass grex-logo-icon"></i>
-
-                <div class="grex-logo-text">
-                    <span class="grex-title">Lokavino</span>
-                    <span class="grex-subtitle">Lokavino.com</span>
-                </div>
+           <a class="navbar-brand py-0 d-flex align-items-center" href="{{ route('home') }}">
+                <img src="{{ asset('images/logo-lokavino.png') }}" alt="Lokavino" class="navbar-logo-img">
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarGrex">
                 <span class="navbar-toggler-icon"></span>
@@ -366,7 +329,7 @@ main {
                 <div class="col-md-5">
                     <h5 class="text-white fw-bold mb-3"><i class="fa-solid fa-compass me-2"></i>Lokavino</h5>
                     <p class="small text-white-50">
-                        Lokavino Platform informasi dan pencarian penginapan, wisata, dan tempat nongkrong di Kabupaten Gresik. Email: lokavino.indonesia@gmail.com
+                        Lokavino — Platform informasi dan pencarian penginapan, destinasi wisata, serta tempat nongkrong favorit terpercaya. Email: lokavino.indonesia@gmail.com
                     </p>
                 </div>
                 <div class="col-md-3 ms-auto">

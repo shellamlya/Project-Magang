@@ -35,7 +35,7 @@
 
     <div class="col-12">
         <label class="form-label fw-bold small">Alamat Lengkap</label>
-        <textarea name="address" class="form-control" rows="2" placeholder="Desa Delegan, Kecamatan Panceng, Kabupaten Gresik">{{ old('address') }}</textarea>
+        <textarea name="address" class="form-control" rows="2" placeholder="Contoh: Jl. Raya Pantai No. 10, Desa Delegan">{{ old('address') }}</textarea>
     </div>
 
     <!-- No WA Bisnis Wisata -->

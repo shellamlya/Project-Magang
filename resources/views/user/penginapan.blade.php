@@ -44,8 +44,8 @@
         <div class="row align-items-center">
             <div class="col-md-8">
                 <span class="badge-grex-penginapan text-uppercase mb-2 d-inline-block">Layanan Penginapan</span>
-                <h1 class="fw-extrabold text-dark display-6 mb-2">Daftar Penginapan & Hotel Gresik</h1>
-                <p class="text-muted mb-0">Temukan berbagai pilihan hotel berbintang, resort, homestay, guesthouse, dan villa nyaman di Kabupaten Gresik.</p>
+                <h1 class="fw-extrabold text-dark display-6 mb-2">Daftar Penginapan & Hotel</h1>
+                <p class="text-muted mb-0">Temukan berbagai pilihan hotel berbintang, resort, homestay, guesthouse, dan villa nyaman untuk pengalaman menginap terbaik.</p>
             </div>
             <div class="col-md-4 text-md-end mt-3 mt-md-0">
                 <a href="{{ route('home') }}" class="btn btn-outline-dark rounded-pill px-4 fw-semibold btn-sm">

@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Tambah Wisata - Admin Lokavino')
 @section('page-title', 'Tambah Data Wisata')
@@ -57,7 +57,7 @@
 
                 <div class="col-md-4">
                     <label class="form-label fw-semibold">Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="Contoh: wisata@gresik.go.id" value="{{ old('email') }}">
+                    <input type="email" name="email" class="form-control" placeholder="Contoh: info@wisata.com" value="{{ old('email') }}">
                 </div>
 
                 <div class="col-md-4">
