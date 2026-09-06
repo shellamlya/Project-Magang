@@ -11,11 +11,24 @@
 </div>
 
 @php
-    $cleanPhone = preg_replace('/[^0-9]/', '', $owner->phone ?? ($owner->user->phone ?? ''));
-    if (str_starts_with($cleanPhone, '0')) {
-        $cleanPhone = '62' . substr($cleanPhone, 1);
+    // Ambil nomor telepon dari data owner (business_phone / phone / user->phone)
+    $rawPhone = $owner->business_phone ?: ($owner->phone ?: ($owner->user->phone ?? ''));
+    $cleanDigits = preg_replace('/[^0-9]/', '', $rawPhone);
+
+    // Format nomor HP ke format internasional (0812... -> 62812...)
+    if (str_starts_with($cleanDigits, '0')) {
+        $formattedPhone = '62' . substr($cleanDigits, 1);
+    } elseif (str_starts_with($cleanDigits, '62')) {
+        $formattedPhone = $cleanDigits;
+    } elseif (!empty($cleanDigits)) {
+        $formattedPhone = '62' . $cleanDigits;
+    } else {
+        $formattedPhone = null;
     }
-    $waValidationUrl = $cleanPhone ? "https://wa.me/{$cleanPhone}?text=" . urlencode("Halo Bapak/Ibu {$owner->user->name}, kami dari Tim Admin Lokavino ingin mengonfirmasi pendaftaran akun Owner Anda.") : null;
+
+    $ownerName = $owner->user->name ?? 'Bapak/Ibu Mitra';
+    $waMessage = "Halo {$ownerName}, saya Admin Lokavino ingin mengonfirmasi pendaftaran tempat usaha Anda.";
+    $waValidationUrl = $formattedPhone ? "https://wa.me/{$formattedPhone}?text=" . urlencode($waMessage) : null;
 @endphp
 
 <div class="row g-4">
@@ -28,9 +41,9 @@
                     <span class="text-muted small">Terdaftar: {{ $owner->created_at->format('d M Y, H:i') }}</span>
                 </div>
                 <div>
-                    @if($owner->account_status === 'account_verified')
+                    @if($owner->verification_status === 'approved' || $owner->account_status === 'account_verified')
                         <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 fw-bold"><i class="fa-solid fa-circle-check me-1"></i> Akun Terverifikasi</span>
-                    @elseif($owner->account_status === 'pending_account')
+                    @elseif($owner->verification_status === 'pending' || $owner->account_status === 'pending_account')
                         <span class="badge bg-warning bg-opacity-10 text-warning rounded-pill px-3 py-2 fw-bold"><i class="fa-solid fa-clock me-1"></i> Menunggu Validasi Admin</span>
                     @else
                         <span class="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-2 fw-bold"><i class="fa-solid fa-times-circle me-1"></i> Akun Ditolak</span>
@@ -51,7 +64,12 @@
                 </div>
                 <div class="col-md-6">
                     <small class="text-muted d-block">No. HP / WhatsApp Personal (Validasi WA):</small>
-                    <span class="fw-bold text-success fs-6"><i class="fa-brands fa-whatsapp me-1"></i>{{ $owner->phone ?? $owner->user->phone }}</span>
+                    <div class="d-flex align-items-center gap-2 mt-1">
+                        <span class="fw-bold text-success fs-6"><i class="fa-brands fa-whatsapp me-1"></i>{{ $owner->phone ?? ($owner->business_phone ?? ($owner->user->phone ?? '-')) }}</span>
+                        @if($formattedPhone)
+                            <span class="badge bg-success bg-opacity-10 text-success rounded-pill font-monospace small">+{{ $formattedPhone }}</span>
+                        @endif
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <small class="text-muted d-block">Nama Usaha / Brand Utama:</small>
@@ -71,7 +89,7 @@
                 @endif
             </div>
 
-            <!-- Dokumen Foto KTP (Privat & Aman) -->
+            <!-- Dokumen Foto KTP -->
             <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-id-card text-primary me-2"></i>Dokumen Foto KTP Penanggung Jawab</h5>
             <div class="p-3 border rounded-3 bg-light mb-4 text-center">
                 @if($owner->ktp_photo)
@@ -96,24 +114,53 @@
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                     <div>
                         <h6 class="fw-bold text-dark mb-1">Keputusan Verifikasi Akun Owner</h6>
-                        <small class="text-muted">Setelah memvalidasi KTP dan menghubungi via WhatsApp, tentukan status persetujuan akun.</small>
+                        <small class="text-muted">
+                            @if($owner->verification_status === 'pending')
+                                Setelah memvalidasi KTP dan menghubungi via WhatsApp, tentukan status persetujuan akun.
+                            @else
+                                Status keputusan akhir untuk verifikasi akun owner ini.
+                            @endif
+                        </small>
                     </div>
 
-                    <div class="d-flex gap-2">
-                        <!-- Form Approve -->
-                        <form action="{{ route('admin.owner-verifications.approve', $owner->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            <button type="submit" class="btn btn-success rounded-pill px-4 fw-bold shadow-sm" onclick="return confirm('Apakah Anda yakin ingin menyetujui akun Owner ini?')">
-                                <i class="fa-solid fa-check me-1"></i> Setujui Akun (Approve)
+                    @if($owner->verification_status === 'pending')
+                        <div class="d-flex gap-2">
+                            <!-- Form Approve -->
+                            <form action="{{ route('admin.owner-verifications.approve', $owner->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-success rounded-pill px-4 fw-bold shadow-sm" onclick="return confirm('Apakah Anda yakin ingin menyetujui akun Owner ini?')">
+                                    <i class="fa-solid fa-check me-1"></i> Setujui Akun (Approve)
+                                </button>
+                            </form>
+
+                            <!-- Button Trigger Modal Reject -->
+                            <button type="button" class="btn btn-danger rounded-pill px-4 fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#rejectOwnerModal">
+                                <i class="fa-solid fa-times me-1"></i> Tolak Akun (Reject)
                             </button>
-                        </form>
-
-                        <!-- Button Trigger Modal Reject -->
-                        <button type="button" class="btn btn-danger rounded-pill px-4 fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#rejectOwnerModal">
-                            <i class="fa-solid fa-times me-1"></i> Tolak Akun (Reject)
-                        </button>
-                    </div>
+                        </div>
+                    @else
+                        <!-- Tampilan Jika Keputusan Sudah Diambil (Approved / Rejected) -->
+                        <div>
+                            @if($owner->verification_status === 'approved')
+                                <span class="badge bg-success fs-6 rounded-pill px-3 py-2">
+                                    <i class="fa-solid fa-circle-check me-1"></i> Akun Telah Disetujui
+                                </span>
+                            @else
+                                <span class="badge bg-danger fs-6 rounded-pill px-3 py-2">
+                                    <i class="fa-solid fa-circle-xmark me-1"></i> Akun Telah Ditolak
+                                </span>
+                            @endif
+                        </div>
+                    @endif
                 </div>
+
+                <!-- Tampilkan Alasan Penolakan jika Status Rejected -->
+                @if($owner->verification_status === 'rejected' && ($owner->account_rejection_reason || $owner->rejection_reason))
+                    <div class="alert alert-danger mb-0 mt-3 rounded-3 border-0">
+                        <small class="fw-bold text-dark d-block mb-1"><i class="fa-solid fa-triangle-exclamation me-1"></i> Alasan Penolakan Admin:</small>
+                        <span class="small text-dark">{{ $owner->account_rejection_reason ?? $owner->rejection_reason }}</span>
+                    </div>
+                @endif
             </div>
         </div>
 

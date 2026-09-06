@@ -24,6 +24,8 @@ use App\Http\Controllers\Admin\AdminFacilityController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTouristPlaceController;
 use App\Http\Controllers\Admin\AdminHangoutPlaceController;
+use App\Http\Controllers\Owner\OwnerReportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -61,20 +63,55 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register-owner', [RegisterOwnerController::class, 'showRegisterForm'])->name('register.owner');
 Route::post('/register-owner', [RegisterOwnerController::class, 'register']);
 
+// ==========================================
+// 2.1 ROUTE VERIFIKASI EMAIL (MustVerifyEmail)
+// ==========================================
+Route::middleware('auth')->group(function () {
+    Route::get('/email/verify', function () {
+        if (request()->user()->hasVerifiedEmail()) {
+            return redirect()->route('owner.dashboard');
+        }
+        return view('auth.verify-email');
+    })->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect()->route('owner.dashboard')->with('success', 'Email Anda berhasil diverifikasi!');
+    })->middleware(['signed'])->name('verification.verify');
+
+    Route::post('/email/verification-notification', function (\Illuminate\Http\Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('status', 'verification-link-sent');
+    })->middleware(['throttle:6,1'])->name('verification.send');
+});
+
 use App\Http\Controllers\Owner\AIController;
 
 // ==========================================
 // 3. ROUTE OWNER (Pemilik Usaha)
 // ==========================================
 Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->group(function () {
-    Route::get('/dashboard', [OwnerDashboardController::class, 'index'])->name('dashboard');
-    Route::resource('lodgings', OwnerLodgingController::class);
-    
-    // Feature AI Description Generator
-    Route::post('/ai/generate-description', [AIController::class, 'generateDescription'])->name('ai.generate-description');
+    // Halaman khusus status verifikasi akun (dapat diakses saat pending/rejected)
+    Route::get('/pending-verification', [OwnerDashboardController::class, 'pendingVerification'])->name('pending-verification');
+    Route::get('/rejected-verification', [OwnerDashboardController::class, 'rejectedVerification'])->name('rejected-verification');
 
-    Route::get('/profile', [OwnerProfileController::class, 'show'])->name('profile');
-    Route::post('/profile', [OwnerProfileController::class, 'update'])->name('profile.update');
+    // ➕ TAMBAHKAN ROUTE INI (Proses submit ulang data KTP/identitas setelah ditolak)
+    Route::post('/re-apply', [OwnerDashboardController::class, 'reApply'])->name('re-apply');
+
+    // Route operasional yang diproteksi penuh (Wajib verified email & akun disetujui Admin)
+    Route::middleware(['verified', 'EnsureOwnerApproved'])->group(function () {
+        Route::get('/dashboard', [OwnerDashboardController::class, 'index'])->name('dashboard');
+        Route::resource('lodgings', OwnerLodgingController::class);
+        
+
+        Route::get('/reports', [OwnerReportController::class, 'index'])->name('reports.index'); 
+       
+        // Feature AI Description Generator
+        Route::post('/ai/generate-description', [AIController::class, 'generateDescription'])->name('ai.generate-description');
+
+        Route::get('/profile', [OwnerProfileController::class, 'show'])->name('profile');
+        Route::post('/profile', [OwnerProfileController::class, 'update'])->name('profile.update');
+    });
 });
 
 // ==========================================
@@ -105,3 +142,16 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('facilities', AdminFacilityController::class);
     Route::resource('users', AdminUserController::class);
 });
+
+// forgot password
+use App\Http\Controllers\Auth\ForgotPasswordController;
+
+// Halaman Minta Link Reset Password
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+// Halaman Form Reset Password Baru
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [ForgotPasswordController::class, 'updatePassword'])->name('password.update');
+
+

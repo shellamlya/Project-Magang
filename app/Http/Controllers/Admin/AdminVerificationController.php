@@ -11,6 +11,9 @@ use App\Models\TouristPlace;
 use App\Models\HangoutPlace;
 use App\Models\Owner;
 use App\Models\VerificationLog;
+use App\Mail\OwnerStatusMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class AdminVerificationController
@@ -244,10 +247,11 @@ class AdminVerificationController extends Controller
     public function ownerApprove(Request $request, $id)
     {
         $admin = Auth::user();
-        $owner = Owner::findOrFail($id);
+        $owner = Owner::with('user')->findOrFail($id);
 
         $owner->update([
             'account_status'      => Owner::ACCOUNT_VERIFIED,
+            'verification_status' => Owner::STATUS_APPROVED,
             'account_verified_at' => now(),
             'account_verified_by' => $admin->id,
             'account_rejection_reason' => null,
@@ -263,9 +267,18 @@ class AdminVerificationController extends Controller
             'notes'           => $request->input('notes', 'Akun owner telah diverifikasi. Owner dapat mendaftarkan tempat usaha.'),
         ]);
 
+        // Kirim email notifikasi ke Owner
+        try {
+            if ($owner->email) {
+                Mail::to($owner->email)->send(new OwnerStatusMail($owner, 'approved'));
+            }
+        } catch (\Throwable $e) {
+            Log::error('Gagal mengirim email verifikasi owner disetujui: ' . $e->getMessage());
+        }
+
         return redirect()
             ->route('admin.owner-verifications.index')
-            ->with('success', 'Akun Owner "' . $owner->user->name . '" telah DISETUJUI. Owner dapat mendaftarkan listing usaha.');
+            ->with('success', 'Akun Owner "' . $owner->user->name . '" telah DISETUJUI. Notifikasi email telah dikirimkan ke owner.');
     }
 
     /**
@@ -282,10 +295,11 @@ class AdminVerificationController extends Controller
         ]);
 
         $admin = Auth::user();
-        $owner = Owner::findOrFail($id);
+        $owner = Owner::with('user')->findOrFail($id);
 
         $owner->update([
             'account_status'           => Owner::ACCOUNT_REJECTED,
+            'verification_status'      => Owner::STATUS_REJECTED,
             'account_verified_at'      => now(),
             'account_verified_by'      => $admin->id,
             'account_rejection_reason' => $request->rejection_reason,
@@ -300,9 +314,18 @@ class AdminVerificationController extends Controller
             'notes'           => $request->rejection_reason,
         ]);
 
+        // Kirim email notifikasi ke Owner
+        try {
+            if ($owner->email) {
+                Mail::to($owner->email)->send(new OwnerStatusMail($owner, 'rejected', $request->rejection_reason));
+            }
+        } catch (\Throwable $e) {
+            Log::error('Gagal mengirim email penolakan owner: ' . $e->getMessage());
+        }
+
         return redirect()
             ->route('admin.owner-verifications.index')
-            ->with('success', 'Akun Owner "' . $owner->user->name . '" telah DITOLAK beserta alasan penolakan.');
+            ->with('success', 'Akun Owner "' . $owner->user->name . '" telah DITOLAK beserta alasan penolakan. Notifikasi email telah dikirimkan ke owner.');
     }
 
     // ── Private Helpers ───────────────────────────────────────────────────────

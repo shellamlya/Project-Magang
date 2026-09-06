@@ -4,88 +4,126 @@
 @section('page-title', 'Dashboard Administrator Lokavino')
 
 @section('content')
-<!-- Stat Cards -->
-<div class="row g-3 mb-4">
-    <div class="col-md-2-4 col-sm-6">
-        <div class="stat-card">
+<!-- Stat Cards (Kotak Statistik Utama - Proporsional) -->
+<div class="row row-cols-1 row-cols-md-3 row-cols-xl-6 g-3 mb-4">
+    <!-- Owner -->
+    <div class="col">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center justify-content-between mb-2">
-                <small class="text-muted fw-semibold">Jumlah Owner</small>
-                <div class="icon-box bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-store"></i></div>
+                <span class="text-muted fw-semibold small">Owner</span>
+                <div class="icon-box bg-primary bg-opacity-10 text-primary p-2 rounded-3"><i class="fa-solid fa-store"></i></div>
             </div>
-            <h3 class="fw-extrabold text-dark mb-0">{{ $totalOwners }}</h3>
+            <h4 class="fw-extrabold text-dark mb-0">{{ $totalOwners ?? 0 }}</h4>
         </div>
     </div>
 
-    <div class="col-md-2-4 col-sm-6">
-        <div class="stat-card">
+    <!-- Penginapan -->
+    <div class="col">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center justify-content-between mb-2">
-                <small class="text-muted fw-semibold">Total Penginapan</small>
-                <div class="icon-box bg-info bg-opacity-10 text-info"><i class="fa-solid fa-hotel"></i></div>
+                <span class="text-muted fw-semibold small">Penginapan</span>
+                <div class="icon-box bg-info bg-opacity-10 text-info p-2 rounded-3"><i class="fa-solid fa-hotel"></i></div>
             </div>
-            <h3 class="fw-extrabold text-dark mb-0">{{ $totalLodgings }}</h3>
+            <h4 class="fw-extrabold text-dark mb-0">{{ $totalLodgings ?? 0 }}</h4>
         </div>
     </div>
 
-    <div class="col-md-2-4 col-sm-6">
-        <div class="stat-card">
+    <!-- Pending -->
+    <div class="col">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center justify-content-between mb-2">
-                <small class="text-muted fw-semibold">Pending (Verifikasi)</small>
-                <div class="icon-box bg-warning bg-opacity-10 text-warning"><i class="fa-solid fa-clock"></i></div>
+                <span class="text-muted fw-semibold small">Pending</span>
+                <div class="icon-box bg-warning bg-opacity-10 text-warning p-2 rounded-3"><i class="fa-solid fa-clock"></i></div>
             </div>
-            <h3 class="fw-extrabold text-warning mb-0">{{ $totalPending }}</h3>
+            <h4 class="fw-extrabold text-warning mb-0">{{ $totalPending ?? 0 }}</h4>
         </div>
     </div>
 
-    <div class="col-md-2-4 col-sm-6">
-        <div class="stat-card">
+    <!-- Disetujui -->
+    <div class="col">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center justify-content-between mb-2">
-                <small class="text-muted fw-semibold">Approved (Disetujui)</small>
-                <div class="icon-box bg-success bg-opacity-10 text-success"><i class="fa-solid fa-circle-check"></i></div>
+                <span class="text-muted fw-semibold small">Disetujui</span>
+                <div class="icon-box bg-success bg-opacity-10 text-success p-2 rounded-3"><i class="fa-solid fa-circle-check"></i></div>
             </div>
-            <h3 class="fw-extrabold text-success mb-0">{{ $totalApproved }}</h3>
+            <h4 class="fw-extrabold text-success mb-0">{{ $totalApproved ?? 0 }}</h4>
         </div>
     </div>
 
-    <div class="col-md-2-4 col-sm-6">
-        <div class="stat-card">
+    <!-- Ditolak -->
+    <div class="col">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center justify-content-between mb-2">
-                <small class="text-muted fw-semibold">Rejected (Ditolak)</small>
-                <div class="icon-box bg-danger bg-opacity-10 text-danger"><i class="fa-solid fa-circle-xmark"></i></div>
+                <span class="text-muted fw-semibold small">Ditolak</span>
+                <div class="icon-box bg-danger bg-opacity-10 text-danger p-2 rounded-3"><i class="fa-solid fa-circle-xmark"></i></div>
             </div>
-            <h3 class="fw-extrabold text-danger mb-0">{{ $totalRejected }}</h3>
+            <h4 class="fw-extrabold text-danger mb-0">{{ $totalRejected ?? 0 }}</h4>
+        </div>
+    </div>
+
+    <!-- Total Viewers -->
+    <div class="col">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="text-muted fw-semibold small">Total Viewers</span>
+                <div class="icon-box bg-primary bg-opacity-10 text-primary p-2 rounded-3"><i class="fa-solid fa-eye"></i></div>
+            </div>
+            <h4 class="fw-extrabold text-primary mb-0">{{ $totalViews ?? 0 }}</h4>
         </div>
     </div>
 </div>
 
-<!-- Chart Visualizations -->
-<div class="row g-4 mb-4">
-    <!-- Bar Chart Pengajuan per Bulan -->
-    <div class="col-lg-7">
-        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h6 class="fw-bold text-dark mb-0"><i class="fa-solid fa-chart-bar text-primary me-2"></i>Grafik Pengajuan Penginapan Per Bulan</h6>
+<!-- Grafik Visualisasi (Bar Chart Bulanan & Doughnut Sebaran Kecamatan) -->
+<!-- Bagian Grafik -->
+<div class="row mb-4">
+    <div class="col-12"> <!-- Ubah dari col-md-8 / col-lg-8 menjadi col-12 agar full melebar -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+            <h5 class="fw-bold mb-3"><i class="fa-solid fa-chart-bar me-2"></i> Grafik Pengajuan Tempat Usaha Per Bulan</h5>
+            
+            <!-- Elemen Chart -->
+            <div style="position: relative; height: 350px; width: 100%;">
+                <canvas id="myChart"></canvas>
             </div>
-            <div style="position: relative; height: 280px;">
-                <canvas id="monthlyChart"></canvas>
+        </div>
+    </div>
+</div>
+
+    <!-- 3 Donut Chart Sebaran Kecamatan per Kategori -->
+<div class="row g-4 mb-4">
+    <!-- Donut 1: Penginapan -->
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+            <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-hotel text-primary me-2"></i>Sebaran Penginapan per Kecamatan</h6>
+            <div style="position: relative; height: 260px;" class="d-flex justify-content-center align-items-center">
+                <canvas id="lodgingDistrictChart"></canvas>
             </div>
         </div>
     </div>
 
-    <!-- Doughnut Chart Kecamatan -->
-    <div class="col-lg-5">
+    <!-- Donut 2: Tempat Nongkrong -->
+    <div class="col-lg-4">
         <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h6 class="fw-bold text-dark mb-0"><i class="fa-solid fa-chart-pie text-primary me-2"></i>Sebaran Penginapan per Kecamatan</h6>
-            </div>
-            <div style="position: relative; height: 280px;" class="d-flex justify-content-center">
-                <canvas id="categoryChart"></canvas>
+            <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-mug-hot text-info me-2"></i>Sebaran Nongkrong per Kecamatan</h6>
+            <div style="position: relative; height: 260px;" class="d-flex justify-content-center align-items-center">
+                <canvas id="hangoutDistrictChart"></canvas>
             </div>
         </div>
     </div>
+
+    <!-- Donut 3: Wisata -->
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+            <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-mountain-sun text-success me-2"></i>Sebaran Wisata per Kecamatan</h6>
+            <div style="position: relative; height: 260px;" class="d-flex justify-content-center align-items-center">
+                <canvas id="touristDistrictChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <!-- Penginapan Terbaru -->
-<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
     <div class="card-header bg-white p-4 border-bottom d-flex justify-content-between align-items-center">
         <h6 class="fw-bold text-dark mb-0"><i class="fa-solid fa-list-check text-primary me-2"></i>Pengajuan Penginapan Terbaru</h6>
         <a href="{{ route('admin.verifications.index') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">Lihat Semua Verifikasi</a>
@@ -105,12 +143,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($recentLodgings as $item)
+                    @forelse($recentLodgings ?? [] as $item)
                         <tr>
                             <td class="ps-4">
-                                <div class="d-flex align-items-center gap-3">
-                                    <h6 class="fw-bold text-dark mb-0">{{ $item->name }}</h6>
-                                </div>
+                                <h6 class="fw-bold text-dark mb-0">{{ $item->name }}</h6>
                             </td>
                             <td>{{ $item->owner->company_name ?? ($item->owner->user->name ?? 'Admin System') }}</td>
                             <td>
@@ -145,50 +181,95 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // 1. Bar Chart Pengajuan per Bulan
-    const ctxMonthly = document.getElementById('monthlyChart').getContext('2d');
-    new Chart(ctxMonthly, {
-        type: 'bar',
-        data: {
-            labels: {!! json_encode($monthlyLabels) !!},
-            datasets: [{
-                label: 'Jumlah Pengajuan',
-                data: {!! json_encode($monthlyCounts) !!},
-                backgroundColor: '#4D3EA3',
-                borderRadius: 8,
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false }
+    // 1. Grafik Batang Per Bulan (3 Kategori)
+    const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {!! json_encode($monthlyLabels) !!},
+        datasets: [
+            {
+                label: 'Penginapan',
+                data: {!! json_encode($lodgingMonthlyCounts) !!},
+                backgroundColor: '#4e73df'
             },
-            scales: {
-                y: { beginAtZero: true, ticks: { stepSize: 1 } }
+            {
+                label: 'Tempat Nongkrong',
+                data: {!! json_encode($hangoutMonthlyCounts) !!},
+                backgroundColor: '#36b9cc'
+            },
+            {
+                label: 'Wisata',
+                data: {!! json_encode($touristMonthlyCounts) !!},
+                backgroundColor: '#f6c23e'
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false, // <-- Penting agar tinggi dan lebarnya fleksibel mengikuti container
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 2
+                }
             }
         }
-    });
+    }
+});
+    
 
-    // 2. Doughnut Chart Kategori / Kecamatan
-    const ctxCategory = document.getElementById('categoryChart').getContext('2d');
-    new Chart(ctxCategory, {
-        type: 'doughnut',
-        data: {
-            labels: {!! json_encode($categoryLabels) !!},
-            datasets: [{
-                data: {!! json_encode($categoryCounts) !!},
-                backgroundColor: ['#4D3EA3', '#758AD1', '#FFD2F4', '#E1DAFB', '#450C3F', '#9580FF'],
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { position: 'bottom' }
-            }
-        }
-    });
+    const colorPalette = ['#4D3EA3', '#38bdf8', '#facc15', '#f87171', '#34d399', '#a78bfa', '#fb923c'];
+
+    // 2. Donut Chart Sebaran Penginapan per Kecamatan
+    const ctxLodgingDist = document.getElementById('lodgingDistrictChart');
+    if (ctxLodgingDist) {
+        new Chart(ctxLodgingDist.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: {!! json_encode($lodgingDistrictLabels) !!},
+                datasets: [{
+                    data: {!! json_encode($lodgingDistrictCounts) !!},
+                    backgroundColor: colorPalette,
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+    }
+
+    // 3. Donut Chart Sebaran Tempat Nongkrong per Kecamatan
+    const ctxHangoutDist = document.getElementById('hangoutDistrictChart');
+    if (ctxHangoutDist) {
+        new Chart(ctxHangoutDist.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: {!! json_encode($hangoutDistrictLabels) !!},
+                datasets: [{
+                    data: {!! json_encode($hangoutDistrictCounts) !!},
+                    backgroundColor: colorPalette,
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+    }
+
+    // 4. Donut Chart Sebaran Wisata per Kecamatan
+    const ctxTouristDist = document.getElementById('touristDistrictChart');
+    if (ctxTouristDist) {
+        new Chart(ctxTouristDist.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: {!! json_encode($touristDistrictLabels) !!},
+                datasets: [{
+                    data: {!! json_encode($touristDistrictCounts) !!},
+                    backgroundColor: colorPalette,
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+        });
+    }
 </script>
 @endsection
