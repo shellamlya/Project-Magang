@@ -15,9 +15,15 @@
             <p class="small text-muted mb-0">Kelola penginapan, tempat nongkrong, dan destinasi wisata Anda</p>
         </div>
         <div class="d-flex gap-2 flex-wrap">
-            <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#categoryModal">
-                <i class="fa-solid fa-plus me-1"></i> Ajukan Usaha Baru
-            </button>
+            @if(auth()->user()->owner?->verification_status === 'approved')
+                <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#categoryModal">
+                    <i class="fa-solid fa-plus me-1"></i> Ajukan Usaha Baru
+                </button>
+            @else
+                <button type="button" class="btn btn-secondary rounded-pill px-4 fw-bold" disabled title="Menunggu persetujuan akun owner oleh Admin">
+                    <i class="fa-solid fa-lock me-1"></i> Ajukan Usaha Baru
+                </button>
+            @endif
         </div>
     </div>
 </div>

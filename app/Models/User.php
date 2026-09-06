@@ -9,12 +9,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 /**
  * Class User
  * @package App\Models
  * Model Autentikasi Pengguna Sistem (Admin, Owner, User Publik).
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 

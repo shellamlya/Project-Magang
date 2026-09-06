@@ -42,7 +42,11 @@
                             <label for="password" class="form-label small fw-bold">Kata Sandi</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-lock text-muted"></i></span>
-                                <input type="password" name="password" id="password" class="form-control bg-light border-start-0 @error('password') is-invalid @enderror" placeholder="••••••••" required>
+                                <input type="password" name="password" id="password" class="form-control bg-light border-start-0 border-end-0 @error('password') is-invalid @enderror" placeholder="••••••••" required>
+                                <!-- Tombol Toggle Mata -->
+                                <button class="btn btn-light border border-start-0 text-muted" type="button" id="togglePassword">
+                                    <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                                </button>
                             </div>
                             @error('password')
                                 <span class="text-danger small mt-1 d-block">{{ $message }}</span>
@@ -54,6 +58,12 @@
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember">
                                 <label class="form-check-label small text-muted" for="remember">Ingat Saya</label>
                             </div>
+                            <!-- Link Lupa Password -->
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}" class="small text-decoration-none text-primary fw-semibold">Lupa kata sandi?</a>
+                            @else
+                                <a href="#" class="small text-decoration-none text-primary fw-semibold">Lupa kata sandi?</a>
+                            @endif
                         </div>
 
                         <button type="submit" class="btn btn-grex-primary w-100 rounded-3 py-2 fw-bold mb-3">
@@ -61,15 +71,6 @@
                         </button>
                     </form>
 
-                    <!-- Hint Akun Demo -->
-                    <div class="p-3 bg-light rounded-3 mt-4 border border-dashed">
-                        <h6 class="fw-bold small text-dark mb-2"><i class="fa-solid fa-key text-warning me-1"></i> Akun Testing Demo:</h6>
-                        <ul class="list-unstyled small text-muted mb-0">
-                            <li><strong>Admin:</strong> <code>admin@grex.id</code> / <code>password</code></li>
-                            <li><strong>Owner 1:</strong> <code>owner1@grex.id</code> / <code>password</code></li>
-                            <li><strong>Owner 2:</strong> <code>owner2@grex.id</code> / <code>password</code></li>
-                        </ul>
-                    </div>
 
                     <div class="text-center mt-4 pt-2 border-top">
                         <p class="small text-muted mb-0">Belum memiliki akun owner? 
@@ -81,4 +82,22 @@
         </div>
     </div>
 </div>
+
+<!-- Script Toggle Password Visibility -->
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    });
+</script>
 @endsection

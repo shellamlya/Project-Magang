@@ -46,6 +46,11 @@ class OwnerLodgingController extends Controller
      */
     public function create(Request $request)
     {
+        $owner = Auth::user()->owner;
+        if (!$owner || $owner->verification_status !== 'approved') {
+            return redirect()->route('owner.dashboard')->with('error', 'Akun Anda belum disetujui oleh Admin. Anda belum dapat mengajukan tempat usaha.');
+        }
+
         $category = $request->query('category', 'penginapan');
         if (!in_array($category, ['penginapan', 'nongkrong', 'wisata'])) {
             $category = 'penginapan';
@@ -64,8 +69,8 @@ class OwnerLodgingController extends Controller
     public function store(Request $request)
     {
         $owner = Auth::user()->owner;
-        if (!$owner) {
-            return redirect()->route('home')->with('error', 'Profil Owner tidak ditemukan.');
+        if (!$owner || $owner->verification_status !== 'approved') {
+            return redirect()->route('owner.dashboard')->with('error', 'Akun Anda belum disetujui oleh Admin. Anda belum dapat mengajukan tempat usaha.');
         }
 
         $category = $request->input('category', 'penginapan');

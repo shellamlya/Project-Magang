@@ -36,6 +36,7 @@ class Owner extends Model
         'ktp_photo',
         'business_phone',
         'account_status',
+        'verification_status',
         'account_verified_at',
         'account_verified_by',
         'account_rejection_reason',
@@ -50,6 +51,10 @@ class Owner extends Model
     const ACCOUNT_PENDING  = 'pending_account';
     const ACCOUNT_VERIFIED = 'account_verified';
     const ACCOUNT_REJECTED = 'rejected';
+
+    const STATUS_PENDING   = 'pending';
+    const STATUS_APPROVED  = 'approved';
+    const STATUS_REJECTED  = 'rejected';
 
     // ── Relasi Inti ───────────────────────────────────────────────────────────
 
@@ -101,14 +106,70 @@ class Owner extends Model
         return $this->morphMany(VerificationLog::class, 'verifiable');
     }
 
-    // ── Helper Methods ─────────────────────────────────────────────────────────
+    // ── Helper & Accessor Methods ─────────────────────────────────────────────
+
+    /**
+     * Accessor untuk mempermudah akses email owner (via user relation).
+     */
+    public function getEmailAttribute(): ?string
+    {
+        return $this->user?->email;
+    }
+
+    /**
+     * Accessor untuk mempermudah akses nama penanggung jawab owner (via user relation).
+     */
+    public function getNameAttribute(): ?string
+    {
+        return $this->user?->name;
+    }
+
+    /**
+     * Accessor untuk verification_status agar selalu konsisten dengan account_status.
+     */
+    public function getVerificationStatusAttribute($value): string
+    {
+        if (!empty($value)) {
+            return $value;
+        }
+
+        return match ($this->account_status) {
+            self::ACCOUNT_VERIFIED => self::STATUS_APPROVED,
+            self::ACCOUNT_REJECTED => self::STATUS_REJECTED,
+            default => self::STATUS_PENDING,
+        };
+    }
+
+    /**
+     * Cek apakah akun owner sudah disetujui (approved).
+     */
+    public function isApproved(): bool
+    {
+        return $this->verification_status === self::STATUS_APPROVED || $this->account_status === self::ACCOUNT_VERIFIED;
+    }
+
+    /**
+     * Cek apakah akun owner masih berstatus pending.
+     */
+    public function isPending(): bool
+    {
+        return $this->verification_status === self::STATUS_PENDING || $this->account_status === self::ACCOUNT_PENDING;
+    }
+
+    /**
+     * Cek apakah akun owner ditolak (rejected).
+     */
+    public function isRejected(): bool
+    {
+        return $this->verification_status === self::STATUS_REJECTED || $this->account_status === self::ACCOUNT_REJECTED;
+    }
 
     /**
      * Cek apakah akun owner sudah terverifikasi (bisa daftar listing).
      */
     public function isAccountVerified(): bool
     {
-        return $this->account_status === self::ACCOUNT_VERIFIED;
+        return $this->isApproved();
     }
 
     /**
@@ -116,7 +177,7 @@ class Owner extends Model
      */
     public function isAccountPending(): bool
     {
-        return $this->account_status === self::ACCOUNT_PENDING;
+        return $this->isPending();
     }
 
     /**
@@ -124,7 +185,7 @@ class Owner extends Model
      */
     public function isAccountRejected(): bool
     {
-        return $this->account_status === self::ACCOUNT_REJECTED;
+        return $this->isRejected();
     }
 
     /**
