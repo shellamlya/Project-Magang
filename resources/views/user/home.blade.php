@@ -284,13 +284,13 @@
        SECTION STATISTIK: LEBIH LUAS, LEBIH TERHUBUNG
        ========================================= */
     .section-stats {
-        position: relative;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(225, 218, 251, 0.45) 45%, rgba(197, 179, 211, 0.35) 75%, rgba(141, 137, 137, 0.18) 100%);
-        padding: 5rem 0 4.5rem;
-        border-top: 1px solid rgba(197, 179, 211, 0.5);
-        margin-top: 3rem;
-        overflow: hidden;
-    }
+    position: relative;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(225, 218, 251, 0.45) 45%, rgba(197, 179, 211, 0.35) 75%, rgba(141, 137, 137, 0.18) 100%);
+    padding: 2.5rem 0 2.5rem;
+    border-top: 1px solid rgba(197, 179, 211, 0.5);
+    margin-top: 1.5rem;
+    overflow: hidden;
+}
 
     .section-stats::before {
         content: "";
@@ -846,40 +846,59 @@
 <!-- Section Statistik: Lebih Luas, Lebih Terhubung -->
 <section class="section-stats">
     <div class="container position-relative" style="z-index: 2;">
-        <div class="text-center mb-5">
-            <span class="stats-badge">
+        
+        <!-- Bagian Judul (Ukuran Sudah Diperkecil Pas) -->
+        <div class="text-center mb-4">
+            <span class="stats-badge" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">
                 <i class="fa-solid fa-chart-pie me-1"></i> Jangkauan & Aktivitas Lokavino
             </span>
-            <h2 class="stats-title">Lebih Luas, Lebih Terhubung</h2>
-            <p class="stats-subtitle">
+            <h2 class="stats-title" style="font-size: 1.8rem; font-weight: 700; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                Lebih Luas, Lebih Terhubung
+            </h2>
+            <p class="stats-subtitle" style="font-size: 0.9rem; max-width: 600px; margin: 0 auto;">
                 Menghubungkan ragam penginapan, destinasi wisata, dan tempat nongkrong terfavorit dengan ribuan pengunjung dalam satu ekosistem terpadu.
             </p>
         </div>
 
-        <div class="row g-4 justify-content-center">
+        <!-- Pembungkus Row (Membuat Kartu Bersebelahan) -->
+        <div class="row g-3 justify-content-center">
+            
             <!-- Statistik 1: Usaha Terdaftar -->
-            <div class="col-12 col-sm-6 col-lg-5 col-xl-4">
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper">
+            <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+                <div class="stat-card" style="padding: 1.25rem 1rem; max-width: 260px; margin: 0 auto;">
+                    <div class="stat-icon-wrapper" style="width: 42px; height: 42px; font-size: 1.1rem; margin-bottom: 0.5rem;">
                         <i class="fa-solid fa-store"></i>
                     </div>
-                    <div class="stat-number">{{ number_format($totalPlaces, 0, ',', '.') }}+</div>
-                    <div class="stat-label">Usaha Terdaftar</div>
-                    <p class="stat-caption">Penginapan, Wisata & Nongkrong</p>
+                    <div class="stat-number" style="font-size: 1.8rem; line-height: 1.2;">
+                        {{ number_format($totalPlaces, 0, ',', '.') }}+
+                    </div>
+                    <div class="stat-label" style="font-size: 0.9rem; font-weight: 600;">
+                        Usaha Terdaftar
+                    </div>
+                    <p class="stat-caption" style="font-size: 0.75rem; margin-top: 0.25rem;">
+                        Penginapan, Wisata & Nongkrong
+                    </p>
                 </div>
             </div>
 
             <!-- Statistik 2: Pengunjung Website -->
-            <div class="col-12 col-sm-6 col-lg-5 col-xl-4">
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper">
+            <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+                <div class="stat-card" style="padding: 1.25rem 1rem; max-width: 260px; margin: 0 auto;">
+                    <div class="stat-icon-wrapper" style="width: 42px; height: 42px; font-size: 1.1rem; margin-bottom: 0.5rem;">
                         <i class="fa-solid fa-users"></i>
                     </div>
-                    <div class="stat-number">{{ number_format($totalVisitors, 0, ',', '.') }}+</div>
-                    <div class="stat-label">Pengunjung Website</div>
-                    <p class="stat-caption">Eksplorasi Publik Aktif Terdata</p>
+                    <div class="stat-number" style="font-size: 1.8rem; line-height: 1.2;">
+                        {{ number_format($totalVisitors, 0, ',', '.') }}+
+                    </div>
+                    <div class="stat-label" style="font-size: 0.9rem; font-weight: 600;">
+                        Pengunjung Website
+                    </div>
+                    <p class="stat-caption" style="font-size: 0.75rem; margin-top: 0.25rem;">
+                        Eksplorasi Publik Aktif Terdata
+                    </p>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
