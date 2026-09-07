@@ -70,8 +70,9 @@ class OwnerProfileController extends Controller
             }
             $ownerData['ktp_photo'] = $request->file('ktp_photo')->store('private/ktp', 'local');
             // Jika sebelumnya rejected, kembalikan ke pending agar Admin meninjau ulang
-            if ($owner->account_status === Owner::ACCOUNT_REJECTED) {
+            if ($owner->account_status === Owner::ACCOUNT_REJECTED || $owner->verification_status === Owner::STATUS_REJECTED) {
                 $ownerData['account_status'] = Owner::ACCOUNT_PENDING;
+                $ownerData['verification_status'] = Owner::STATUS_PENDING;
                 $ownerData['account_rejection_reason'] = null;
             }
         }
