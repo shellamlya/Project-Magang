@@ -101,6 +101,16 @@
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="info@hotel.com">
                 </div>
 
+                <div class="col-md-6">
+                    <label class="form-label fw-bold small">Instagram Usaha (Opsional)</label>
+                    <input type="text" name="instagram" class="form-control" value="{{ old('instagram') }}" placeholder="@username atau link Instagram">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold small">Website (Opsional)</label>
+                    <input type="text" name="website" class="form-control" value="{{ old('website') }}" placeholder="https://hotel.com">
+                </div>
+
                 <div class="col-12">
                     <label class="form-label fw-bold small">Link Google Maps *</label>
                     <input type="text" name="google_maps" class="form-control @error('google_maps') is-invalid @enderror" value="{{ old('google_maps') }}" placeholder="https://maps.google.com/?q=..." required>

@@ -48,7 +48,17 @@
         @error('phone') <span class="text-danger small">{{ $message }}</span> @enderror
     </div>
 
+    <!-- Instagram Usaha -->
     <div class="col-md-6">
+        <label class="form-label fw-bold small">
+            <i class="fa-brands fa-instagram text-danger me-1"></i> Instagram Usaha
+        </label>
+        <input type="text" name="instagram" class="form-control @error('instagram') is-invalid @enderror" value="{{ old('instagram') }}" placeholder="@username atau link Instagram">
+        <small class="text-muted d-block mt-1">Masukkan username Instagram atau link Instagram usaha Anda.</small>
+        @error('instagram') <span class="text-danger small">{{ $message }}</span> @enderror
+    </div>
+
+    <div class="col-12">
         <label class="form-label fw-bold small">Link Google Maps *</label>
         <input type="text" name="google_maps" class="form-control @error('google_maps') is-invalid @enderror" value="{{ old('google_maps') }}" placeholder="https://maps.google.com/?q=..." required>
         @error('google_maps') <span class="text-danger small">{{ $message }}</span> @enderror

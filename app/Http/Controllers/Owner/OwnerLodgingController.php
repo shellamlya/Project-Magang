@@ -93,6 +93,7 @@ class OwnerLodgingController extends Controller
             'email'             => ['nullable', 'email', 'max:255'],
             'phone'             => ['required', 'string', 'max:50'],
             'website'           => ['nullable', 'string', 'max:255'],
+            'instagram'         => ['nullable', 'string', 'max:255'],
             'facilities'        => ['nullable', 'array'],
             // Media — Thumbnail WAJIB saat create
             'thumbnail'         => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
@@ -124,6 +125,8 @@ class OwnerLodgingController extends Controller
         $photo1Path    = $this->uploadPhoto($request, 'photo_1', $category);
         $photo2Path    = $this->uploadPhoto($request, 'photo_2', $category);
 
+        $instagramValue = $request->filled('instagram') ? trim($request->instagram) : null;
+
         if ($category === 'penginapan') {
             $place = Lodging::create([
                 'owner_id'          => $owner->id,
@@ -144,6 +147,7 @@ class OwnerLodgingController extends Controller
                 'email'             => $request->email,
                 'phone'             => $request->phone,
                 'website'           => $request->website,
+                'instagram'         => $instagramValue,
                 'price_start'       => $request->price_start,
                 'price_end'         => $request->price_end,
                 'thumbnail'         => $thumbnailPath,
@@ -172,6 +176,7 @@ class OwnerLodgingController extends Controller
                 'manager_name'      => $request->manager_name,
                 'email'             => $request->email,
                 'phone'             => $request->phone,
+                'instagram'         => $instagramValue,
                 'thumbnail'         => $thumbnailPath,
                 'photo_1'           => $photo1Path,
                 'photo_2'           => $photo2Path,
@@ -198,6 +203,7 @@ class OwnerLodgingController extends Controller
                 'manager_name'      => $request->manager_name,
                 'email'             => $request->email,
                 'phone'             => $request->phone,
+                'instagram'         => $instagramValue,
                 'ticket_price'      => $request->ticket_price ?? 'Gratis',
                 'thumbnail'         => $thumbnailPath,
                 'photo_1'           => $photo1Path,
@@ -262,6 +268,8 @@ class OwnerLodgingController extends Controller
             'manager_name'      => ['required', 'string', 'max:255'],
             'email'             => ['nullable', 'email', 'max:255'],
             'phone'             => ['required', 'string', 'max:50'],
+            'website'           => ['nullable', 'string', 'max:255'],
+            'instagram'         => ['nullable', 'string', 'max:255'],
             'facilities'        => ['nullable', 'array'],
             // Media — Thumbnail opsional saat update (hanya ganti jika diupload)
             'thumbnail'         => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
@@ -272,6 +280,8 @@ class OwnerLodgingController extends Controller
         if ($category === 'penginapan') {
             $rules['price_start'] = ['required', 'numeric', 'min:0'];
             $rules['price_end']   = ['required', 'numeric', 'gte:price_start'];
+        } elseif ($category === 'wisata') {
+            $rules['ticket_price'] = ['nullable', 'string', 'max:255'];
         }
 
         $request->validate($rules, [
@@ -280,6 +290,8 @@ class OwnerLodgingController extends Controller
             'description.required' => 'Deskripsi tempat usaha wajib diisi.',
             'google_maps.required' => 'Link Google Maps wajib diisi.',
         ]);
+
+        $instagramValue = $request->filled('instagram') ? trim($request->instagram) : null;
 
         if ($category === 'nongkrong') {
             $place = $owner->hangoutPlaces()->findOrFail($id);
@@ -296,6 +308,7 @@ class OwnerLodgingController extends Controller
                 'manager_name'      => $request->manager_name,
                 'email'             => $request->email,
                 'phone'             => $request->phone,
+                'instagram'         => $instagramValue,
                 'status'            => 'pending',
             ];
             if ($request->hasFile('thumbnail')) $updateData['thumbnail'] = $this->replacePhoto($request, 'thumbnail', $place->thumbnail, $category);
@@ -322,6 +335,7 @@ class OwnerLodgingController extends Controller
                 'manager_name'      => $request->manager_name,
                 'email'             => $request->email,
                 'phone'             => $request->phone,
+                'instagram'         => $instagramValue,
                 'ticket_price'      => $request->ticket_price ?? 'Gratis',
                 'status'            => 'pending',
             ];
@@ -352,6 +366,7 @@ class OwnerLodgingController extends Controller
                 'email'             => $request->email,
                 'phone'             => $request->phone,
                 'website'           => $request->website,
+                'instagram'         => $instagramValue,
                 'price_start'       => $request->price_start,
                 'price_end'         => $request->price_end,
                 'status'            => 'pending',

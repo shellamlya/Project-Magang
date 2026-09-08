@@ -65,6 +65,13 @@
                             <td class="ps-4">
                                 <div class="fw-bold text-dark">{{ $place->name }}</div>
                                 <small class="text-muted">{{ Str::limit($place->address, 45) }}</small>
+                                @if($place->instagram && $place->instagram_url)
+                                    <div>
+                                        <a href="{{ $place->instagram_url }}" target="_blank" rel="noopener noreferrer" class="small text-decoration-none text-muted">
+                                            <i class="fa-brands fa-instagram text-danger me-1"></i>{{ $place->instagram_handle }}
+                                        </a>
+                                    </div>
+                                @endif
                             </td>
                             <td>
                                 <span class="badge {{ $place->category_badge_class }} rounded-pill px-3 py-1">

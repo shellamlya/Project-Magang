@@ -198,6 +198,16 @@
                             <div class="fw-bold text-dark fs-6">{{ $rawPhone ?: 'Tersedia di lokasi' }}</div>
                         </div>
                     </div>
+                    @if($touristPlace->instagram && $touristPlace->instagram_url)
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <div class="small text-muted mb-1"><i class="fa-brands fa-instagram me-1 text-danger"></i> Instagram Usaha</div>
+                                <a href="{{ $touristPlace->instagram_url }}" target="_blank" rel="noopener noreferrer" class="fw-bold text-dark text-decoration-none fs-6 d-inline-flex align-items-center">
+                                    {{ $touristPlace->instagram_handle }} <i class="fa-solid fa-arrow-up-right-from-square ms-1 text-muted fs-8"></i>
+                                </a>
+                            </div>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Deskripsi Wisata -->
@@ -227,6 +237,11 @@
                     @if($waUrl)
                         <a href="{{ $waUrl }}" target="_blank" class="btn btn-whatsapp-booking btn-lg rounded-pill px-4 fw-bold shadow-sm">
                             <i class="fa-brands fa-whatsapp me-2 fs-5"></i> Hubungi Pengelola via WA
+                        </a>
+                    @endif
+                    @if($touristPlace->instagram && $touristPlace->instagram_url)
+                        <a href="{{ $touristPlace->instagram_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger btn-lg rounded-pill px-4 fw-bold shadow-sm">
+                            <i class="fa-brands fa-instagram me-2 fs-5"></i> {{ $touristPlace->instagram_handle }}
                         </a>
                     @endif
                     @if($touristPlace->google_maps)

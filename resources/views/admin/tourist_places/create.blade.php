@@ -50,17 +50,22 @@
                     @error('manager_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label class="form-label fw-semibold">Telepon / HP</label>
                     <input type="text" name="phone" class="form-control" placeholder="Contoh: 08123456789" value="{{ old('phone') }}">
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label class="form-label fw-semibold">Email</label>
                     <input type="email" name="email" class="form-control" placeholder="Contoh: info@wisata.com" value="{{ old('email') }}">
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <label class="form-label fw-semibold">Instagram Usaha</label>
+                    <input type="text" name="instagram" class="form-control" placeholder="@username atau link Instagram" value="{{ old('instagram') }}">
+                </div>
+
+                <div class="col-md-3">
                     <label class="form-label fw-semibold">Harga Tiket</label>
                     <input type="text" name="ticket_price" class="form-control" placeholder="Contoh: Rp 10.000 / Gratis" value="{{ old('ticket_price') }}">
                 </div>

@@ -236,6 +236,15 @@
                     </div>
                 @endif
 
+                @if($hangoutPlace->instagram && $hangoutPlace->instagram_url)
+                    <div class="mb-3">
+                        <small class="text-muted d-block fw-semibold">Instagram Usaha</small>
+                        <a href="{{ $hangoutPlace->instagram_url }}" target="_blank" rel="noopener noreferrer" class="small text-decoration-none fw-bold text-dark d-inline-flex align-items-center">
+                            <i class="fa-brands fa-instagram text-danger me-1 fs-6"></i> {{ $hangoutPlace->instagram_handle }}
+                        </a>
+                    </div>
+                @endif
+
                 <!-- Tombol Direct WhatsApp / Reservasi -->
                 @if($waUrl)
                     <div class="d-grid mt-4 mb-2">

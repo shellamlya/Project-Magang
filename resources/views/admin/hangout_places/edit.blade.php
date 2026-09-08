@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Edit Tempat Nongkrong - Admin Lokavino')
 @section('page-title', 'Edit Data Tempat Nongkrong')
@@ -67,6 +67,11 @@
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Email (Opsional)</label>
                     <input type="email" name="email" class="form-control" value="{{ old('email', $hangoutPlace->email) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold small">Instagram Usaha (Opsional)</label>
+                    <input type="text" name="instagram" class="form-control" value="{{ old('instagram', $hangoutPlace->instagram) }}" placeholder="@username atau link Instagram">
                 </div>
 
                 <div class="col-12">

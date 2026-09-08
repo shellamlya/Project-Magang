@@ -65,6 +65,7 @@ class AdminTouristPlaceController extends Controller
             'manager_name'      => ['required', 'string', 'max:255'],
             'email'             => ['nullable', 'email', 'max:255'],
             'phone'             => ['nullable', 'string', 'max:50'],
+            'instagram'         => ['nullable', 'string', 'max:255'],
             'ticket_price'      => ['nullable', 'string', 'max:100'],
             'status'            => ['required', 'in:pending,approved,rejected'],
             'owner_id'          => ['nullable', 'exists:owners,id'],
@@ -87,6 +88,7 @@ class AdminTouristPlaceController extends Controller
             'manager_name'      => $request->manager_name,
             'email'             => $request->email,
             'phone'             => $request->phone,
+            'instagram'         => $request->filled('instagram') ? trim($request->instagram) : null,
             'ticket_price'      => $request->ticket_price,
             'status'            => $request->status,
         ]);
@@ -131,6 +133,7 @@ class AdminTouristPlaceController extends Controller
             'manager_name'      => ['required', 'string', 'max:255'],
             'email'             => ['nullable', 'email', 'max:255'],
             'phone'             => ['nullable', 'string', 'max:50'],
+            'instagram'         => ['nullable', 'string', 'max:255'],
             'ticket_price'      => ['nullable', 'string', 'max:100'],
             'status'            => ['required', 'in:pending,approved,rejected'],
             'owner_id'          => ['nullable', 'exists:owners,id'],
@@ -153,6 +156,7 @@ class AdminTouristPlaceController extends Controller
             'manager_name'      => $request->manager_name,
             'email'             => $request->email,
             'phone'             => $request->phone,
+            'instagram'         => $request->filled('instagram') ? trim($request->instagram) : null,
             'ticket_price'      => $request->ticket_price,
             'status'            => $request->status,
         ]);

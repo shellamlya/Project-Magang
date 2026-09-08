@@ -7,11 +7,11 @@ use App\Models\Lodging;
 use App\Models\TouristPlace;
 use App\Models\HangoutPlace;
 use App\Models\WebsiteVisitor;
-use App\Models\User;
-use App\Models\Role;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LandingPageStatsTest extends TestCase
 {
+    use RefreshDatabase;
     public function test_landing_page_displays_dynamic_statistics_section(): void
     {
         $response = $this->get('/');
