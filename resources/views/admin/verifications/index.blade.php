@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Verifikasi Tempat Usaha - Admin Lokavino')
-@section('page-title', 'Verifikasi Listing Tempat Usaha (Tingkat 2)')
+@section('page-title', 'Verifikasi Listing Tempat Usaha')
 
 @section('content')
 <!-- Ringkasan Statistik -->

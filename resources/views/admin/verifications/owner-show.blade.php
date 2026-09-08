@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Periksa Akun Owner - Admin Lokavino')
-@section('page-title', 'Pemeriksaan Identitas Owner (Verifikasi Tingkat 1)')
+@section('page-title', 'Pemeriksaan Identitas Owner')
 
 @section('content')
 <div class="mb-4">

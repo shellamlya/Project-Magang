@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Detail Verifikasi Tempat Usaha - Admin Lokavino')
-@section('page-title', 'Detail Pengajuan Tempat Usaha (Verifikasi Tingkat 2)')
+@section('page-title', 'Detail Pengajuan Tempat Usaha')
 
 @section('content')
 <div class="mb-4">
