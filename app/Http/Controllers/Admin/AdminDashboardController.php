@@ -8,6 +8,7 @@ use App\Models\Owner;
 use App\Models\Lodging;
 use App\Models\HangoutPlace;
 use App\Models\TouristPlace;
+use App\Models\WebsiteVisitor;
 use Illuminate\Support\Facades\DB;
 
 class AdminDashboardController extends Controller
@@ -16,7 +17,10 @@ class AdminDashboardController extends Controller
     {
         // 1. Total statistik utama
         $totalOwners   = Owner::count();
-        $totalLodgings = Lodging::count() + HangoutPlace::count() + TouristPlace::count();
+        $totalHangouts = HangoutPlace::count();
+        $totalLodgings = Lodging::count();
+        $totalTours    = TouristPlace::count();
+        $totalViews    = WebsiteVisitor::count();
         
         $totalPending  = Lodging::where('status', 'pending')->count() + HangoutPlace::where('status', 'pending')->count() + TouristPlace::where('status', 'pending')->count();
         $totalApproved = Lodging::where('status', 'approved')->count() + HangoutPlace::where('status', 'approved')->count() + TouristPlace::where('status', 'approved')->count();
@@ -62,7 +66,10 @@ class AdminDashboardController extends Controller
 
         return view('admin.dashboard', compact(
             'totalOwners',
+            'totalHangouts',
             'totalLodgings',
+            'totalTours',
+            'totalViews',
             'totalPending',
             'totalApproved',
             'totalRejected',
