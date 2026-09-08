@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Edit Wisata - Admin Lokavino')
 @section('page-title', 'Edit Data Wisata')
@@ -51,17 +51,22 @@
                     @error('manager_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label class="form-label fw-semibold">Telepon / HP</label>
                     <input type="text" name="phone" class="form-control" value="{{ old('phone', $touristPlace->phone) }}">
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label class="form-label fw-semibold">Email</label>
                     <input type="email" name="email" class="form-control" value="{{ old('email', $touristPlace->email) }}">
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <label class="form-label fw-semibold">Instagram Usaha</label>
+                    <input type="text" name="instagram" class="form-control" placeholder="@username atau link Instagram" value="{{ old('instagram', $touristPlace->instagram) }}">
+                </div>
+
+                <div class="col-md-3">
                     <label class="form-label fw-semibold">Harga Tiket</label>
                     <input type="text" name="ticket_price" class="form-control" value="{{ old('ticket_price', $touristPlace->ticket_price) }}">
                 </div>

@@ -151,6 +151,14 @@
                                     <strong>Email:</strong> {{ $place->email }}
                                 </div>
                             @endif
+                            @if($place->instagram && $place->instagram_url)
+                                <div class="col-md-6">
+                                    <strong>Instagram:</strong> 
+                                    <a href="{{ $place->instagram_url }}" target="_blank" rel="noopener noreferrer" class="text-danger text-decoration-none fw-bold">
+                                        <i class="fa-brands fa-instagram me-1"></i> {{ $place->instagram_handle }}
+                                    </a>
+                                </div>
+                            @endif
                             @if($place->gmaps_link)
                                 <div class="col-md-6">
                                     <strong>Peta Lokasi:</strong> 

@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('title', 'Edit Penginapan - Admin Lokavino')
 @section('page-title', 'Edit Data Tempat Penginapan')
@@ -100,6 +100,16 @@
                 <div class="col-md-6">
                     <label class="form-label fw-bold small">Email (Opsional)</label>
                     <input type="email" name="email" class="form-control" value="{{ old('email', $lodging->email) }}">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold small">Instagram Usaha (Opsional)</label>
+                    <input type="text" name="instagram" class="form-control" value="{{ old('instagram', $lodging->instagram) }}" placeholder="@username atau link Instagram">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold small">Website (Opsional)</label>
+                    <input type="text" name="website" class="form-control" value="{{ old('website', $lodging->website) }}" placeholder="https://hotel.com">
                 </div>
 
                 <div class="col-12">

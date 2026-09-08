@@ -212,6 +212,15 @@
                 </div>
             @endif
 
+            @if($place->instagram && $place->instagram_url)
+                <div class="mb-3">
+                    <small class="text-muted d-block">Instagram Usaha:</small>
+                    <a href="{{ $place->instagram_url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none fw-bold text-dark">
+                        <i class="fa-brands fa-instagram text-danger me-1"></i> {{ $place->instagram_handle }}
+                    </a>
+                </div>
+            @endif
+
             @if($waUrl)
                 <a href="{{ $waUrl }}" target="_blank" class="btn btn-outline-success rounded-pill py-2 fw-bold w-100 mb-3">
                     <i class="fa-brands fa-whatsapp me-1"></i> Hubungi WA Pengelola

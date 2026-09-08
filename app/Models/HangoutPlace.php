@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Models\Traits\HasInstagram;
 
 /**
  * Class HangoutPlace
@@ -21,10 +22,11 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  *   listing_verified_at     — Waktu listing disetujui
  *   listing_verified_by     — Admin yang approve listing
  *   listing_rejection_reason— Alasan penolakan listing
+ *   instagram               — Akun Instagram tempat usaha
  */
 class HangoutPlace extends Model
 {
-    use HasFactory;
+    use HasFactory, HasInstagram;
 
     protected $table = 'hangout_places';
 
@@ -44,6 +46,7 @@ class HangoutPlace extends Model
         'manager_name',
         'email',
         'phone',
+        'instagram',
         // Media
         'thumbnail',
         'photo_1',
@@ -208,8 +211,9 @@ class HangoutPlace extends Model
                 'coordinates' => ['lat' => $this->latitude, 'lng' => $this->longitude],
             ],
             'contact'     => [
-                'phone'   => $this->phone,
-                'email'   => $this->email,
+                'phone'     => $this->phone,
+                'email'     => $this->email,
+                'instagram' => $this->instagram_handle,
             ],
             'operational' => [
                 'hours' => $this->operational_hours,

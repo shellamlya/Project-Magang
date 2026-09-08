@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Models\Traits\HasInstagram;
 
 /**
  * Class Lodging
@@ -21,10 +22,11 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  *   listing_verified_at     — Waktu listing disetujui
  *   listing_verified_by     — Admin yang approve listing
  *   listing_rejection_reason— Alasan penolakan listing
+ *   instagram               — Akun Instagram tempat usaha
  */
 class Lodging extends Model
 {
-    use HasFactory;
+    use HasFactory, HasInstagram;
 
     protected $table = 'lodgings';
 
@@ -47,6 +49,7 @@ class Lodging extends Model
         'email',
         'phone',
         'website',
+        'instagram',
         'price_start',
         'price_end',
         // Media
@@ -217,9 +220,10 @@ class Lodging extends Model
                 'coordinates' => ['lat' => $this->latitude, 'lng' => $this->longitude],
             ],
             'contact'     => [
-                'phone'   => $this->phone,
-                'email'   => $this->email,
-                'website' => $this->website,
+                'phone'     => $this->phone,
+                'email'     => $this->email,
+                'website'   => $this->website,
+                'instagram' => $this->instagram_handle,
             ],
             'operational' => [
                 'hours'     => $this->operational_hours,
