@@ -5,73 +5,82 @@
 
 @section('content')
 <!-- Stat Cards (Kotak Statistik Utama - Proporsional) -->
-<div class="row row-cols-1 row-cols-md-3 row-cols-xl-6 g-3 mb-4">
-    <!-- Owner -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 g-3 mb-4">
+    
+    <!-- 1. Owner -->
     <div class="col">
         <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center justify-content-between mb-2">
                 <span class="text-muted fw-semibold small">Owner</span>
-                <div class="icon-box bg-primary bg-opacity-10 text-primary p-2 rounded-3"><i class="fa-solid fa-store"></i></div>
+                <div class="icon-box bg-primary bg-opacity-10 text-primary p-2 rounded-3">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
             </div>
-            <h4 class="fw-extrabold text-dark mb-0">{{ $totalOwners ?? 0 }}</h4>
+            <h4 class="fw-extrabold text-primary mb-0">{{ $totalOwners ?? 0 }}</h4>
         </div>
     </div>
 
-    <!-- Penginapan -->
+    <!-- 2. Nongkrong -->
+    <div class="col">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="text-muted fw-semibold small">Nongkrong</span>
+                <div class="icon-box bg-warning bg-opacity-10 text-warning p-2 rounded-3">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+            </div>
+            <h4 class="fw-extrabold text-warning mb-0">{{ $totalHangouts ?? 0 }}</h4>
+        </div>
+    </div>
+
+    <!-- 3. Penginapan -->
     <div class="col">
         <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center justify-content-between mb-2">
                 <span class="text-muted fw-semibold small">Penginapan</span>
-                <div class="icon-box bg-info bg-opacity-10 text-info p-2 rounded-3"><i class="fa-solid fa-hotel"></i></div>
+                <div class="icon-box bg-info bg-opacity-10 text-info p-2 rounded-3">
+                    <i class="fa-solid fa-hotel"></i>
+                </div>
             </div>
-            <h4 class="fw-extrabold text-dark mb-0">{{ $totalLodgings ?? 0 }}</h4>
+            <h4 class="fw-extrabold text-info mb-0">{{ $totalLodgings ?? 0 }}</h4>
         </div>
     </div>
 
-    <!-- Pending -->
+    <!-- 4. Wisata -->
     <div class="col">
         <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center justify-content-between mb-2">
-                <span class="text-muted fw-semibold small">Pending</span>
-                <div class="icon-box bg-warning bg-opacity-10 text-warning p-2 rounded-3"><i class="fa-solid fa-clock"></i></div>
+                <span class="text-muted fw-semibold small">Wisata</span>
+                <div class="icon-box bg-success bg-opacity-10 text-success p-2 rounded-3">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
             </div>
-            <h4 class="fw-extrabold text-warning mb-0">{{ $totalPending ?? 0 }}</h4>
+            <h4 class="fw-extrabold text-success mb-0">{{ $totalTours ?? 0 }}</h4>
         </div>
     </div>
 
-    <!-- Disetujui -->
-    <div class="col">
-        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-                <span class="text-muted fw-semibold small">Disetujui</span>
-                <div class="icon-box bg-success bg-opacity-10 text-success p-2 rounded-3"><i class="fa-solid fa-circle-check"></i></div>
-            </div>
-            <h4 class="fw-extrabold text-success mb-0">{{ $totalApproved ?? 0 }}</h4>
-        </div>
-    </div>
-
-    <!-- Ditolak -->
-    <div class="col">
-        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-                <span class="text-muted fw-semibold small">Ditolak</span>
-                <div class="icon-box bg-danger bg-opacity-10 text-danger p-2 rounded-3"><i class="fa-solid fa-circle-xmark"></i></div>
-            </div>
-            <h4 class="fw-extrabold text-danger mb-0">{{ $totalRejected ?? 0 }}</h4>
-        </div>
-    </div>
-
-    <!-- Total Viewers -->
+    <!-- 5. Total Viewers -->
     <div class="col">
         <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center justify-content-between mb-2">
                 <span class="text-muted fw-semibold small">Total Viewers</span>
-                <div class="icon-box bg-primary bg-opacity-10 text-primary p-2 rounded-3"><i class="fa-solid fa-eye"></i></div>
+                <div class="icon-box bg-danger bg-opacity-10 text-danger p-2 rounded-3">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
             </div>
-            <h4 class="fw-extrabold text-primary mb-0">{{ $totalViews ?? 0 }}</h4>
+            <h4 class="fw-extrabold text-danger mb-0">{{ $totalViews ?? 0 }}</h4>
         </div>
     </div>
-</div>
+
+</div> <!-- PENTING: Pastikan div penutup ini ADA untuk menutup barisan kotak statistik -->
+
+
+<!-- ========================================= -->
+<!-- KODE GRAFIK KAMU SEHARUSNYA MULAI DI SINI -->
+<!-- ========================================= -->
+<div class="row">
+    <!-- Kode pembungkus Grafik Pengajuan Tempat Usaha Per Bulan ... -->
+
 
 <!-- Grafik Visualisasi (Bar Chart Bulanan & Doughnut Sebaran Kecamatan) -->
 <!-- Bagian Grafik -->
