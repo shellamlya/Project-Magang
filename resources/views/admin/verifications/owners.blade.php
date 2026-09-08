@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Verifikasi Akun Owner - Admin Lokavino')
-@section('page-title', 'Verifikasi Akun Owner (Tingkat 1)')
+@section('page-title', 'Verifikasi Akun Owner')
 
 @section('content')
 <!-- Header & Filter Stats -->

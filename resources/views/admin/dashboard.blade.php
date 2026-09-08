@@ -97,13 +97,14 @@
     </div>
 </div>
 
-    <!-- 3 Donut Chart Sebaran Kecamatan per Kategori -->
+<!-- 3 Donut Chart Sebaran Kecamatan per Kategori -->
 <div class="row g-4 mb-4">
     <!-- Donut 1: Penginapan -->
     <div class="col-lg-4">
         <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
             <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-hotel text-primary me-2"></i>Sebaran Penginapan per Kecamatan</h6>
-            <div style="position: relative; height: 260px;" class="d-flex justify-content-center align-items-center">
+            <!-- Batasi tinggi container dan gunakan flex column agar canvas dan legend rapi -->
+            <div style="position: relative; height: 280px; width: 100%;">
                 <canvas id="lodgingDistrictChart"></canvas>
             </div>
         </div>
@@ -113,7 +114,7 @@
     <div class="col-lg-4">
         <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
             <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-mug-hot text-info me-2"></i>Sebaran Nongkrong per Kecamatan</h6>
-            <div style="position: relative; height: 260px;" class="d-flex justify-content-center align-items-center">
+            <div style="position: relative; height: 280px; width: 100%;">
                 <canvas id="hangoutDistrictChart"></canvas>
             </div>
         </div>
@@ -123,12 +124,11 @@
     <div class="col-lg-4">
         <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
             <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-mountain-sun text-success me-2"></i>Sebaran Wisata per Kecamatan</h6>
-            <div style="position: relative; height: 260px;" class="d-flex justify-content-center align-items-center">
+            <div style="position: relative; height: 280px; width: 100%;">
                 <canvas id="touristDistrictChart"></canvas>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Penginapan Terbaru -->
@@ -190,48 +190,66 @@
 @endsection
 
 @section('scripts')
+@section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     // 1. Grafik Batang Per Bulan (3 Kategori)
     const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: {!! json_encode($monthlyLabels) !!},
-        datasets: [
-            {
-                label: 'Penginapan',
-                data: {!! json_encode($lodgingMonthlyCounts) !!},
-                backgroundColor: '#4e73df'
-            },
-            {
-                label: 'Tempat Nongkrong',
-                data: {!! json_encode($hangoutMonthlyCounts) !!},
-                backgroundColor: '#36b9cc'
-            },
-            {
-                label: 'Wisata',
-                data: {!! json_encode($touristMonthlyCounts) !!},
-                backgroundColor: '#f6c23e'
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false, // <-- Penting agar tinggi dan lebarnya fleksibel mengikuti container
-        scales: {
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    stepSize: 2
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {!! json_encode($monthlyLabels) !!},
+            datasets: [
+                {
+                    label: 'Penginapan',
+                    data: {!! json_encode($lodgingMonthlyCounts) !!},
+                    backgroundColor: '#4e73df'
+                },
+                {
+                    label: 'Tempat Nongkrong',
+                    data: {!! json_encode($hangoutMonthlyCounts) !!},
+                    backgroundColor: '#36b9cc'
+                },
+                {
+                    label: 'Wisata',
+                    data: {!! json_encode($touristMonthlyCounts) !!},
+                    backgroundColor: '#f6c23e'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 2
+                    }
                 }
             }
         }
-    }
-});
-    
+    });
 
     const colorPalette = ['#4D3EA3', '#38bdf8', '#facc15', '#f87171', '#34d399', '#a78bfa', '#fb923c'];
+
+    // Konfigurasi umum agar semua Donut Chart ukurannya pas dan konsisten
+    const donutOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '65%', // Mengatur ketebalan lubang tengah donut
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    boxWidth: 12,
+                    font: {
+                        size: 11
+                    }
+                }
+            }
+        }
+    };
 
     // 2. Donut Chart Sebaran Penginapan per Kecamatan
     const ctxLodgingDist = document.getElementById('lodgingDistrictChart');
@@ -245,7 +263,7 @@ const myChart = new Chart(ctx, {
                     backgroundColor: colorPalette,
                 }]
             },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+            options: donutOptions
         });
     }
 
@@ -261,7 +279,7 @@ const myChart = new Chart(ctx, {
                     backgroundColor: colorPalette,
                 }]
             },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+            options: donutOptions
         });
     }
 
@@ -277,7 +295,7 @@ const myChart = new Chart(ctx, {
                     backgroundColor: colorPalette,
                 }]
             },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+            options: donutOptions
         });
     }
 </script>
