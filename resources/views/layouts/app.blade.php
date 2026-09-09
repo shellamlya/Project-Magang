@@ -329,8 +329,7 @@ main {
                 <div class="col-md-5">
                     <h5 class="text-white fw-bold mb-3"><i class="fa-solid fa-compass me-2"></i>Lokavino</h5>
                     <p class="small text-white-50">
-                        Lokavino — Platform informasi dan pencarian penginapan, destinasi wisata, serta tempat nongkrong favorit terpercaya. Email: lokavino.indonesia@gmail.com
-                    </p>
+                        Lokavino adalah sebuah platform informasi dan pencarian penginapan, destinasi wisata, serta tempat nongkrong favorit terpercaya. </p>
                 </div>
                 <div class="col-md-3 ms-auto">
                     <h6 class="text-white fw-bold mb-3">Navigasi Utama</h6>
